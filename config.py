@@ -64,7 +64,8 @@ TITLE_PAD_PT = 6                # padding superior en puntos
 # Niveles de isoyetas. Si es None, se calculan automáticamente
 ISOHYET_LEVELS = None
 
-#
+# Resolución del grid (en grados) para la interpolación IDW
+GRID_RESOLUTION_DEG = 0.01
 
 # Extensión del mapa (lon_min, lon_max, lat_min, lat_max). Si es None se calcula a partir de las estaciones
 EXTENT = None
