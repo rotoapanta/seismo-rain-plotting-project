@@ -91,7 +91,7 @@ FOOTER_ROW_BOTTOM_CM = 1.0        # distancia desde el borde inferior
 FOOTER_ROW_HEIGHT_CM = 5.0        # altura de las cajas
 FOOTER_LEFT_MARGIN_CM = 1.5       # margen izquierdo de la fila
 FOOTER_RIGHT_MARGIN_CM = 0.5      # margen derecho de la fila
-FOOTER_GAP_CM = 0.3               # separación horizontal entre cajas
+FOOTER_GAP_CM = 0.0               # separación horizontal entre cajas
 FOOTER_BOX_COUNT = 4              # número de cajas (p.ej. 4)
 FOOTER_TITLES = ['SIMBOLOGÍA', 'MAPA DE UBICACIÓN', '', 'OBSERVACIONES']
 # Estilo de borde
