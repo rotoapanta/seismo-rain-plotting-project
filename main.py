@@ -8,6 +8,7 @@ from typing import List, Tuple, Dict, Optional
 
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 
 import config as CFG
 
@@ -448,10 +449,26 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
     if getattr(CFG, 'DRAW_FOOTER_BOXES', False):
         try:
             from matplotlib.patches import Rectangle
-            row_bottom = float(getattr(CFG, 'FOOTER_ROW_BOTTOM_CM', 1.0))
-            row_height = float(getattr(CFG, 'FOOTER_ROW_HEIGHT_CM', 5.0))
-            left_margin = float(getattr(CFG, 'FOOTER_LEFT_MARGIN_CM', 0.5))
-            right_margin = float(getattr(CFG, 'FOOTER_RIGHT_MARGIN_CM', 0.5))
+            # Si se define un área exacta para el bloque, usarla; en caso contrario, usar márgenes y fila
+            area = getattr(CFG, 'FOOTER_BOX_AREA_CM', None)
+            if area is not None:
+                L_cm, B_cm, W_cm, H_cm = [float(v) for v in area]
+                left_margin = L_cm
+                right_margin = max(0.0, fig_w_cm - (L_cm + W_cm))
+                row_bottom = B_cm
+                row_height = H_cm
+            else:
+                row_bottom = float(getattr(CFG, 'FOOTER_ROW_BOTTOM_CM', 1.0))
+                row_height = float(getattr(CFG, 'FOOTER_ROW_HEIGHT_CM', 5.0))
+                left_margin = float(getattr(CFG, 'FOOTER_LEFT_MARGIN_CM', 0.5))
+                right_margin = float(getattr(CFG, 'FOOTER_RIGHT_MARGIN_CM', 0.5))
+                # Si se desea alinear con los offsets del mapa, sobrescribir márgenes izquierdos
+                if getattr(CFG, 'FOOTER_ALIGN_WITH_MAP_OFFSETS', False):
+                    try:
+                        map_left_off = float(getattr(CFG, 'MAP_OFFSET_CM', (0.5, 0.5))[0])
+                        left_margin = map_left_off
+                    except Exception:
+                        pass
             gap_cm = float(getattr(CFG, 'FOOTER_GAP_CM', 0.3))
             n_boxes = int(getattr(CFG, 'FOOTER_BOX_COUNT', 4))
             titles = list(getattr(CFG, 'FOOTER_TITLES', []))
@@ -461,11 +478,74 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
             tit_weight = getattr(CFG, 'FOOTER_TITLE_FONT_WEIGHT', 'bold')
             tit_color = getattr(CFG, 'FOOTER_TITLE_COLOR', 'black')
             tit_pad_cm = float(getattr(CFG, 'FOOTER_TITLE_PAD_CM', 0.2))
+            # Altura (cm) de la fila superior (título) dentro de cada recuadro del pie de página
+            tit_row_h_cm = float(getattr(CFG, 'FOOTER_TITLE_ROW_HEIGHT_CM', 1.0))
 
-            # Calcular ancho disponible y ancho de cada caja
-            content_w_cm = fig_w_cm - left_margin - right_margin
-            total_gaps_cm = gap_cm * (n_boxes - 1)
-            box_w_cm = max(0.1, (content_w_cm - total_gaps_cm) / n_boxes)
+            # Calcular anchos por caja
+            widths_list = getattr(CFG, 'FOOTER_BOX_WIDTHS_CM', None)
+            if widths_list is not None:
+                widths_cm = [float(w) for w in widths_list]
+                # Si la suma excede el ancho disponible, se escalan proporcionalmente
+                content_w_cm = fig_w_cm - left_margin - right_margin
+                sum_w = sum(widths_cm)
+                if sum_w <= 0:
+                    widths_cm = [max(0.1, content_w_cm / n_boxes)] * n_boxes
+                elif sum_w > content_w_cm:
+                    scale = content_w_cm / sum_w
+                    widths_cm = [w * scale for w in widths_cm]
+            else:
+                # Reparto uniforme
+                content_w_cm = fig_w_cm - left_margin - right_margin
+                total_gaps_cm = gap_cm * (n_boxes - 1)
+                box_w_cm = max(0.1, (content_w_cm - total_gaps_cm) / n_boxes)
+                widths_cm = [box_w_cm] * n_boxes
+
+            # Convertir a fracciones
+            def cm_to_frac(x_cm, y_cm, w_cm, h_cm):
+                return (
+                    max(0.0, min(1.0, x_cm / fig_w_cm)),
+                    max(0.0, min(1.0, y_cm / fig_h_cm)),
+                    max(1e-6, min(1.0, w_cm / fig_w_cm)),
+                    max(1e-6, min(1.0, h_cm / fig_h_cm)),
+                )
+
+            # Dibujar cajas y títulos
+            x_cursor = left_margin
+            for i in range(n_boxes):
+                w_cm = widths_cm[i] if i < len(widths_cm) else widths_cm[-1]
+                x_cm = x_cursor
+                y_cm = row_bottom
+                h_cm = row_height
+                left, bottom, width, height = cm_to_frac(x_cm, y_cm, w_cm, h_cm)
+                rect = Rectangle((left, bottom), width, height,
+                                 fill=False, edgecolor=edge_color, linewidth=edge_lw_pt,
+                                 transform=fig.transFigure, clip_on=False)
+                fig.add_artist(rect)
+                # Línea divisoria para crear dos filas: la superior para el título
+                sep_y = bottom + height - (tit_row_h_cm / fig_h_cm)
+                line = Line2D([left, left + width], [sep_y, sep_y],
+                              transform=fig.transFigure, color=edge_color, linewidth=edge_lw_pt, clip_on=False)
+                fig.add_artist(line)
+                # Título centrado dentro de la fila superior
+                if i < len(titles) and titles[i]:
+                    title_y = sep_y + (tit_row_h_cm / fig_h_cm) / 2.0
+                    # Dibujar recuadro del título (bbox)
+                    if getattr(CFG, 'FOOTER_TITLE_BOX', False):
+                        bbox_props = dict(
+                            boxstyle=f"square,pad={float(getattr(CFG, 'FOOTER_TITLE_BOX_PAD', 0.15))}",
+                            facecolor=getattr(CFG, 'FOOTER_TITLE_BOX_FACE_COLOR', 'white'),
+                            edgecolor=getattr(CFG, 'FOOTER_TITLE_BOX_EDGE_COLOR', 'black'),
+                            linewidth=float(getattr(CFG, 'FOOTER_TITLE_BOX_LINEWIDTH_PT', 0.56693)),
+                        )
+                    else:
+                        bbox_props = None
+                    fig.text(left + width/2.0, title_y, titles[i], ha='center', va='center',
+                             fontsize=tit_size, fontweight=tit_weight, color=tit_color,
+                             bbox=bbox_props)
+                # Avanzar cursor
+                x_cursor += w_cm + gap_cm
+        except Exception as e:
+            print(f"Advertencia al dibujar footer boxes: {e}")
 
             # Convertir a fracciones
             def cm_to_frac(x_cm, y_cm, w_cm, h_cm):
@@ -487,10 +567,15 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                                  fill=False, edgecolor=edge_color, linewidth=edge_lw_pt,
                                  transform=fig.transFigure, clip_on=False)
                 fig.add_artist(rect)
-                # Título centrado arriba dentro de la caja
+                # Línea divisoria para crear dos filas: la superior para el título
+                sep_y = bottom + height - (tit_row_h_cm / fig_h_cm)
+                line = Line2D([left, left + width], [sep_y, sep_y],
+                              transform=fig.transFigure, color=edge_color, linewidth=edge_lw_pt, clip_on=False)
+                fig.add_artist(line)
+                # Título centrado dentro de la fila superior
                 if i < len(titles) and titles[i]:
-                    title_y = bottom + height - (tit_pad_cm / fig_h_cm)
-                    fig.text(left + width/2.0, title_y, titles[i], ha='center', va='top',
+                    title_y = sep_y + (tit_row_h_cm / fig_h_cm) / 2.0
+                    fig.text(left + width/2.0, title_y, titles[i], ha='center', va='center',
                              fontsize=tit_size, fontweight=tit_weight, color=tit_color)
         except Exception as e:
             print(f"Advertencia al dibujar footer boxes: {e}")

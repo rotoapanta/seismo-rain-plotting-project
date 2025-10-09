@@ -89,11 +89,11 @@ COLORBAR_DRAW_EDGES = False
 DRAW_FOOTER_BOXES = True
 FOOTER_ROW_BOTTOM_CM = 1.0        # distancia desde el borde inferior
 FOOTER_ROW_HEIGHT_CM = 5.0        # altura de las cajas
-FOOTER_LEFT_MARGIN_CM = 0.5       # margen izquierdo de la fila
+FOOTER_LEFT_MARGIN_CM = 1.5       # margen izquierdo de la fila
 FOOTER_RIGHT_MARGIN_CM = 0.5      # margen derecho de la fila
 FOOTER_GAP_CM = 0.3               # separación horizontal entre cajas
 FOOTER_BOX_COUNT = 4              # número de cajas (p.ej. 4)
-FOOTER_TITLES = ['SIMBOLOGÍA', 'MAPA DE UBICACIÓN', 'ESCALA / ROSA', 'OBSERVACIONES']
+FOOTER_TITLES = ['SIMBOLOGÍA', 'MAPA DE UBICACIÓN', '', 'OBSERVACIONES']
 # Estilo de borde
 FOOTER_EDGE_COLOR = 'black'
 FOOTER_EDGE_LINEWIDTH_PT = 0.56693   # ~0.2 mm
@@ -102,6 +102,19 @@ FOOTER_TITLE_FONT_SIZE = 10
 FOOTER_TITLE_FONT_WEIGHT = 'bold'
 FOOTER_TITLE_COLOR = 'black'
 FOOTER_TITLE_PAD_CM = 0.2
+# Alinear márgenes izquierdo/derecho de las cajas con el offset del mapa
+FOOTER_ALIGN_WITH_MAP_OFFSETS = False
+# Área exacta para ubicar y dimensionar el bloque de cajas (left_cm, bottom_cm, width_cm, height_cm)
+# Si se define, tiene prioridad sobre los márgenes y la alineación con el mapa
+FOOTER_BOX_AREA_CM = None
+# Opcional: anchos por caja en cm (lista de longitud FOOTER_BOX_COUNT). Si None, se reparten iguales
+FOOTER_BOX_WIDTHS_CM = None
+# Recuadro del título dentro de cada caja
+FOOTER_TITLE_BOX = False
+FOOTER_TITLE_BOX_FACE_COLOR = 'white'
+FOOTER_TITLE_BOX_EDGE_COLOR = 'black'
+FOOTER_TITLE_BOX_LINEWIDTH_PT = 0.56693
+FOOTER_TITLE_BOX_PAD = 0.15
 
 # =====================================
 # DATOS Y SALIDA
