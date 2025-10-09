@@ -521,11 +521,33 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                                  fill=False, edgecolor=edge_color, linewidth=edge_lw_pt,
                                  transform=fig.transFigure, clip_on=False)
                 fig.add_artist(rect)
-                # Línea divisoria para crear dos filas: la superior para el título
+
+                # Doble borde si está activado
+                if getattr(CFG, 'FOOTER_DOUBLE_BORDER', False):
+                    try:
+                        offset_cm = float(getattr(CFG, 'FOOTER_DOUBLE_BORDER_OFFSET_CM', 0.2))
+                        db_color = getattr(CFG, 'FOOTER_DOUBLE_BORDER_COLOR', 'black')
+                        db_lw = float(getattr(CFG, 'FOOTER_DOUBLE_BORDER_LINEWIDTH_PT', 0.56693))
+                        # Convertir offset a coordenadas de figura
+                        offset_x = offset_cm / fig_w_cm
+                        offset_y = offset_cm / fig_h_cm
+                        rect2 = Rectangle((left + offset_x, bottom + offset_y),
+                                          width - 2 * offset_x, height - 2 * offset_y,
+                                          fill=False, edgecolor=db_color, linewidth=db_lw,
+                                          transform=fig.transFigure, clip_on=False)
+                        fig.add_artist(rect2)
+
+                        # Línea divisoria para el título, alineada con el recuadro interior
+                        sep_y_line = bottom + height - (tit_row_h_cm / fig_h_cm)
+                        line_x_start = left + offset_x
+                        line_x_end = left + width - offset_x
+                        line = Line2D([line_x_start, line_x_end], [sep_y_line, sep_y_line],
+                                      transform=fig.transFigure, color=edge_color, linewidth=edge_lw_pt, clip_on=False)
+                        fig.add_artist(line)
+
+                    except Exception as e:
+                        print(f"Advertencia al dibujar doble borde/línea de footer: {e}")
                 sep_y = bottom + height - (tit_row_h_cm / fig_h_cm)
-                line = Line2D([left, left + width], [sep_y, sep_y],
-                              transform=fig.transFigure, color=edge_color, linewidth=edge_lw_pt, clip_on=False)
-                fig.add_artist(line)
                 # Título centrado dentro de la fila superior
                 if i < len(titles) and titles[i]:
                     title_y = sep_y + (tit_row_h_cm / fig_h_cm) / 2.0
@@ -567,11 +589,7 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                                  fill=False, edgecolor=edge_color, linewidth=edge_lw_pt,
                                  transform=fig.transFigure, clip_on=False)
                 fig.add_artist(rect)
-                # Línea divisoria para crear dos filas: la superior para el título
                 sep_y = bottom + height - (tit_row_h_cm / fig_h_cm)
-                line = Line2D([left, left + width], [sep_y, sep_y],
-                              transform=fig.transFigure, color=edge_color, linewidth=edge_lw_pt, clip_on=False)
-                fig.add_artist(line)
                 # Título centrado dentro de la fila superior
                 if i < len(titles) and titles[i]:
                     title_y = sep_y + (tit_row_h_cm / fig_h_cm) / 2.0
