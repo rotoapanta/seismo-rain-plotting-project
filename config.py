@@ -121,6 +121,8 @@ FOOTER_TITLE_BOX_EDGE_COLOR = 'black'
 FOOTER_TITLE_BOX_LINEWIDTH_PT = 0.56693
 FOOTER_TITLE_BOX_PAD = 0.15
 
+#
+
 # =====================================
 # DATOS Y SALIDA
 # =====================================

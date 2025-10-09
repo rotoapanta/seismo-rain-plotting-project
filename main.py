@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
 import config as CFG
+from utils.logger_config import logger
 
 
 # ----------------------------
@@ -46,7 +47,7 @@ def read_real_station(csv_file: Path) -> Dict[str, float]:
             raise ValueError(f"El archivo {csv_file} no contiene filas de datos.")
         if len(rows) > 1:
             # Si hay múltiples filas, tomamos la primera y avisamos
-            print(f"Aviso: Se encontraron {len(rows)} filas en {csv_file}. Se usará solo la primera.")
+            logger.warning(f"Se encontraron {len(rows)} filas en {csv_file}. Se usará solo la primera.")
         row = rows[0]
         return {
             'station_id': str(row['station_id']),
@@ -83,7 +84,7 @@ def read_real_station_from_json(json_file: Path) -> Dict[str, float]:
     lon = float(last.get('LONGITUD'))
     precip = float(last.get('NIVEL', 0.0))
     station_id = str(data.get('NOMBRE') or data.get('IDENTIFICADOR') or 'JSON_STATION')
-    print(f"Usando JSON real: {json_file}")
+    logger.info(f"Usando JSON real: {json_file}")
     return {
         'station_id': station_id,
         'lat': lat,
@@ -224,7 +225,7 @@ def figure_size() -> Tuple[float, float]:
     return float(w_cm / 2.54), float(h_cm / 2.54)
 
 
-def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Dict[str, float]]) -> Path:
+def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Dict[str, float]], extent: Tuple[float, float, float, float]) -> Path:
     ensure_dir(CFG.OUTPUT_DIR)
 
     levels = compute_levels(Z)
@@ -256,7 +257,7 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
             fig.subplots_adjust(left=left, right=right, bottom=bottom, top=top)
             applied_anchor = True
         except Exception as e:
-            print(f"Advertencia: no se pudo aplicar MAP_ANCHOR bottom-left: {e}")
+            logger.warning(f"No se pudo aplicar MAP_ANCHOR bottom-left: {e}")
     elif anchor in ('top-left', 'left-top', 'tl'):
         try:
             # Offsets desde la esquina superior-izquierda
@@ -285,7 +286,7 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
             fig.subplots_adjust(left=left, right=right, bottom=bottom, top=top)
             applied_anchor = True
         except Exception as e:
-            print(f"Advertencia: no se pudo aplicar MAP_ANCHOR top-left: {e}")
+            logger.warning(f"No se pudo aplicar MAP_ANCHOR top-left: {e}")
     box = getattr(CFG, 'MAP_BOX_CM', None)
     if not applied_anchor and box is not None:
         L_cm, B_cm, W_cm, H_cm = [float(v) for v in box]
@@ -443,7 +444,7 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
             # Marco 2
             add_frame(L_cm + off2, R_cm + off2, T_cm + off2, B_cm + off2)
         except Exception as e:
-            print(f"Advertencia al dibujar doble margen: {e}")
+            logger.warning(f"Advertencia al dibujar doble margen: {e}")
 
     # Cajas de pie de página (footer)
     if getattr(CFG, 'DRAW_FOOTER_BOXES', False):
@@ -546,7 +547,7 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                         fig.add_artist(line)
 
                     except Exception as e:
-                        print(f"Advertencia al dibujar doble borde/línea de footer: {e}")
+                        logger.warning(f"Advertencia al dibujar doble borde/línea de footer: {e}")
                 sep_y = bottom + height - (tit_row_h_cm / fig_h_cm)
                 # Título centrado dentro de la fila superior
                 if i < len(titles) and titles[i]:
@@ -564,10 +565,59 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                     fig.text(left + width/2.0, title_y, titles[i], ha='center', va='center',
                              fontsize=tit_size, fontweight=tit_weight, color=tit_color,
                              bbox=bbox_props)
+
+                # Insertar minimapa con Cartopy si corresponde a esta caja
+                minimap_idx = getattr(CFG, 'MINIMAP_BOX_INDEX', -1)
+                if i == minimap_idx:
+                    try:
+                        import cartopy.crs as ccrs
+                        import cartopy.feature as cfeature
+                        from matplotlib.patches import Polygon
+
+                        pad_cm = float(getattr(CFG, 'MINIMAP_PADDING_CM', 0.1))
+                        content_h_cm = h_cm - tit_row_h_cm
+                        ax_left = (x_cm + pad_cm) / fig_w_cm
+                        ax_bottom = (y_cm + pad_cm) / fig_h_cm
+                        ax_width = (w_cm - 2 * pad_cm) / fig_w_cm
+                        ax_height = (content_h_cm - 2 * pad_cm) / fig_h_cm
+
+                        # Crear un nuevo eje para el minimapa con proyección PlateCarree
+                        minimap_ax = fig.add_axes([ax_left, ax_bottom, ax_width, ax_height], projection=ccrs.PlateCarree())
+
+                        # Añadir características al mapa
+                        resolution = getattr(CFG, 'MINIMAP_CARTOPY_RESOLUTION', '110m')
+                        minimap_ax.add_feature(cfeature.COASTLINE.with_scale(resolution))
+                        minimap_ax.add_feature(cfeature.BORDERS.with_scale(resolution), linestyle=':')
+                        minimap_ax.add_feature(cfeature.LAND, edgecolor='black')
+                        minimap_ax.add_feature(cfeature.OCEAN)
+
+                        # Resaltar la extensión del mapa principal
+                        extent_poly = Polygon(
+                            [
+                                (extent[0], extent[2]),
+                                (extent[1], extent[2]),
+                                (extent[1], extent[3]),
+                                (extent[0], extent[3]),
+                            ],
+                            closed=True,
+                            color=getattr(CFG, 'MINIMAP_EXTENT_COLOR', 'red'),
+                            alpha=getattr(CFG, 'MINIMAP_EXTENT_ALPHA', 0.5),
+                            transform=ccrs.PlateCarree() # Usar la misma proyección
+                        )
+                        minimap_ax.add_patch(extent_poly)
+
+                        # Ajustar los límites del minimapa para que se centren en el área de estudio
+                        minimap_ax.set_extent([extent[0]-2, extent[1]+2, extent[2]-2, extent[3]+2], crs=ccrs.PlateCarree())
+
+                    except ImportError:
+                        logger.warning("cartopy no está instalado. No se puede dibujar el minimapa.")
+                    except Exception as e:
+                        logger.warning(f"Advertencia al insertar minimapa con Cartopy: {e}")
+
                 # Avanzar cursor
                 x_cursor += w_cm + gap_cm
         except Exception as e:
-            print(f"Advertencia al dibujar footer boxes: {e}")
+            logger.warning(f"Advertencia al dibujar footer boxes: {e}")
 
             # Convertir a fracciones
             def cm_to_frac(x_cm, y_cm, w_cm, h_cm):
@@ -596,7 +646,7 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                     fig.text(left + width/2.0, title_y, titles[i], ha='center', va='center',
                              fontsize=tit_size, fontweight=tit_weight, color=tit_color)
         except Exception as e:
-            print(f"Advertencia al dibujar footer boxes: {e}")
+            logger.warning(f"Advertencia al dibujar footer boxes: {e}")
 
     # Forzar que no se recorten márgenes aunque rcParams tenga savefig.bbox='tight'
     plt.rcParams['savefig.bbox'] = 'standard'
@@ -611,11 +661,11 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
         try:
             plt.show()
         except Exception as e:
-            print(f"No se pudo abrir la ventana emergente: {e}")
+            logger.warning(f"No se pudo abrir la ventana emergente: {e}")
     else:
         plt.close(fig)
 
-    print(f"Imagen guardada en: {out_path}")
+    logger.info(f"Imagen guardada en: {out_path}")
     return out_path
 
 
@@ -641,7 +691,7 @@ def main() -> None:
     Z = idw_interpolate(X, Y, stations)
 
     # Graficar y guardar
-    plot_isohyets(X, Y, Z, stations)
+    plot_isohyets(X, Y, Z, stations, extent)
 
 
 if __name__ == '__main__':
