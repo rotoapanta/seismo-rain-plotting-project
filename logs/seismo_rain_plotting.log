@@ -1,3 +1,78 @@
 2025-10-09 09:00:46 - SeismoRainPlotting - INFO - Usando JSON real: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
 2025-10-09 09:14:01 - SeismoRainPlotting - INFO - Usando JSON real: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
 2025-10-09 09:14:05 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251009_091402.pdf
+2025-10-09 10:51:04 - SeismoRainPlotting - INFO - Buscando archivos JSON en: DTA
+2025-10-09 10:51:04 - SeismoRainPlotting - INFO - Archivo JSON más reciente encontrado: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 10:51:04 - SeismoRainPlotting - INFO - Usando JSON real: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 10:51:04 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-09 10:51:04 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [4.49219795e-04 5.15821652e-01 1.03119409e+00 1.54656652e+00
+ 2.06193895e+00 2.57731138e+00 3.09268382e+00 3.60805625e+00
+ 4.12342868e+00 4.63880111e+00]
+2025-10-09 11:39:37 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251009_105104.pdf
+2025-10-09 12:09:33 - SeismoRainPlotting - INFO - Buscando archivos JSON en: DTA
+2025-10-09 12:09:33 - SeismoRainPlotting - INFO - Archivo JSON más reciente encontrado: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 12:09:33 - SeismoRainPlotting - INFO - Usando JSON real: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 12:09:33 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-09 12:09:33 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [4.49219795e-04 5.15821652e-01 1.03119409e+00 1.54656652e+00
+ 2.06193895e+00 2.57731138e+00 3.09268382e+00 3.60805625e+00
+ 4.12342868e+00 4.63880111e+00]
+2025-10-09 12:09:39 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251009_120933.pdf
+2025-10-09 12:45:11 - SeismoRainPlotting - INFO - Buscando archivos JSON en: DTA
+2025-10-09 12:45:11 - SeismoRainPlotting - INFO - Archivo JSON más reciente encontrado: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 12:45:11 - SeismoRainPlotting - INFO - Usando JSON real: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 12:45:11 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-09 12:45:11 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [4.49219795e-04 5.15821652e-01 1.03119409e+00 1.54656652e+00
+ 2.06193895e+00 2.57731138e+00 3.09268382e+00 3.60805625e+00
+ 4.12342868e+00 4.63880111e+00]
+2025-10-09 12:45:27 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251009_124512.pdf
+2025-10-09 12:56:35 - SeismoRainPlotting - INFO - Buscando archivos JSON en: DTA
+2025-10-09 12:56:35 - SeismoRainPlotting - INFO - Archivo JSON más reciente encontrado: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 12:56:35 - SeismoRainPlotting - INFO - Usando JSON real: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 12:56:35 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-09 12:56:35 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [4.49219795e-04 5.15821652e-01 1.03119409e+00 1.54656652e+00
+ 2.06193895e+00 2.57731138e+00 3.09268382e+00 3.60805625e+00
+ 4.12342868e+00 4.63880111e+00]
+2025-10-09 12:56:47 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251009_125636.pdf
+2025-10-09 13:12:32 - SeismoRainPlotting - INFO - Buscando archivos JSON en: DTA
+2025-10-09 13:12:32 - SeismoRainPlotting - INFO - Archivo JSON más reciente encontrado: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 13:12:32 - SeismoRainPlotting - INFO - Usando JSON real: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 13:12:32 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-09 13:12:32 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [4.49219795e-04 5.15821652e-01 1.03119409e+00 1.54656652e+00
+ 2.06193895e+00 2.57731138e+00 3.09268382e+00 3.60805625e+00
+ 4.12342868e+00 4.63880111e+00]
+2025-10-09 13:12:36 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251009_131233.pdf
+2025-10-09 13:49:06 - SeismoRainPlotting - INFO - Buscando archivos JSON en: DTA
+2025-10-09 13:49:06 - SeismoRainPlotting - INFO - Archivo JSON más reciente encontrado: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 13:49:06 - SeismoRainPlotting - INFO - Usando JSON real: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 13:49:06 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-09 13:49:06 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [4.49219795e-04 5.15821652e-01 1.03119409e+00 1.54656652e+00
+ 2.06193895e+00 2.57731138e+00 3.09268382e+00 3.60805625e+00
+ 4.12342868e+00 4.63880111e+00]
+2025-10-09 13:49:07 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-09 13:49:07 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-09 13:49:07 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-09 13:49:07 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-09 14:04:20 - SeismoRainPlotting - INFO - Buscando archivos JSON en: DTA
+2025-10-09 14:04:20 - SeismoRainPlotting - INFO - Archivo JSON más reciente encontrado: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 14:04:20 - SeismoRainPlotting - INFO - Usando JSON real: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 14:04:20 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-09 14:04:20 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [4.49219795e-04 5.15821652e-01 1.03119409e+00 1.54656652e+00
+ 2.06193895e+00 2.57731138e+00 3.09268382e+00 3.60805625e+00
+ 4.12342868e+00 4.63880111e+00]
+2025-10-09 14:04:20 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-09 14:04:20 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-09 14:04:20 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-09 14:04:21 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-09 14:04:31 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251009_140421.pdf
+2025-10-09 14:04:52 - SeismoRainPlotting - INFO - Buscando archivos JSON en: DTA
+2025-10-09 14:04:52 - SeismoRainPlotting - INFO - Archivo JSON más reciente encontrado: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 14:04:52 - SeismoRainPlotting - INFO - Usando JSON real: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-09 14:04:52 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-09 14:04:52 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [4.49219795e-04 5.15821652e-01 1.03119409e+00 1.54656652e+00
+ 2.06193895e+00 2.57731138e+00 3.09268382e+00 3.60805625e+00
+ 4.12342868e+00 4.63880111e+00]
+2025-10-09 14:04:53 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-09 14:04:53 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-09 14:04:53 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-09 14:04:53 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-09 14:05:10 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251009_140453.pdf

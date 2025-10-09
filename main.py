@@ -60,11 +60,15 @@ def read_real_station(csv_file: Path) -> Dict[str, float]:
 def find_latest_json(base_dir: Path) -> Optional[Path]:
     """Busca recursivamente el JSON más reciente dentro de base_dir. Retorna None si no hay JSONs."""
     if not base_dir.exists():
+        logger.warning(f"El directorio base {base_dir} no existe.")
         return None
+    logger.info(f"Buscando archivos JSON en: {base_dir}")
     json_files = list(base_dir.rglob('*.json'))
     if not json_files:
+        logger.warning("No se encontraron archivos JSON.")
         return None
     latest = max(json_files, key=lambda p: p.stat().st_mtime)
+    logger.info(f"Archivo JSON más reciente encontrado: {latest}")
     return latest
 
 
@@ -150,6 +154,7 @@ def generate_synthetic_stations(real_station: Dict[str, float]) -> List[Dict[str
 def compute_extent(points: List[Dict[str, float]]) -> Tuple[float, float, float, float]:
     if CFG.EXTENT is not None:
         lon_min, lon_max, lat_min, lat_max = CFG.EXTENT
+        logger.info(f"Usando extensión definida en config: {CFG.EXTENT}")
         return float(lon_min), float(lon_max), float(lat_min), float(lat_max)
 
     lats = np.array([p['lat'] for p in points])
@@ -157,7 +162,9 @@ def compute_extent(points: List[Dict[str, float]]) -> Tuple[float, float, float,
     # Padding pequeño basado en jitter por defecto o 5% del rango
     pad_lat = max(0.02, 0.1 * (lats.max() - lats.min() + 1e-9))
     pad_lon = max(0.02, 0.1 * (lons.max() - lons.min() + 1e-9))
-    return float(lons.min() - pad_lon), float(lons.max() + pad_lon), float(lats.min() - pad_lat), float(lats.max() + pad_lat)
+    extent = (lons.min() - pad_lon, lons.max() + pad_lon, lats.min() - pad_lat, lats.max() + pad_lat)
+    logger.info(f"Calculando extensión a partir de las estaciones: {extent}")
+    return float(extent[0]), float(extent[1]), float(extent[2]), float(extent[3])
 
 
 def make_grid(extent: Tuple[float, float, float, float], res_deg: float) -> Tuple[np.ndarray, np.ndarray]:
@@ -197,12 +204,15 @@ def idw_interpolate(X: np.ndarray, Y: np.ndarray, stations: List[Dict[str, float
 
 def compute_levels(Z: np.ndarray) -> np.ndarray:
     if CFG.ISOHYET_LEVELS is not None:
+        logger.info(f"Usando niveles de isoyetas definidos en config: {CFG.ISOHYET_LEVELS}")
         return np.array(CFG.ISOHYET_LEVELS, dtype=float)
     vmin = float(np.nanmin(Z))
     vmax = float(np.nanmax(Z))
     if not np.isfinite(vmin) or not np.isfinite(vmax) or math.isclose(vmin, vmax):
         vmax = vmin + 1.0
-    return np.linspace(vmin, vmax, 10)
+    levels = np.linspace(vmin, vmax, 10)
+    logger.info(f"Calculando niveles de isoyetas automáticamente: {levels}")
+    return levels
 
 
 def figure_size() -> Tuple[float, float]:
@@ -586,10 +596,20 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
 
                         # Añadir características al mapa
                         resolution = getattr(CFG, 'MINIMAP_CARTOPY_RESOLUTION', '110m')
-                        minimap_ax.add_feature(cfeature.COASTLINE.with_scale(resolution))
-                        minimap_ax.add_feature(cfeature.BORDERS.with_scale(resolution), linestyle=':')
-                        minimap_ax.add_feature(cfeature.LAND, edgecolor='black')
-                        minimap_ax.add_feature(cfeature.OCEAN)
+                        logger.info(f"Añadiendo características al minimapa con resolución: {resolution}")
+
+                        land_color = getattr(CFG, 'MINIMAP_LAND_COLOR', '#E0E0E0')
+                        ocean_color = getattr(CFG, 'MINIMAP_OCEAN_COLOR', '#FFFFFF')
+                        coastline_color = getattr(CFG, 'MINIMAP_COASTLINE_COLOR', 'black')
+                        border_color = getattr(CFG, 'MINIMAP_BORDER_COLOR', 'gray')
+
+                        minimap_ax.add_feature(cfeature.LAND, facecolor=land_color, edgecolor='none')
+                        minimap_ax.add_feature(cfeature.OCEAN, facecolor=ocean_color, edgecolor='none')
+                        minimap_ax.add_feature(cfeature.COASTLINE.with_scale(resolution), edgecolor=coastline_color)
+                        minimap_ax.add_feature(cfeature.BORDERS.with_scale(resolution), edgecolor=border_color, linestyle=':')
+                        logger.info("Características del minimapa añadidas.")
+
+                        logger.info(f"Extensión del mapa principal para el minimapa: {extent}")
 
                         # Resaltar la extensión del mapa principal
                         extent_poly = Polygon(
@@ -607,7 +627,9 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                         minimap_ax.add_patch(extent_poly)
 
                         # Ajustar los límites del minimapa para que se centren en el área de estudio
-                        minimap_ax.set_extent([extent[0]-2, extent[1]+2, extent[2]-2, extent[3]+2], crs=ccrs.PlateCarree())
+                        zoom_level = float(getattr(CFG, 'MINIMAP_ZOOM_LEVEL', 2.0))
+                        minimap_ax.set_extent([extent[0]-zoom_level, extent[1]+zoom_level, extent[2]-zoom_level, extent[3]+zoom_level], crs=ccrs.PlateCarree())
+                        logger.info(f"Límites del minimapa ajustados a: {[extent[0]-zoom_level, extent[1]+zoom_level, extent[2]-zoom_level, extent[3]+zoom_level]}")
 
                     except ImportError:
                         logger.warning("cartopy no está instalado. No se puede dibujar el minimapa.")

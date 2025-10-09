@@ -120,6 +120,8 @@ FOOTER_TITLE_BOX_FACE_COLOR = 'white'
 FOOTER_TITLE_BOX_EDGE_COLOR = 'black'
 FOOTER_TITLE_BOX_LINEWIDTH_PT = 0.56693
 FOOTER_TITLE_BOX_PAD = 0.15
+# Altura de la fila del título dentro de cada caja del footer (en cm)
+FOOTER_TITLE_ROW_HEIGHT_CM = 1.0
 
 #
 
@@ -148,3 +150,29 @@ RANDOM_SEED = 42
 SYNTHETIC_STATIONS = 3               # cantidad de estaciones sintéticas
 SYNTH_JITTER_DEG = 0.2               # dispersión espacial en grados alrededor de la estación real
 SYNTH_VALUE_JITTER_MM = (-10, 10)    # rango de variación (mm) respecto al valor real
+
+# =====================================
+# MINIMAPA (con Cartopy)
+# =====================================
+# Índice de la caja del footer donde se insertará el minimapa
+# 0 = SIMBOLOGÍA, 1 = MAPA DE UBICACIÓN, 2 = vacío, 3 = OBSERVACIONES
+# Si es -1, se desactiva el minimapa
+MINIMAP_BOX_INDEX = 1  # Colocar en la segunda caja 'MAPA DE UBICACIÓN'
+
+# Relleno (padding) interior del minimapa respecto a su caja, en cm
+MINIMAP_PADDING_CM = 0.3
+
+# Nivel de zoom del minimapa. Un valor mayor aleja la vista para mostrar más contexto
+MINIMAP_ZOOM_LEVEL = 2.0
+
+# Resolución de los datos de Cartopy ('110m'=baja, '50m'=media, '10m'=alta)
+MINIMAP_CARTOPY_RESOLUTION = '50m'
+
+# Colores del minimapa
+MINIMAP_LAND_COLOR = '#F0F0F0'        # Color de la tierra
+MINIMAP_OCEAN_COLOR = '#D0E7FF'       # Color del océano
+MINIMAP_COASTLINE_COLOR = 'black'     # Color de las líneas costeras
+MINIMAP_BORDER_COLOR = 'gray'         # Color de las fronteras
+MINIMAP_EXTENT_COLOR = 'red'          # Color del rectángulo que marca el área del mapa principal
+MINIMAP_EXTENT_ALPHA = 0.3            # Transparencia del rectángulo
+
