@@ -539,7 +539,6 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                         offset_cm = float(getattr(CFG, 'FOOTER_DOUBLE_BORDER_OFFSET_CM', 0.2))
                         db_color = getattr(CFG, 'FOOTER_DOUBLE_BORDER_COLOR', 'black')
                         db_lw = float(getattr(CFG, 'FOOTER_DOUBLE_BORDER_LINEWIDTH_PT', 0.56693))
-                        # Convertir offset a coordenadas de figura
                         offset_x = offset_cm / fig_w_cm
                         offset_y = offset_cm / fig_h_cm
                         rect2 = Rectangle((left + offset_x, bottom + offset_y),
@@ -558,7 +557,9 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
 
                     except Exception as e:
                         logger.warning(f"Advertencia al dibujar doble borde/línea de footer: {e}")
+                
                 sep_y = bottom + height - (tit_row_h_cm / fig_h_cm)
+                
                 # Título centrado dentro de la fila superior
                 if i < len(titles) and titles[i]:
                     title_y = sep_y + (tit_row_h_cm / fig_h_cm) / 2.0
@@ -575,6 +576,26 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                     fig.text(left + width/2.0, title_y, titles[i], ha='center', va='center',
                              fontsize=tit_size, fontweight=tit_weight, color=tit_color,
                              bbox=bbox_props)
+
+                # --- DIBUJAR LÍNEA DIVISORIA DEL TÍTULO ---
+                # Se dibuja aquí para asegurar que siempre aparezca, independientemente de excepciones
+                # en bloques posteriores como el de simbología.
+                try:
+                    line_x_start, line_x_end = left, left + width
+                    # Si el doble borde está activo, la línea se alinea con el borde interior
+                    if getattr(CFG, 'FOOTER_DOUBLE_BORDER', False):
+                        offset_cm = float(getattr(CFG, 'FOOTER_DOUBLE_BORDER_OFFSET_CM', 0.2))
+                        offset_x = offset_cm / fig_w_cm
+                        line_x_start = left + offset_x
+                        line_x_end = left + width - offset_x
+                    
+                    div_line = Line2D([line_x_start, line_x_end], [sep_y, sep_y],
+                                      transform=fig.transFigure, color=edge_color, 
+                                      linewidth=edge_lw_pt, clip_on=False)
+                    fig.add_artist(div_line)
+                except Exception as e:
+                    logger.warning(f"Advertencia al dibujar la línea divisoria del footer: {e}")
+                # --- FIN LÍNEA DIVISORIA ---
 
                 # Insertar minimapa con Cartopy si corresponde a esta caja
                 minimap_idx = getattr(CFG, 'MINIMAP_BOX_INDEX', -1)
@@ -635,6 +656,75 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                         logger.warning("cartopy no está instalado. No se puede dibujar el minimapa.")
                     except Exception as e:
                         logger.warning(f"Advertencia al insertar minimapa con Cartopy: {e}")
+
+                # Insertar simbología si corresponde a esta caja
+                symbology_idx = getattr(CFG, 'SYMBOLOGY_BOX_INDEX', 0)
+                if i == symbology_idx:
+                    try:
+                        from matplotlib.patches import Circle, Rectangle as RectPatch
+                        from matplotlib.lines import Line2D
+                        
+                        pad_cm = float(getattr(CFG, 'SYMBOLOGY_PADDING_CM', 0.3))
+                        content_h_cm = h_cm - tit_row_h_cm
+                        
+                        # Crear un nuevo eje para la simbología
+                        ax_left = (x_cm + pad_cm) / fig_w_cm
+                        ax_bottom = (y_cm + pad_cm) / fig_h_cm
+                        ax_width = (w_cm - 2 * pad_cm) / fig_w_cm
+                        ax_height = (content_h_cm - 2 * pad_cm) / fig_h_cm
+                        
+                        symbology_ax = fig.add_axes([ax_left, ax_bottom, ax_width, ax_height])
+                        # Hacer el fondo del eje transparente para no tapar la línea del título
+                        symbology_ax.patch.set_visible(False)
+                        symbology_ax.set_xlim(0, 1)
+                        symbology_ax.set_ylim(0, 1)
+                        symbology_ax.axis('off')
+                        
+                        # Configuración de la simbología
+                        legend_items = []
+                        legend_labels = []
+                        
+                        # 1. Estaciones (punto rojo con borde blanco)
+                        legend_items.append(Line2D([0], [0], marker='o', color='w', 
+                                                  markerfacecolor='red', markeredgecolor='white',
+                                                  markersize=8, markeredgewidth=1.5))
+                        legend_labels.append('Estaciones')
+                        
+                        # 2. Isoyetas (línea negra)
+                        legend_items.append(Line2D([0], [0], color='black', linewidth=1.5, alpha=0.7))
+                        legend_labels.append('Isoyetas (mm)')
+                        
+                        # Agregar la leyenda con los elementos
+                        legend = symbology_ax.legend(legend_items, legend_labels,
+                                                    loc='center',
+                                                    fontsize=9,
+                                                    frameon=False,
+                                                    facecolor='none')
+                        
+                        logger.info("Simbología agregada correctamente.")
+                        
+                    except Exception as e:
+                        logger.warning(f"Advertencia al insertar simbología: {e}")
+
+                # --- DIBUJAR LÍNEA DIVISORIA DEL TÍTULO ---
+                # Se dibuja aquí para asegurar que siempre aparezca, independientemente de excepciones
+                # en bloques posteriores como el de simbología.
+                try:
+                    line_x_start, line_x_end = left, left + width
+                    # Si el doble borde está activo, la línea se alinea con el borde interior
+                    if getattr(CFG, 'FOOTER_DOUBLE_BORDER', False):
+                        offset_cm = float(getattr(CFG, 'FOOTER_DOUBLE_BORDER_OFFSET_CM', 0.2))
+                        offset_x = offset_cm / fig_w_cm
+                        line_x_start = left + offset_x
+                        line_x_end = left + width - offset_x
+                    
+                    div_line = Line2D([line_x_start, line_x_end], [sep_y, sep_y],
+                                      transform=fig.transFigure, color=edge_color, 
+                                      linewidth=edge_lw_pt, clip_on=False)
+                    fig.add_artist(div_line)
+                except Exception as e:
+                    logger.warning(f"Advertencia al dibujar la línea divisoria del footer: {e}")
+                # --- FIN LÍNEA DIVISORIA ---
 
                 # Avanzar cursor
                 x_cursor += w_cm + gap_cm

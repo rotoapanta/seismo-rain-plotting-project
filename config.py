@@ -99,7 +99,7 @@ FOOTER_EDGE_COLOR = 'black'
 FOOTER_EDGE_LINEWIDTH_PT = 0.56693   # ~0.2 mm
 # Doble borde para cada caja (similar al de la página)
 FOOTER_DOUBLE_BORDER = True
-FOOTER_DOUBLE_BORDER_OFFSET_CM = 0.2
+FOOTER_DOUBLE_BORDER_OFFSET_CM = 0.1
 FOOTER_DOUBLE_BORDER_COLOR = 'black'
 FOOTER_DOUBLE_BORDER_LINEWIDTH_PT = 0.56693
 # Estilo de título
@@ -139,7 +139,7 @@ IMAGE_FORMAT = 'pdf'  # 'pdf', 'png', 'jpg', 'svg', etc.
 IMAGE_DPI = 150
 
 # Mostrar la figura en una ventana emergente después de guardar
-POPUP_WINDOW = True
+POPUP_WINDOW = False
 
 # Semilla para reproducibilidad en datos sintéticos
 RANDOM_SEED = 42
@@ -175,4 +175,15 @@ MINIMAP_COASTLINE_COLOR = 'black'     # Color de las líneas costeras
 MINIMAP_BORDER_COLOR = 'gray'         # Color de las fronteras
 MINIMAP_EXTENT_COLOR = 'red'          # Color del rectángulo que marca el área del mapa principal
 MINIMAP_EXTENT_ALPHA = 0.3            # Transparencia del rectángulo
+
+
+# =====================================
+# SIMBOLOGÍA
+# =====================================
+# Índice de la caja del footer donde se insertará la simbología
+# 0 = SIMBOLOGÍA, 1 = MAPA DE UBICACIÓN, 2 = vacío, 3 = OBSERVACIONES
+SYMBOLOGY_BOX_INDEX = 0  # Colocar en la primera caja 'SIMBOLOGÍA'
+
+# Relleno (padding) interior de la simbología respecto a su caja, en cm
+SYMBOLOGY_PADDING_CM = 0.3
 
