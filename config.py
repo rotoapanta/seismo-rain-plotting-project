@@ -187,3 +187,13 @@ SYMBOLOGY_BOX_INDEX = 0  # Colocar en la primera caja 'SIMBOLOGÍA'
 # Relleno (padding) interior de la simbología respecto a su caja, en cm
 SYMBOLOGY_PADDING_CM = 0.3
 
+
+# =====================================
+# ALINEACIÓN DE TÍTULOS EN CAJAS DEL FOOTER
+# =====================================
+# Alineación horizontal de los títulos ('left', 'center', 'right')
+FOOTER_TITLE_HA = 'center'
+
+# Alineación vertical de los títulos ('top', 'center', 'bottom', 'baseline')
+FOOTER_TITLE_VA = 'center'
+

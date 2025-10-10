@@ -573,7 +573,9 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                         )
                     else:
                         bbox_props = None
-                    fig.text(left + width/2.0, title_y, titles[i], ha='center', va='center',
+                    fig.text(left + width/2.0, title_y, titles[i], 
+                             ha=getattr(CFG, 'FOOTER_TITLE_HA', 'center'), 
+                             va=getattr(CFG, 'FOOTER_TITLE_VA', 'center'),
                              fontsize=tit_size, fontweight=tit_weight, color=tit_color,
                              bbox=bbox_props)
 
