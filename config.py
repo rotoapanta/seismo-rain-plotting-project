@@ -73,6 +73,9 @@ EXTENT = None
 IDW_POWER = 2.0
 IDW_EPS = 1e-12
 
+# Transparencia del relleno de isoyetas (0=transparente, 1=opaco)
+ISOHYET_ALPHA = 0.6
+
 # =====================================
 # COLORBAR (barra de colores del mapa)
 # =====================================
@@ -197,3 +200,38 @@ FOOTER_TITLE_HA = 'center'
 # Alineación vertical de los títulos ('top', 'center', 'bottom', 'baseline')
 FOOTER_TITLE_VA = 'center'
 
+
+# =====================================
+# MAPA DE FONDO (Cartopy)
+# =====================================
+# Activar o desactivar el mapa de fondo en el gráfico principal
+MAP_BACKGROUND = True
+
+# Resolución de los datos de Cartopy para el mapa de fondo ('110m', '50m', '10m')
+MAP_BACKGROUND_RESOLUTION = '50m'
+
+# Colores para el mapa de fondo
+MAP_BACKGROUND_LAND_COLOR = '#F0F0F0'
+MAP_BACKGROUND_OCEAN_COLOR = '#D0E7FF'
+MAP_BACKGROUND_COASTLINE_COLOR = 'black'
+MAP_BACKGROUND_BORDER_COLOR = 'gray'
+
+
+#
+
+
+
+# =====================================
+# MAPA DE FONDO TIPO TILE (más detallado)
+# =====================================
+# Activar para usar un mapa de fondo con tiles (Stamen, OpenStreetMap) en lugar de Natural Earth
+USE_TILE_BACKGROUND = True
+
+# Proveedor de tiles. Opciones: 'Stamen-terrain', 'OSM'
+TILE_PROVIDER = 'OSM'
+
+# Nivel de zoom para el mapa de tiles (valor entre 1-14 aprox, depende del área)
+TILE_ZOOM_LEVEL = 11
+
+# Transparencia del mapa de fondo con tiles (0=transparente, 1=opaco)
+TILE_BACKGROUND_ALPHA = 1.0

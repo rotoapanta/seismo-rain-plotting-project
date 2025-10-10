@@ -241,7 +241,35 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
     levels = compute_levels(Z)
 
     fig_w, fig_h = figure_size()
-    fig, ax = plt.subplots(figsize=(fig_w, fig_h))
+    fig = plt.figure(figsize=(fig_w, fig_h))
+    ax = None
+    tiles = None
+
+    # Crear la figura y el eje, usando la proyección correcta
+    try:
+        import cartopy.crs as ccrs
+        projection = ccrs.PlateCarree() # Proyección por defecto
+
+        if getattr(CFG, 'MAP_BACKGROUND', False) and getattr(CFG, 'USE_TILE_BACKGROUND', False):
+            import cartopy.io.img_tiles as cimgt
+            provider_name = getattr(CFG, 'TILE_PROVIDER', 'Stamen-terrain')
+            
+            if provider_name == 'OSM':
+                tiles = cimgt.OSM()
+            else: # Default to Stamen-terrain
+                tiles = cimgt.Stamen('terrain-background')
+            
+            projection = tiles.crs
+            logger.info(f"Eje creado con proyección para tiles ({provider_name}).")
+
+        if getattr(CFG, 'MAP_BACKGROUND', False):
+            ax = fig.add_subplot(1, 1, 1, projection=projection)
+        else:
+            ax = fig.add_subplot(1, 1, 1)
+
+    except ImportError:
+        logger.warning("Cartopy no está instalado. El mapa de fondo no se puede dibujar.")
+        ax = fig.add_subplot(1, 1, 1)
 
     # Colocación del mapa dentro de la hoja:
     # Si MAP_BOX_CM está definido (left_cm, bottom_cm, width_cm, height_cm), se usa ese cuadro exacto.
@@ -359,16 +387,65 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
             top = max(bottom + 0.05, min(1.0, 1.0 - (T_cm / 2.54) / fig_h))
             fig.subplots_adjust(left=left, right=right, bottom=bottom, top=top)
 
+    # Añadir mapa de fondo si está activado
+    if getattr(CFG, 'MAP_BACKGROUND', False) and hasattr(ax, 'coastlines'):
+        try:
+            ax.set_extent(extent, crs=ccrs.PlateCarree())
+
+            if tiles: # Si se inicializaron los tiles, usarlos
+                zoom_level = int(getattr(CFG, 'TILE_ZOOM_LEVEL', 10))
+                alpha = float(getattr(CFG, 'TILE_BACKGROUND_ALPHA', 0.7))
+                ax.add_image(tiles, zoom_level, zorder=0, interpolation='spline36', alpha=alpha)
+                logger.info(f"Agregando mapa de fondo con tiles (zoom={zoom_level}, alpha={alpha})")
+            else: # Fallback a Natural Earth
+                import cartopy.feature as cfeature
+                resolution = getattr(CFG, 'MAP_BACKGROUND_RESOLUTION', '110m')
+                land_color = getattr(CFG, 'MAP_BACKGROUND_LAND_COLOR', '#F0F0F0')
+                ocean_color = getattr(CFG, 'MAP_BACKGROUND_OCEAN_COLOR', '#D0E7FF')
+                coastline_color = getattr(CFG, 'MAP_BACKGROUND_COASTLINE_COLOR', 'black')
+                border_color = getattr(CFG, 'MAP_BACKGROUND_BORDER_COLOR', 'gray')
+
+                ax.add_feature(cfeature.LAND, facecolor=land_color, edgecolor='none', zorder=0)
+                ax.add_feature(cfeature.OCEAN, facecolor=ocean_color, edgecolor='none', zorder=0.1)
+                ax.add_feature(cfeature.BORDERS.with_scale(resolution), edgecolor=border_color, linestyle=':', zorder=3.8)
+                ax.add_feature(cfeature.COASTLINE.with_scale(resolution), edgecolor=coastline_color, zorder=4.0)
+                logger.info(f"Mapa de fondo (Natural Earth) agregado con resolución: {resolution}")
+
+        except Exception as e:
+            logger.warning(f"No se pudo agregar el mapa de fondo: {e}")
+
     # Contornos rellenos
-    cf = ax.contourf(X, Y, Z, levels=levels, cmap='Blues')
+    cf_alpha = float(getattr(CFG, 'ISOHYET_ALPHA', 0.8))
+    cf = ax.contourf(
+        X, Y, Z,
+        levels=levels,
+        cmap='Blues',
+        alpha=cf_alpha,
+        zorder=1,
+        transform=ccrs.PlateCarree() if hasattr(ax, 'coastlines') else ax.transData
+    )
     # Si se requieren bordes entre bandas en el colorbar, los forzamos via cb.solids.set_edgecolor
-    c = ax.contour(X, Y, Z, levels=levels, colors='k', linewidths=0.6, alpha=0.7)
+    c = ax.contour(
+        X, Y, Z,
+        levels=levels,
+        colors='k',
+        linewidths=0.6,
+        alpha=0.9,
+        zorder=2,
+        transform=ccrs.PlateCarree() if hasattr(ax, 'coastlines') else ax.transData
+    )
     ax.clabel(c, inline=True, fontsize=8, fmt='%.1f')
 
     # Estaciones
-    ax.scatter([p['lon'] for p in stations], [p['lat'] for p in stations], c='red', edgecolors='white', s=40, zorder=3)
+    ax.scatter(
+        [p['lon'] for p in stations],
+        [p['lat'] for p in stations],
+        c='red', edgecolors='white', s=40, zorder=5,
+        transform=ccrs.PlateCarree() if hasattr(ax, 'coastlines') else ax.transData
+    )
     for p in stations:
-        ax.text(p['lon'], p['lat'], p['station_id'], fontsize=8, color='black', ha='left', va='bottom', zorder=4)
+        ax.text(p['lon'], p['lat'], p['station_id'], fontsize=8, color='black', ha='left', va='bottom', zorder=4,
+                transform=ccrs.PlateCarree() if hasattr(ax, 'coastlines') else ax.transData)
 
     ax.set_xlabel('Longitud (°)')
     ax.set_ylabel('Latitud (°)')
@@ -664,7 +741,7 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                 if i == symbology_idx:
                     try:
                         from matplotlib.patches import Circle, Rectangle as RectPatch
-                        from matplotlib.lines import Line2D
+                        # Line2D ya importado a nivel de módulo
                         
                         pad_cm = float(getattr(CFG, 'SYMBOLOGY_PADDING_CM', 0.3))
                         content_h_cm = h_cm - tit_row_h_cm
