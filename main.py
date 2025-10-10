@@ -827,42 +827,46 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                         image_path = getattr(CFG, 'IMAGE_PATH', 'images/image.png')
                         if Path(image_path).exists():
                             img = mpimg.imread(image_path)
-                            # Posicionar imagen en la mitad superior
-                            img_scale_ax.imshow(img, extent=[0.1, 0.9, 0.5, 0.95], aspect='auto')
+                            img_w_cm = getattr(CFG, 'IMAGE_WIDTH_CM', None)
+                            img_h_cm = getattr(CFG, 'IMAGE_HEIGHT_CM', None)
+
+                            # Calcular el aspect ratio de la imagen original
+                            aspect_ratio = img.shape[0] / img.shape[1]  # alto / ancho
+
+                            # Convertir dimensiones de cm a coordenadas de eje (0-1)
+                            box_w_frac = (w_cm - 2 * pad_cm) / fig_w_cm
+                            box_h_frac = (content_h_cm - 2 * pad_cm) / fig_h_cm
+
+                            if img_w_cm and img_h_cm:
+                                img_w_frac = img_w_cm / fig_w_cm
+                                img_h_frac = img_h_cm / fig_h_cm
+                            elif img_w_cm:
+                                img_w_frac = img_w_cm / fig_w_cm
+                                img_h_frac = img_w_frac * aspect_ratio * (fig_w_cm / fig_h_cm)
+                            elif img_h_cm:
+                                img_h_frac = img_h_cm / fig_h_cm
+                                img_w_frac = img_h_frac / aspect_ratio * (fig_h_cm / fig_w_cm)
+                            else:
+                                # Ajuste automático si no se especifica tamaño
+                                img_w_frac = box_w_frac * 0.8 # 80% del ancho disponible
+                                img_h_frac = img_w_frac * aspect_ratio * (fig_w_cm / fig_h_cm)
+
+                            # Centrar la imagen
+                            x_start = 0.5 - img_w_frac / 2
+                            y_start = 0.7 - img_h_frac / 2 # Centrada en la parte superior
+
+                            img_scale_ax.imshow(img, extent=[x_start, x_start + img_w_frac, y_start, y_start + img_h_frac], aspect='auto')
                             logger.info(f"Imagen insertada desde: {image_path}")
                         else:
                             logger.warning(f"No se encontró la imagen: {image_path}")
                         
                         # Añadir escala del mapa en la parte inferior
-                        scale_length_km = float(getattr(CFG, 'SCALE_LENGTH_KM', 10))
-                        
-                        # Calcular la longitud en grados (aproximación: 1 grado ≈ 111 km)
-                        scale_length_deg = scale_length_km / 111.0
-                        map_width_deg = extent[1] - extent[0]
-                        
-                        # Calcular el ancho de la barra de escala en coordenadas del eje (0-1)
-                        scale_bar_width = scale_length_deg / map_width_deg * 0.6  # 60% del ancho disponible
-                        scale_bar_width = min(scale_bar_width, 0.6)  # Máximo 60% del ancho
-                        
-                        # Dibujar barra de escala
-                        scale_y = 0.25
-                        scale_x_start = 0.5 - scale_bar_width / 2
-                        scale_x_end = 0.5 + scale_bar_width / 2
-                        
-                        # Barra negra
-                        img_scale_ax.plot([scale_x_start, scale_x_end], [scale_y, scale_y], 
-                                         'k-', linewidth=3, solid_capstyle='butt')
-                        # Marcas verticales en los extremos
-                        img_scale_ax.plot([scale_x_start, scale_x_start], [scale_y - 0.02, scale_y + 0.02], 
-                                         'k-', linewidth=2)
-                        img_scale_ax.plot([scale_x_end, scale_x_end], [scale_y - 0.02, scale_y + 0.02], 
-                                         'k-', linewidth=2)
-                        
-                        # Texto de la escala
-                        img_scale_ax.text(0.5, scale_y - 0.08, f'{scale_length_km} km', 
-                                         ha='center', va='top', fontsize=9, fontweight='bold')
-                        
-                        logger.info(f"Escala del mapa agregada: {scale_length_km} km")
+                        scale_bar_style = getattr(CFG, 'SCALE_BAR_STYLE', 'simple')
+
+                        if scale_bar_style == 'segmented':
+                            draw_segmented_scale_bar(img_scale_ax, extent)
+                        else:
+                            draw_simple_scale_bar(img_scale_ax, extent)
                         
                     except Exception as e:
                         logger.warning(f"Advertencia al insertar imagen y escala: {e}")
@@ -965,6 +969,78 @@ def main() -> None:
 
     # Graficar y guardar
     plot_isohyets(X, Y, Z, stations, extent)
+
+
+def draw_simple_scale_bar(ax, extent):
+    scale_length_km = float(getattr(CFG, 'SCALE_LENGTH_KM', 10))
+    scale_length_deg = scale_length_km / 111.0
+    map_width_deg = extent[1] - extent[0]
+    scale_bar_width = scale_length_deg / map_width_deg * 0.6
+    scale_bar_width = min(scale_bar_width, 0.6)
+
+    scale_y = float(getattr(CFG, 'SCALE_VERTICAL_POSITION', 0.25))
+    scale_x_start = 0.5 - scale_bar_width / 2
+    scale_x_end = 0.5 + scale_bar_width / 2
+
+    bar_color = getattr(CFG, 'SCALE_BAR_COLOR', 'black')
+    bar_lw = float(getattr(CFG, 'SCALE_BAR_LINEWIDTH_PT', 2.0))
+
+    ax.plot([scale_x_start, scale_x_end], [scale_y, scale_y], color=bar_color, linewidth=bar_lw, solid_capstyle='butt')
+    ax.plot([scale_x_start, scale_x_start], [scale_y - 0.02, scale_y + 0.02], color=bar_color, linewidth=bar_lw)
+    ax.plot([scale_x_end, scale_x_end], [scale_y - 0.02, scale_y + 0.02], color=bar_color, linewidth=bar_lw)
+
+    text_color = getattr(CFG, 'SCALE_TEXT_COLOR', 'black')
+    text_size = float(getattr(CFG, 'SCALE_TEXT_FONT_SIZE', 9))
+    text_weight = getattr(CFG, 'SCALE_TEXT_FONT_WEIGHT', 'bold')
+    ax.text(0.5, scale_y - 0.08, f'{scale_length_km} km', ha='center', va='top', fontsize=text_size, fontweight=text_weight, color=text_color)
+
+    logger.info(f"Escala del mapa simple agregada: {scale_length_km} km")
+
+def draw_segmented_scale_bar(ax, extent):
+    from matplotlib.patches import Rectangle
+
+    segments_km = getattr(CFG, 'SCALE_BAR_SEGMENTS_KM', [0, 5, 10, 20, 30])
+    total_length_km = segments_km[-1]
+    map_width_deg = extent[1] - extent[0]
+    total_length_deg = total_length_km / 111.0
+    scale_bar_width = total_length_deg / map_width_deg * 0.8
+    scale_bar_width = min(scale_bar_width, 0.8)
+
+    bar_height_pt = float(getattr(CFG, 'SCALE_BAR_HEIGHT_PT', 5))
+    colors = getattr(CFG, 'SCALE_SEGMENT_COLORS', ['black', 'white'])
+    text_color = getattr(CFG, 'SCALE_TEXT_COLOR', 'black')
+    text_size = float(getattr(CFG, 'SCALE_TEXT_FONT_SIZE', 9))
+    units_label = getattr(CFG, 'SCALE_UNITS_LABEL', 'Kilometers')
+
+    y_pos = 0.15
+    x_start = 0.1
+
+    for i in range(len(segments_km) - 1):
+        start_km = segments_km[i]
+        end_km = segments_km[i+1]
+        
+        start_frac = start_km / total_length_km
+        end_frac = end_km / total_length_km
+        
+        rect_x = x_start + start_frac * scale_bar_width
+        rect_width = (end_frac - start_frac) * scale_bar_width
+        
+        color = colors[i % len(colors)]
+        
+        rect = Rectangle((rect_x, y_pos), rect_width, bar_height_pt / 72.0, 
+                         facecolor=color, edgecolor='black', linewidth=0.5, transform=ax.transAxes)
+        ax.add_patch(rect)
+
+    for km in segments_km:
+        frac = km / total_length_km
+        x_pos = x_start + frac * scale_bar_width
+        ax.text(x_pos, y_pos + bar_height_pt / 72.0 + 0.02, str(km), 
+                ha='center', va='bottom', fontsize=text_size, color=text_color, transform=ax.transAxes)
+
+    ax.text(x_start + scale_bar_width + 0.02, y_pos + bar_height_pt / 144.0, units_label, 
+            ha='left', va='center', fontsize=text_size, color=text_color, transform=ax.transAxes)
+
+    logger.info(f"Escala del mapa segmentada agregada: {total_length_km} km")
 
 
 if __name__ == '__main__':

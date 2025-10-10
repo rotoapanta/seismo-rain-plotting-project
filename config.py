@@ -181,6 +181,52 @@ MINIMAP_EXTENT_ALPHA = 0.3            # Transparencia del rectángulo
 
 
 # =====================================
+# IMAGEN Y ESCALA
+# =====================================
+# Índice de la caja del footer donde se insertará la imagen y la escala
+IMAGE_SCALE_BOX_INDEX = 2
+
+# Relleno (padding) interior de la imagen y escala respecto a su caja, en cm
+IMAGE_SCALE_PADDING_CM = 0.3
+
+# Ruta de la imagen a insertar
+IMAGE_PATH = 'images/image.png'
+
+# Ancho y alto de la imagen en cm. Si es None, se ajusta automáticamente
+IMAGE_WIDTH_CM = 15
+IMAGE_HEIGHT_CM = 15
+
+# Longitud de la barra de escala en km
+SCALE_LENGTH_KM = 10
+
+# --- Estilo de la barra de escala ---
+# Estilo de la barra: 'simple' o 'segmented'
+SCALE_BAR_STYLE = 'segmented'
+
+# --- Opciones para estilo 'simple' ---
+# Posición vertical de la barra de escala (0=abajo, 1=arriba del área de la escala)
+SCALE_VERTICAL_POSITION = 0.25
+# Color de la barra y texto
+SCALE_BAR_COLOR = 'black'
+SCALE_TEXT_COLOR = 'black'
+# Ancho de la línea de la barra en puntos
+SCALE_BAR_LINEWIDTH_PT = 2.0
+# Estilo de la fuente del texto
+SCALE_TEXT_FONT_SIZE = 9
+SCALE_TEXT_FONT_WEIGHT = 'bold'
+
+# --- Opciones para estilo 'segmented' ---
+# Segmentos de la barra de escala en km. El último valor define la longitud total.
+SCALE_BAR_SEGMENTS_KM = [0, 20, 40, 80, 120]
+# Altura de la barra de escala en puntos
+SCALE_BAR_HEIGHT_PT = 5
+# Colores de los segmentos (alternados)
+SCALE_SEGMENT_COLORS = ['black', 'white']
+# Etiqueta de unidades
+SCALE_UNITS_LABEL = 'Kilometers'
+
+
+# =====================================
 # SIMBOLOGÍA
 # =====================================
 # Índice de la caja del footer donde se insertará la simbología
@@ -241,34 +287,3 @@ TILE_BACKGROUND_ALPHA = 1.0
 
 
 # =====================================
-# IMAGEN Y ESCALA (tercer cuadro del footer)
-# =====================================
-# Índice de la caja del footer donde se insertará la imagen y escala
-# 0 = SIMBOLOGÍA, 1 = MAPA DE UBICACIÓN, 2 = imagen/escala, 3 = OBSERVACIONES
-IMAGE_SCALE_BOX_INDEX = 2  # Colocar en la tercera caja
-
-# Ruta a la imagen a insertar
-IMAGE_PATH = 'images/image.png'
-
-# Relleno (padding) interior respecto a su caja, en cm
-IMAGE_SCALE_PADDING_CM = 0.3
-
-# Longitud de la barra de escala en km
-SCALE_LENGTH_KM = 10
-
-
-# =====================================
-# IMAGEN Y ESCALA (tercer cuadro del footer)
-# =====================================
-# Índice de la caja del footer donde se insertará la imagen y escala
-# 0 = SIMBOLOGÍA, 1 = MAPA DE UBICACIÓN, 2 = imagen/escala, 3 = OBSERVACIONES
-IMAGE_SCALE_BOX_INDEX = 2  # Colocar en la tercera caja
-
-# Ruta a la imagen a insertar
-IMAGE_PATH = 'images/image.png'
-
-# Relleno (padding) interior respecto a su caja, en cm
-IMAGE_SCALE_PADDING_CM = 0.3
-
-# Longitud de la barra de escala en km
-SCALE_LENGTH_KM = 10
