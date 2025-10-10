@@ -447,8 +447,24 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
         ax.text(p['lon'], p['lat'], p['station_id'], fontsize=8, color='black', ha='left', va='bottom', zorder=4,
                 transform=ccrs.PlateCarree() if hasattr(ax, 'coastlines') else ax.transData)
 
-    ax.set_xlabel('Longitud (°)')
-    ax.set_ylabel('Latitud (°)')
+    # Añadir etiquetas de coordenadas (gridlines) si Cartopy está activo
+    if hasattr(ax, 'gridlines'):
+        try:
+            import cartopy.crs as ccrs
+            gl = ax.gridlines(draw_labels=True, linewidth=0.5, color='gray', alpha=0.5, linestyle='--')
+            gl.top_labels = False
+            gl.right_labels = False
+            gl.xlabel_style = {'size': 9}
+            gl.ylabel_style = {'size': 9}
+            logger.info("Etiquetas de coordenadas añadidas al mapa.")
+        except Exception as e:
+            logger.warning(f"No se pudieron añadir etiquetas de coordenadas: {e}")
+            ax.set_xlabel('Longitud (°)')
+            ax.set_ylabel('Latitud (°)')
+    else:
+        ax.set_xlabel('Longitud (°)')
+        ax.set_ylabel('Latitud (°)')
+    
     # Título personalizable desde configuración
     title_fontdict = {}
     fs = getattr(CFG, 'TITLE_FONT_SIZE', None)
@@ -784,6 +800,72 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                         
                     except Exception as e:
                         logger.warning(f"Advertencia al insertar simbología: {e}")
+
+                # Insertar imagen y escala si corresponde a esta caja
+                image_scale_idx = getattr(CFG, 'IMAGE_SCALE_BOX_INDEX', -1)
+                if i == image_scale_idx:
+                    try:
+                        import matplotlib.image as mpimg
+                        from matplotlib.patches import FancyBboxPatch
+                        
+                        pad_cm = float(getattr(CFG, 'IMAGE_SCALE_PADDING_CM', 0.3))
+                        content_h_cm = h_cm - tit_row_h_cm
+                        
+                        # Crear un nuevo eje para la imagen y escala
+                        ax_left = (x_cm + pad_cm) / fig_w_cm
+                        ax_bottom = (y_cm + pad_cm) / fig_h_cm
+                        ax_width = (w_cm - 2 * pad_cm) / fig_w_cm
+                        ax_height = (content_h_cm - 2 * pad_cm) / fig_h_cm
+                        
+                        img_scale_ax = fig.add_axes([ax_left, ax_bottom, ax_width, ax_height])
+                        img_scale_ax.patch.set_visible(False)
+                        img_scale_ax.set_xlim(0, 1)
+                        img_scale_ax.set_ylim(0, 1)
+                        img_scale_ax.axis('off')
+                        
+                        # Cargar y mostrar la imagen en la parte superior
+                        image_path = getattr(CFG, 'IMAGE_PATH', 'images/image.png')
+                        if Path(image_path).exists():
+                            img = mpimg.imread(image_path)
+                            # Posicionar imagen en la mitad superior
+                            img_scale_ax.imshow(img, extent=[0.1, 0.9, 0.5, 0.95], aspect='auto')
+                            logger.info(f"Imagen insertada desde: {image_path}")
+                        else:
+                            logger.warning(f"No se encontró la imagen: {image_path}")
+                        
+                        # Añadir escala del mapa en la parte inferior
+                        scale_length_km = float(getattr(CFG, 'SCALE_LENGTH_KM', 10))
+                        
+                        # Calcular la longitud en grados (aproximación: 1 grado ≈ 111 km)
+                        scale_length_deg = scale_length_km / 111.0
+                        map_width_deg = extent[1] - extent[0]
+                        
+                        # Calcular el ancho de la barra de escala en coordenadas del eje (0-1)
+                        scale_bar_width = scale_length_deg / map_width_deg * 0.6  # 60% del ancho disponible
+                        scale_bar_width = min(scale_bar_width, 0.6)  # Máximo 60% del ancho
+                        
+                        # Dibujar barra de escala
+                        scale_y = 0.25
+                        scale_x_start = 0.5 - scale_bar_width / 2
+                        scale_x_end = 0.5 + scale_bar_width / 2
+                        
+                        # Barra negra
+                        img_scale_ax.plot([scale_x_start, scale_x_end], [scale_y, scale_y], 
+                                         'k-', linewidth=3, solid_capstyle='butt')
+                        # Marcas verticales en los extremos
+                        img_scale_ax.plot([scale_x_start, scale_x_start], [scale_y - 0.02, scale_y + 0.02], 
+                                         'k-', linewidth=2)
+                        img_scale_ax.plot([scale_x_end, scale_x_end], [scale_y - 0.02, scale_y + 0.02], 
+                                         'k-', linewidth=2)
+                        
+                        # Texto de la escala
+                        img_scale_ax.text(0.5, scale_y - 0.08, f'{scale_length_km} km', 
+                                         ha='center', va='top', fontsize=9, fontweight='bold')
+                        
+                        logger.info(f"Escala del mapa agregada: {scale_length_km} km")
+                        
+                    except Exception as e:
+                        logger.warning(f"Advertencia al insertar imagen y escala: {e}")
 
                 # --- DIBUJAR LÍNEA DIVISORIA DEL TÍTULO ---
                 # Se dibuja aquí para asegurar que siempre aparezca, independientemente de excepciones

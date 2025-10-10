@@ -191,6 +191,9 @@ SYMBOLOGY_BOX_INDEX = 0  # Colocar en la primera caja 'SIMBOLOGÍA'
 SYMBOLOGY_PADDING_CM = 0.3
 
 
+#
+
+
 # =====================================
 # ALINEACIÓN DE TÍTULOS EN CAJAS DEL FOOTER
 # =====================================
@@ -235,3 +238,37 @@ TILE_ZOOM_LEVEL = 11
 
 # Transparencia del mapa de fondo con tiles (0=transparente, 1=opaco)
 TILE_BACKGROUND_ALPHA = 1.0
+
+
+# =====================================
+# IMAGEN Y ESCALA (tercer cuadro del footer)
+# =====================================
+# Índice de la caja del footer donde se insertará la imagen y escala
+# 0 = SIMBOLOGÍA, 1 = MAPA DE UBICACIÓN, 2 = imagen/escala, 3 = OBSERVACIONES
+IMAGE_SCALE_BOX_INDEX = 2  # Colocar en la tercera caja
+
+# Ruta a la imagen a insertar
+IMAGE_PATH = 'images/image.png'
+
+# Relleno (padding) interior respecto a su caja, en cm
+IMAGE_SCALE_PADDING_CM = 0.3
+
+# Longitud de la barra de escala en km
+SCALE_LENGTH_KM = 10
+
+
+# =====================================
+# IMAGEN Y ESCALA (tercer cuadro del footer)
+# =====================================
+# Índice de la caja del footer donde se insertará la imagen y escala
+# 0 = SIMBOLOGÍA, 1 = MAPA DE UBICACIÓN, 2 = imagen/escala, 3 = OBSERVACIONES
+IMAGE_SCALE_BOX_INDEX = 2  # Colocar en la tercera caja
+
+# Ruta a la imagen a insertar
+IMAGE_PATH = 'images/image.png'
+
+# Relleno (padding) interior respecto a su caja, en cm
+IMAGE_SCALE_PADDING_CM = 0.3
+
+# Longitud de la barra de escala en km
+SCALE_LENGTH_KM = 10
