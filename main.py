@@ -613,18 +613,129 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                     fig.text(left + width / 2.0, title_y, titles[i], ha='center', va='center', fontsize=tit_size, fontweight=tit_weight, color=tit_color)
 
                 # Insertar imagen del logo si corresponde
-                logo_idx = getattr(CFG, 'SIDE_BOX_IMAGE_INDEX', -1)
+                logo_idx = getattr(CFG, 'LOGO_BOX_INDEX', getattr(CFG, 'SIDE_BOX_IMAGE_INDEX', -1))
                 if i == logo_idx:
                     try:
                         import matplotlib.image as mpimg
-                        logo_path = getattr(CFG, 'SIDE_BOX_IMAGE_PATH', 'images/logo-ig.png')
+                        logo_path = getattr(CFG, 'LOGO_IMAGE_PATH', getattr(CFG, 'SIDE_BOX_IMAGE_PATH', 'images/logo-ig.png'))
                         if Path(logo_path).exists():
                             logo_img = mpimg.imread(logo_path)
-                            # Añadir un pequeño margen
-                            margin = 0.05
-                            logo_ax = fig.add_axes([left + margin, bottom + margin, width - 2 * margin, height - 2 * margin])
-                            logo_ax.imshow(logo_img, aspect='contain')
-                            logo_ax.axis('off')
+
+                            # Tamaño configurable (opcional) en cm
+                            img_w_cm = getattr(CFG, 'LOGO_WIDTH_CM', None)
+                            if img_w_cm is None:
+                                img_w_cm = getattr(CFG, 'SIDE_BOX_IMAGE_WIDTH_CM', None)
+                            img_h_cm = getattr(CFG, 'LOGO_HEIGHT_CM', None)
+                            if img_h_cm is None:
+                                img_h_cm = getattr(CFG, 'SIDE_BOX_IMAGE_HEIGHT_CM', None)
+
+                            resize_to_fit = bool(getattr(CFG, 'LOGO_RESIZE_TO_FIT', True))
+
+                            if resize_to_fit:
+                                # Margen configurable (opcional) en cm. Si no se define, usar margen fraccional por defecto
+                                margin_cm = getattr(CFG, 'LOGO_MARGIN_CM', None)
+                                if margin_cm is None:
+                                    margin_cm = getattr(CFG, 'SIDE_BOX_IMAGE_MARGIN_CM', None)
+                                if margin_cm is not None:
+                                    margin_x = float(margin_cm) / fig_w_cm
+                                    margin_y = float(margin_cm) / fig_h_cm
+                                else:
+                                    margin_x = margin_y = 0.05  # fracción de la figura
+
+                                # Área disponible dentro de la caja (fracciones de la figura)
+                                avail_left = left + margin_x
+                                avail_bottom = bottom + margin_y
+                                avail_width = max(1e-6, width - 2 * margin_x)
+                                avail_height = max(1e-6, height - 2 * margin_y)
+
+                                # Si no se especifican tamaños, llenar el área disponible
+                                if img_w_cm is None and img_h_cm is None:
+                                    logo_rect = [avail_left, avail_bottom, avail_width, avail_height]
+                                else:
+                                    # Mantener proporción si solo se provee un lado
+                                    try:
+                                        img_h_px, img_w_px = logo_img.shape[0], logo_img.shape[1]
+                                        aspect = img_h_px / max(1, img_w_px)
+                                    except Exception:
+                                        aspect = 1.0
+
+                                    if img_w_cm is not None and img_h_cm is None:
+                                        img_h_cm = float(img_w_cm) * aspect
+                                    if img_h_cm is not None and img_w_cm is None:
+                                        img_w_cm = float(img_h_cm) / max(1e-9, aspect)
+
+                                    # Convertir a fracciones de la figura
+                                    logo_w = float(img_w_cm) / fig_w_cm
+                                    logo_h = float(img_h_cm) / fig_h_cm
+
+                                    # Escalar si excede el área disponible (preservar aspecto)
+                                    scale = min(avail_width / logo_w, avail_height / logo_h, 1.0)
+                                    logo_w *= scale
+                                    logo_h *= scale
+
+                                    # Centrar dentro de la zona disponible
+                                    logo_left = avail_left + (avail_width - logo_w) / 2.0
+                                    logo_bottom = avail_bottom + (avail_height - logo_h) / 2.0
+                                    logo_rect = [logo_left, logo_bottom, logo_w, logo_h]
+
+                                logo_ax = fig.add_axes(logo_rect)
+                                im = logo_ax.imshow(logo_img)
+                                logo_ax.axis('off')
+                            else:
+                                # Modo tamaño fijo: colocar el logo con dimensiones exactas en cm (independiente de la caja)
+                                # Calcular proporción si solo se provee un lado
+                                try:
+                                    img_h_px, img_w_px = logo_img.shape[0], logo_img.shape[1]
+                                    aspect = img_h_px / max(1, img_w_px)
+                                except Exception:
+                                    aspect = 1.0
+
+                                if img_w_cm is not None and img_h_cm is None:
+                                    img_h_cm = float(img_w_cm) * aspect
+                                if img_h_cm is not None and img_w_cm is None:
+                                    img_w_cm = float(img_h_cm) / max(1e-9, aspect)
+
+                                # Si ambos son None, por compatibilidad, llenar el área disponible
+                                if img_w_cm is None and img_h_cm is None:
+                                    logo_rect = [left, bottom, width, height]
+                                else:
+                                    logo_w = float(img_w_cm) / fig_w_cm
+                                    logo_h = float(img_h_cm) / fig_h_cm
+
+                                    # Posicionamiento dentro de la caja según ancla y offset
+                                    anchor = str(getattr(CFG, 'LOGO_ANCHOR', 'center')).lower()
+                                    off_x_cm, off_y_cm = [float(v) for v in getattr(CFG, 'LOGO_OFFSET_CM', (0.0, 0.0))]
+                                    off_x = off_x_cm / fig_w_cm
+                                    off_y = off_y_cm / fig_h_cm
+
+                                    if anchor in ('top-left', 'left-top', 'tl'):
+                                        logo_left = left + off_x
+                                        logo_bottom = bottom + height - logo_h - off_y
+                                    elif anchor in ('top-right', 'right-top', 'tr'):
+                                        logo_left = left + width - logo_w - off_x
+                                        logo_bottom = bottom + height - logo_h - off_y
+                                    elif anchor in ('bottom-left', 'left-bottom', 'bl'):
+                                        logo_left = left + off_x
+                                        logo_bottom = bottom + off_y
+                                    elif anchor in ('bottom-right', 'right-bottom', 'br'):
+                                        logo_left = left + width - logo_w - off_x
+                                        logo_bottom = bottom + off_y
+                                    else:  # center
+                                        logo_left = left + (width - logo_w) / 2.0
+                                        logo_bottom = bottom + (height - logo_h) / 2.0
+
+                                    logo_rect = [logo_left, logo_bottom, logo_w, logo_h]
+
+                                logo_ax = fig.add_axes(logo_rect)
+                                im = logo_ax.imshow(logo_img)
+                                logo_ax.axis('off')
+
+                                # Opción de recortar el logo a los límites de la caja
+                                if bool(getattr(CFG, 'LOGO_CLIP_TO_BOX', True)):
+                                    from matplotlib.patches import Rectangle as RectClip
+                                    clip_rect = RectClip((left, bottom), width, height, transform=fig.transFigure)
+                                    im.set_clip_path(clip_rect)
+
                             logger.info(f"Logo insertado desde: {logo_path}")
                         else:
                             logger.warning(f"No se encontró la imagen del logo: {logo_path}")

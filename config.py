@@ -1,265 +1,219 @@
-# Configuración del proyecto: mapa de isoyetas
-# Todas las rutas y medidas (cuando aplica) son relativas al directorio del proyecto
+# =============================================================================
+#
+#      CONFIGURACIÓN DEL PROYECTO: MAPA DE ISOYETAS
+#
+# =============================================================================
+# Este archivo centraliza todos los parámetros para personalizar la apariencia
+# y el comportamiento del mapa. Está organizado por componentes para facilitar
+# la localización de cada ajuste.
+# =============================================================================
 
-# =====================================
-# HOJA (tamaño y orientación)
-# =====================================
-# Tamaños ISO en centímetros
+
+# =============================================================================
+# 1. CONFIGURACIÓN GENERAL Y DE SALIDA
+# =============================================================================
+# --- Tamaño y Orientación de la Hoja ---
 PAPER_SIZES_CM = {
-    'A5': (14.8, 21.0),
-    'A4': (21.0, 29.7),
-    'A3': (29.7, 42.0),
-    'A2': (42.0, 59.4),
-    'A1': (59.4, 84.1),
-    'A0': (84.1, 118.9),
+    'A5': (14.8, 21.0), 'A4': (21.0, 29.7), 'A3': (29.7, 42.0),
+    'A2': (42.0, 59.4), 'A1': (59.4, 84.1), 'A0': (84.1, 118.9),
 }
-# Selección de hoja: 'A3', 'A4', etc. Si es None, se usa MAP_SIZE_CM como tamaño de figura
 PAPER_SIZE = 'A4'
-# Orientación de la hoja: 'landscape' o 'portrait'
 MAP_ORIENTATION = 'landscape'
 
-# =====================================
-# MÁRGENES Y MARCOS (hoja completa)
-# =====================================
-# Márgenes de página (izquierda, derecha, superior, inferior) en cm
+# --- Márgenes y Marcos de la Hoja ---
 PAGE_MARGINS_CM = (0.5, 0.5, 0.5, 0.5)
-
-# Dibujo de doble margen visible: dos líneas paralelas al borde de la hoja
 DRAW_DOUBLE_MARGINS = True
-# Offset del segundo margen relativo a PAGE_MARGINS_CM (en cm). Ej: 0.3 => 0.5 cm y 0.8 cm
 DOUBLE_MARGIN_OFFSET_CM = 0.3
 DOUBLE_MARGINS_COLOR = 'black'
-# Matplotlib usa pt (puntos tipográficos). 0.2 mm ≈ 0.56693 pt
 DOUBLE_MARGINS_LINEWIDTH = 0.56693
 DOUBLE_MARGINS_ALPHA = 1.0
 
-# =====================================
-# MAPA (tamaño, posición dentro de la hoja, y estilo)
-# =====================================
-# Tamaño del mapa en centímetros (ancho, alto). Se usa si PAPER_SIZE es None
-# o en combinación con anclaje/caja
-MAP_SIZE_CM = (18.0, 18.0)
+# --- Archivos de Salida ---
+OUTPUT_DIR = 'output/isoyetas'
+IMAGE_FORMAT = 'pdf'
+IMAGE_DPI = 150
+POPUP_WINDOW = False
 
-# Anclaje del mapa: permite fijar su posición desde una esquina
-# 'bottom-left' lo ubica a partir de la esquina inferior-izquierda usando MAP_OFFSET_CM
-MAP_ANCHOR = 'bottom-left'
-# Offset (x_cm, y_cm) desde la esquina inferior-izquierda de la hoja
-MAP_OFFSET_CM = (3.0, 6.0)
 
-# Caja exacta del mapa (left_cm, bottom_cm, width_cm, height_cm). Si se define,
-# tiene prioridad sobre los márgenes y el anclaje
-MAP_BOX_CM = None
+# =============================================================================
+# 2. DATOS E INTERPOLACIÓN
+# =============================================================================
+# --- Fuentes de Datos ---
+DTA_DIR = 'DTA'
+RANDOM_SEED = 42
 
-# Título del mapa y personalización
-TITLE = 'VOLCAN COTOPAXI - MAPA DE ISOYETAS (mm)'
-TITLE_FONT_SIZE = 12            # tamaño de letra
-TITLE_FONT_WEIGHT = 'bold'      # 'normal', 'bold', etc.
-TITLE_FONT_FAMILY = None        # p.ej. 'sans-serif', 'serif' (opcional)
-TITLE_FONT_NAME = None          # p.ej. 'DejaVu Sans' (opcional)
-TITLE_COLOR = 'black'           # color
-TITLE_LOC = 'center'            # 'left', 'center', 'right'
-TITLE_PAD_PT = 6                # padding superior en puntos
+# --- Estaciones Sintéticas ---
+SYNTHETIC_STATIONS = 3
+SYNTH_JITTER_DEG = 0.2
+SYNTH_VALUE_JITTER_MM = (-10, 10)
 
-# Niveles de isoyetas. Si es None, se calculan automáticamente
-ISOHYET_LEVELS = None
-
-# Resolución del grid (en grados) para la interpolación IDW
+# --- Parámetros de Interpolación y Grilla ---
 GRID_RESOLUTION_DEG = 0.01
-
-# Extensión del mapa (lon_min, lon_max, lat_min, lat_max). Si es None se calcula a partir de las estaciones
-EXTENT = None
-
-# Parámetros de la interpolación IDW
 IDW_POWER = 2.0
 IDW_EPS = 1e-12
-
-# Transparencia del relleno de isoyetas (0=transparente, 1=opaco)
+ISOHYET_LEVELS = None
 ISOHYET_ALPHA = 0.6
 
-# =====================================
-# COLORBAR (barra de colores del mapa)
-# =====================================
+
+# =============================================================================
+# 3. COMPONENTE: MAPA PRINCIPAL
+# =============================================================================
+# --- Posición y Tamaño ---
+MAP_SIZE_CM = (18.0, 18.0)
+MAP_ANCHOR = 'bottom-left'
+MAP_OFFSET_CM = (3.0, 6.0)
+MAP_BOX_CM = None
+EXTENT = None
+
+# --- Título ---
+TITLE = 'VOLCAN COTOPAXI - MAPA DE ISOYETAS (mm)'
+TITLE_FONT_SIZE = 12
+TITLE_FONT_WEIGHT = 'bold'
+TITLE_FONT_FAMILY = None
+TITLE_FONT_NAME = None
+TITLE_COLOR = 'black'
+TITLE_LOC = 'center'
+TITLE_PAD_PT = 6
+
+# --- Mapa de Fondo (Cartopy) ---
+MAP_BACKGROUND = True
+USE_TILE_BACKGROUND = True
+TILE_PROVIDER = 'OSM'
+TILE_ZOOM_LEVEL = 11
+TILE_BACKGROUND_ALPHA = 1.0
+MAP_BACKGROUND_RESOLUTION = '50m'
+MAP_BACKGROUND_LAND_COLOR = '#F0F0F0'
+MAP_BACKGROUND_OCEAN_COLOR = '#D0E7FF'
+MAP_BACKGROUND_COASTLINE_COLOR = 'black'
+MAP_BACKGROUND_BORDER_COLOR = 'gray'
+
+
+# =============================================================================
+# 4. COMPONENTE: BARRA DE COLOR (COLORBAR)
+# =============================================================================
 SHOW_COLORBAR = True
-COLORBAR_LOCATION = 'right'   # 'right' o 'left'
-COLORBAR_WIDTH_CM = 0.6       # ancho en cm
-COLORBAR_PAD_CM = 0.2         # separación (cm) respecto al eje del mapa
-# No forzar bordes/fondos: la escala luce como por defecto
+COLORBAR_LOCATION = 'right'
+COLORBAR_WIDTH_CM = 0.6
+COLORBAR_PAD_CM = 0.2
 COLORBAR_DRAW_EDGES = False
 
-# =====================================
-# PIE DE PÁGINA (cajas inferiores)
-# =====================================
+
+# =============================================================================
+# 5. COMPONENTE: PANEL LATERAL (CAJAS VERTICALES A LA DERECHA)
+# =============================================================================
+DRAW_SIDE_BOXES = True
+SIDE_BOX_RIGHT_CM = 1.0
+SIDE_BOX_WIDTH_CM = 5.0
+SIDE_BOX_TOP_CM = 1.0
+SIDE_BOX_BOTTOM_CM = 1.0
+SIDE_BOX_GAP_CM = 0.0
+SIDE_BOX_COUNT = 5
+SIDE_BOX_TITLES = ['', 'ESTUDIO DE...', 'Mapa Climático', 'LEYENDA', '']
+SIDE_BOX_HEIGHTS_CM = [11.0, 3.0, 2.0, 1.5, 1.5]
+
+# --- Estilo de Bordes y Títulos del Panel Lateral ---
+SIDE_BOX_EDGE_COLOR = 'black'
+SIDE_BOX_EDGE_LINEWIDTH_PT = 0.56693
+SIDE_BOX_DOUBLE_BORDER = True
+SIDE_BOX_DOUBLE_BORDER_OFFSET_CM = 0.1
+SIDE_BOX_TITLE_FONT_SIZE = 10
+SIDE_BOX_TITLE_FONT_WEIGHT = 'bold'
+SIDE_BOX_TITLE_COLOR = 'black'
+SIDE_BOX_TITLE_ROW_HEIGHT_CM = 1.0
+
+
+# =============================================================================
+# 6. COMPONENTE: PIE DE PÁGINA (CAJAS HORIZONTALES INFERIORES)
+# =============================================================================
 DRAW_FOOTER_BOXES = True
-FOOTER_ROW_BOTTOM_CM = 1.0        # distancia desde el borde inferior
-FOOTER_ROW_HEIGHT_CM = 5.0        # altura de las cajas
-FOOTER_LEFT_MARGIN_CM = 2.0       # margen izquierdo de la fila
-FOOTER_RIGHT_MARGIN_CM = 2.0      # margen derecho de la fila
-FOOTER_GAP_CM = 0.0               # separación horizontal entre cajas
-FOOTER_BOX_COUNT = 4              # número de cajas (p.ej. 4)
+FOOTER_ROW_BOTTOM_CM = 1.0
+FOOTER_ROW_HEIGHT_CM = 5.0
+FOOTER_LEFT_MARGIN_CM = 2.0
+FOOTER_RIGHT_MARGIN_CM = 2.0
+FOOTER_GAP_CM = 0.0
+FOOTER_BOX_COUNT = 4
 FOOTER_TITLES = ['SIMBOLOGÍA', 'MAPA DE UBICACIÓN', '', 'OBSERVACIONES']
-# Estilo de borde
+FOOTER_BOX_AREA_CM = None
+FOOTER_ALIGN_WITH_MAP_OFFSETS = False
+FOOTER_BOX_WIDTHS_CM = [5.0, 5.0, 5.0, 5.0]
+
+# --- Estilo de Bordes y Títulos del Pie de Página ---
 FOOTER_EDGE_COLOR = 'black'
-FOOTER_EDGE_LINEWIDTH_PT = 0.56693   # ~0.2 mm
-# Doble borde para cada caja (similar al de la página)
+FOOTER_EDGE_LINEWIDTH_PT = 0.56693
 FOOTER_DOUBLE_BORDER = True
 FOOTER_DOUBLE_BORDER_OFFSET_CM = 0.1
 FOOTER_DOUBLE_BORDER_COLOR = 'black'
 FOOTER_DOUBLE_BORDER_LINEWIDTH_PT = 0.56693
-# Estilo de título
 FOOTER_TITLE_FONT_SIZE = 10
 FOOTER_TITLE_FONT_WEIGHT = 'bold'
 FOOTER_TITLE_COLOR = 'black'
 FOOTER_TITLE_PAD_CM = 0.2
-# Alinear márgenes izquierdo/derecho de las cajas con el offset del mapa
-FOOTER_ALIGN_WITH_MAP_OFFSETS = False
-# Área exacta para ubicar y dimensionar el bloque de cajas (left_cm, bottom_cm, width_cm, height_cm)
-# Si se define, tiene prioridad sobre los márgenes y la alineación con el mapa
-FOOTER_BOX_AREA_CM = None
-# Opcional: anchos por caja en cm (lista de longitud FOOTER_BOX_COUNT). Si None, se reparten iguales
-FOOTER_BOX_WIDTHS_CM = None
-# Recuadro del título dentro de cada caja
+FOOTER_TITLE_ROW_HEIGHT_CM = 1.0
+FOOTER_TITLE_HA = 'center'
+FOOTER_TITLE_VA = 'center'
 FOOTER_TITLE_BOX = False
 FOOTER_TITLE_BOX_FACE_COLOR = 'white'
 FOOTER_TITLE_BOX_EDGE_COLOR = 'black'
 FOOTER_TITLE_BOX_LINEWIDTH_PT = 0.56693
 FOOTER_TITLE_BOX_PAD = 0.15
-# Altura de la fila del título dentro de cada caja del footer (en cm)
-FOOTER_TITLE_ROW_HEIGHT_CM = 1.0
 
-# =====================================
-# CAJAS LATERALES (derecha)
-# =====================================
-DRAW_SIDE_BOXES = True
-SIDE_BOX_RIGHT_CM = 1.0             # distancia desde el borde derecho
-SIDE_BOX_WIDTH_CM = 6.0             # ancho de las cajas
-SIDE_BOX_TOP_CM = 1.0               # distancia desde el borde superior
-SIDE_BOX_BOTTOM_CM = 1.0            # distancia desde el borde inferior
-SIDE_BOX_GAP_CM = 0.0               # separación vertical entre cajas
-SIDE_BOX_COUNT = 5                  # número de cajas
-SIDE_BOX_TITLES = ['', 'ESTUDIO DE...', 'Mapa Climático', 'LEYENDA', '']
-# Estilo de borde
-SIDE_BOX_EDGE_COLOR = 'black'
-SIDE_BOX_EDGE_LINEWIDTH_PT = 0.56693
-# Doble borde
-SIDE_BOX_DOUBLE_BORDER = True
-SIDE_BOX_DOUBLE_BORDER_OFFSET_CM = 0.1
-# Estilo de título
-SIDE_BOX_TITLE_FONT_SIZE = 10
-SIDE_BOX_TITLE_FONT_WEIGHT = 'bold'
-SIDE_BOX_TITLE_COLOR = 'black'
-SIDE_BOX_TITLE_ROW_HEIGHT_CM = 1.0
-# Opcional: alturas por caja en cm. Si None, se reparten iguales
-SIDE_BOX_HEIGHTS_CM = [4.0, 4.0, 1.5, 10, 6]
 
-# --- Contenido de las cajas laterales ---
-# Índice de la caja para insertar el logo
-SIDE_BOX_IMAGE_INDEX = 0
-# Ruta de la imagen del logo
-SIDE_BOX_IMAGE_PATH = 'images/logo-ig.png'
+# =============================================================================
+# 7. SUB-COMPONENTES (LOGO, MINIMAPA, SIMBOLOGÍA, ETC.)
+# =============================================================================
 
-#
+# --- Logo ---
+LOGO_BOX_INDEX = 0
+LOGO_IMAGE_PATH = 'images/logo-ig.png'
+LOGO_WIDTH_CM = 5.0
+LOGO_HEIGHT_CM = 5.0
+LOGO_MARGIN_CM = 0.0
+LOGO_RESIZE_TO_FIT = True
+LOGO_ANCHOR = 'center'
+LOGO_OFFSET_CM = (0.0, 0.0)
+LOGO_CLIP_TO_BOX = True
 
-# =====================================
-# DATOS Y SALIDA
-# =====================================
-# Directorio raíz de datos donde se buscarán archivos JSON con lecturas reales
-DTA_DIR = 'DTA'
-
-# Directorio donde se guardarán los archivos generados (PDF/imagenes)
-OUTPUT_DIR = 'output/isoyetas'
-
-# Formato y DPI de salida
-IMAGE_FORMAT = 'pdf'  # 'pdf', 'png', 'jpg', 'svg', etc.
-IMAGE_DPI = 150
-
-# Mostrar la figura en una ventana emergente después de guardar
-POPUP_WINDOW = False
-
-# Semilla para reproducibilidad en datos sintéticos
-RANDOM_SEED = 42
-
-# =====================================
-# DATOS SINTÉTICOS (estaciones adicionales)
-# =====================================
-SYNTHETIC_STATIONS = 3               # cantidad de estaciones sintéticas
-SYNTH_JITTER_DEG = 0.2               # dispersión espacial en grados alrededor de la estación real
-SYNTH_VALUE_JITTER_MM = (-10, 10)    # rango de variación (mm) respecto al valor real
-
-# =====================================
-# MINIMAPA (con Cartopy)
-# =====================================
-# Índice de la caja del footer donde se insertará el minimapa
-# 0 = SIMBOLOGÍA, 1 = MAPA DE UBICACIÓN, 2 = vacío, 3 = OBSERVACIONES
-# Si es -1, se desactiva el minimapa
-MINIMAP_BOX_INDEX = 1  # Colocar en la segunda caja 'MAPA DE UBICACIÓN'
-
-# Relleno (padding) interior del minimapa respecto a su caja, en cm
+# --- Minimapa ---
+MINIMAP_BOX_INDEX = 1
 MINIMAP_PADDING_CM = 0.3
-
-# Nivel de zoom del minimapa. Un valor mayor aleja la vista para mostrar más contexto
 MINIMAP_ZOOM_LEVEL = 2.0
-
-# Resolución de los datos de Cartopy ('110m'=baja, '50m'=media, '10m'=alta)
 MINIMAP_CARTOPY_RESOLUTION = '50m'
+MINIMAP_LAND_COLOR = '#F0F0F0'
+MINIMAP_OCEAN_COLOR = '#D0E7FF'
+MINIMAP_COASTLINE_COLOR = 'black'
+MINIMAP_BORDER_COLOR = 'gray'
+MINIMAP_EXTENT_COLOR = 'red'
+MINIMAP_EXTENT_ALPHA = 0.3
 
-# Colores del minimapa
-MINIMAP_LAND_COLOR = '#F0F0F0'        # Color de la tierra
-MINIMAP_OCEAN_COLOR = '#D0E7FF'       # Color del océano
-MINIMAP_COASTLINE_COLOR = 'black'     # Color de las líneas costeras
-MINIMAP_BORDER_COLOR = 'gray'         # Color de las fronteras
-MINIMAP_EXTENT_COLOR = 'red'          # Color del rectángulo que marca el área del mapa principal
-MINIMAP_EXTENT_ALPHA = 0.3            # Transparencia del rectángulo
+# --- Simbología ---
+SYMBOLOGY_BOX_INDEX = 0
+SYMBOLOGY_PADDING_CM = 0.3
 
-
-# =====================================
-# ROSA DE LOS VIENTOS Y ESCALA
-# =====================================
-# Índice de la caja del footer donde se insertará la rosa de los vientos y la escala
+# --- Rosa de los Vientos y Escala ---
 NORTH_ARROW_SCALE_BOX_INDEX = 2
-
-# Relleno (padding) interior, en cm
 NORTH_ARROW_SCALE_PADDING_CM = 0.3
-
-# --- Opciones de la Rosa de los Vientos ---
-# Estilo: 'drawn' o 'image'
+# Rosa de los vientos
 NORTH_ARROW_STYLE = 'image'
-# Ruta de la imagen si el estilo es 'image'
 NORTH_ARROW_IMAGE_PATH = 'images/image.png'
-
-# Ancho y alto de la imagen en cm. Si es None, se usa NORTH_ARROW_SIZE
 NORTH_ARROW_IMAGE_WIDTH_CM = 2.7
 NORTH_ARROW_IMAGE_HEIGHT_CM = 2.7
-
-# Posición y tamaño (si no se especifican ancho y alto)
-NORTH_ARROW_Y_POS = 0.65  # Posición vertical (0-1)
-NORTH_ARROW_SIZE = 0.25   # Tamaño relativo al ancho de la caja
-
-# Colores (para estilo 'drawn')
+NORTH_ARROW_Y_POS = 0.65
+NORTH_ARROW_SIZE = 0.25
 NORTH_ARROW_COLOR1 = 'black'
 NORTH_ARROW_COLOR2 = 'white'
 NORTH_ARROW_EDGE_COLOR = 'black'
-
-# Texto (N, S, E, W) (para estilo 'drawn')
 NORTH_ARROW_TEXT_COLOR = 'black'
 NORTH_ARROW_FONT_SIZE = 10
 NORTH_ARROW_FONT_WEIGHT = 'bold'
-
-
-# --- Opciones de la Barra de Escala ---
-# Estilo: 'simple' o 'segmented'
+# Barra de escala
 SCALE_BAR_STYLE = 'segmented'
-# Posición vertical (0-1)
 SCALE_BAR_Y_POS = 0.0
-
-# --- Opciones para estilo 'simple' ---
 SCALE_SIMPLE_LENGTH_KM = 10
 SCALE_SIMPLE_BAR_COLOR = 'black'
 SCALE_SIMPLE_TEXT_COLOR = 'black'
 SCALE_SIMPLE_BAR_LINEWIDTH_PT = 2.0
 SCALE_SIMPLE_TEXT_FONT_SIZE = 9
 SCALE_SIMPLE_TEXT_FONT_WEIGHT = 'bold'
-
-# --- Opciones para estilo 'segmented' ---
 SCALE_SEGMENTED_SEGMENTS_KM = [0, 20, 40, 80, 120]
 SCALE_SEGMENTED_BAR_HEIGHT_PT = 8
 SCALE_SEGMENTED_COLORS = ['black', 'white']
@@ -267,65 +221,3 @@ SCALE_SEGMENTED_EDGE_COLOR = 'black'
 SCALE_SEGMENTED_TEXT_COLOR = 'black'
 SCALE_SEGMENTED_TEXT_FONT_SIZE = 10
 SCALE_SEGMENTED_UNITS_LABEL = 'Km'
-
-
-# =====================================
-# SIMBOLOGÍA
-# =====================================
-# Índice de la caja del footer donde se insertará la simbología
-SYMBOLOGY_BOX_INDEX = 0  # Colocar en la primera caja 'SIMBOLOGÍA'
-
-# Relleno (padding) interior de la simbología respecto a su caja, en cm
-SYMBOLOGY_PADDING_CM = 0.3
-
-
-#
-
-
-# =====================================
-# ALINEACIÓN DE TÍTULOS EN CAJAS DEL FOOTER
-# =====================================
-# Alineación horizontal de los títulos ('left', 'center', 'right')
-FOOTER_TITLE_HA = 'center'
-
-# Alineación vertical de los títulos ('top', 'center', 'bottom', 'baseline')
-FOOTER_TITLE_VA = 'center'
-
-
-# =====================================
-# MAPA DE FONDO (Cartopy)
-# =====================================
-# Activar o desactivar el mapa de fondo en el gráfico principal
-MAP_BACKGROUND = True
-
-# Resolución de los datos de Cartopy para el mapa de fondo ('110m', '50m', '10m')
-MAP_BACKGROUND_RESOLUTION = '50m'
-
-# Colores para el mapa de fondo
-MAP_BACKGROUND_LAND_COLOR = '#F0F0F0'
-MAP_BACKGROUND_OCEAN_COLOR = '#D0E7FF'
-MAP_BACKGROUND_COASTLINE_COLOR = 'black'
-MAP_BACKGROUND_BORDER_COLOR = 'gray'
-
-
-#
-
-
-
-# =====================================
-# MAPA DE FONDO TIPO TILE (más detallado)
-# =====================================
-# Activar para usar un mapa de fondo con tiles (Stamen, OpenStreetMap) en lugar de Natural Earth
-USE_TILE_BACKGROUND = True
-
-# Proveedor de tiles. Opciones: 'Stamen-terrain', 'OSM'
-TILE_PROVIDER = 'OSM'
-
-# Nivel de zoom para el mapa de tiles (valor entre 1-14 aprox, depende del área)
-TILE_ZOOM_LEVEL = 11
-
-# Transparencia del mapa de fondo con tiles (0=transparente, 1=opaco)
-TILE_BACKGROUND_ALPHA = 1.0
-
-
-# =====================================
