@@ -227,8 +227,8 @@ NORTH_ARROW_STYLE = 'image'
 NORTH_ARROW_IMAGE_PATH = 'images/image.png'
 
 # Ancho y alto de la imagen en cm. Si es None, se usa NORTH_ARROW_SIZE
-NORTH_ARROW_IMAGE_WIDTH_CM = 2.2
-NORTH_ARROW_IMAGE_HEIGHT_CM = 2.2
+NORTH_ARROW_IMAGE_WIDTH_CM = 2.7
+NORTH_ARROW_IMAGE_HEIGHT_CM = 2.7
 
 # Posición y tamaño (si no se especifican ancho y alto)
 NORTH_ARROW_Y_POS = 0.65  # Posición vertical (0-1)
@@ -249,7 +249,7 @@ NORTH_ARROW_FONT_WEIGHT = 'bold'
 # Estilo: 'simple' o 'segmented'
 SCALE_BAR_STYLE = 'segmented'
 # Posición vertical (0-1)
-SCALE_BAR_Y_POS = 0.2
+SCALE_BAR_Y_POS = 0.0
 
 # --- Opciones para estilo 'simple' ---
 SCALE_SIMPLE_LENGTH_KM = 10
@@ -266,7 +266,7 @@ SCALE_SEGMENTED_COLORS = ['black', 'white']
 SCALE_SEGMENTED_EDGE_COLOR = 'black'
 SCALE_SEGMENTED_TEXT_COLOR = 'black'
 SCALE_SEGMENTED_TEXT_FONT_SIZE = 10
-SCALE_SEGMENTED_UNITS_LABEL = 'Kilometers'
+SCALE_SEGMENTED_UNITS_LABEL = 'Km'
 
 
 # =====================================

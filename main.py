@@ -1054,9 +1054,9 @@ def draw_segmented_scale_bar(ax, extent):
     colors = getattr(CFG, 'SCALE_SEGMENT_COLORS', ['black', 'white'])
     text_color = getattr(CFG, 'SCALE_TEXT_COLOR', 'black')
     text_size = float(getattr(CFG, 'SCALE_TEXT_FONT_SIZE', 9))
-    units_label = getattr(CFG, 'SCALE_UNITS_LABEL', 'Kilometers')
+    units_label = getattr(CFG, 'SCALE_SEGMENTED_UNITS_LABEL', 'Kilometers')
 
-    y_pos = 0.15
+    y_pos = float(getattr(CFG, 'SCALE_BAR_Y_POS', 0.2))
     x_start = 0.1
 
     for i in range(len(segments_km) - 1):
