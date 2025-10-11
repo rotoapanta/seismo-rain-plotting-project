@@ -126,6 +126,37 @@ FOOTER_TITLE_BOX_PAD = 0.15
 # Altura de la fila del título dentro de cada caja del footer (en cm)
 FOOTER_TITLE_ROW_HEIGHT_CM = 1.0
 
+# =====================================
+# CAJAS LATERALES (derecha)
+# =====================================
+DRAW_SIDE_BOXES = True
+SIDE_BOX_RIGHT_CM = 1.0             # distancia desde el borde derecho
+SIDE_BOX_WIDTH_CM = 6.0             # ancho de las cajas
+SIDE_BOX_TOP_CM = 1.0               # distancia desde el borde superior
+SIDE_BOX_BOTTOM_CM = 1.0            # distancia desde el borde inferior
+SIDE_BOX_GAP_CM = 0.0               # separación vertical entre cajas
+SIDE_BOX_COUNT = 5                  # número de cajas
+SIDE_BOX_TITLES = ['', 'ESTUDIO DE...', 'Mapa Climático', 'LEYENDA', '']
+# Estilo de borde
+SIDE_BOX_EDGE_COLOR = 'black'
+SIDE_BOX_EDGE_LINEWIDTH_PT = 0.56693
+# Doble borde
+SIDE_BOX_DOUBLE_BORDER = True
+SIDE_BOX_DOUBLE_BORDER_OFFSET_CM = 0.1
+# Estilo de título
+SIDE_BOX_TITLE_FONT_SIZE = 10
+SIDE_BOX_TITLE_FONT_WEIGHT = 'bold'
+SIDE_BOX_TITLE_COLOR = 'black'
+SIDE_BOX_TITLE_ROW_HEIGHT_CM = 1.0
+# Opcional: alturas por caja en cm. Si None, se reparten iguales
+SIDE_BOX_HEIGHTS_CM = [4.0, 4.0, 1.5, 10, 6]
+
+# --- Contenido de las cajas laterales ---
+# Índice de la caja para insertar el logo
+SIDE_BOX_IMAGE_INDEX = 0
+# Ruta de la imagen del logo
+SIDE_BOX_IMAGE_PATH = 'images/logo-ig.png'
+
 #
 
 # =====================================
@@ -181,56 +212,67 @@ MINIMAP_EXTENT_ALPHA = 0.3            # Transparencia del rectángulo
 
 
 # =====================================
-# IMAGEN Y ESCALA
+# ROSA DE LOS VIENTOS Y ESCALA
 # =====================================
-# Índice de la caja del footer donde se insertará la imagen y la escala
-IMAGE_SCALE_BOX_INDEX = 2
+# Índice de la caja del footer donde se insertará la rosa de los vientos y la escala
+NORTH_ARROW_SCALE_BOX_INDEX = 2
 
-# Relleno (padding) interior de la imagen y escala respecto a su caja, en cm
-IMAGE_SCALE_PADDING_CM = 0.3
+# Relleno (padding) interior, en cm
+NORTH_ARROW_SCALE_PADDING_CM = 0.3
 
-# Ruta de la imagen a insertar
-IMAGE_PATH = 'images/image.png'
+# --- Opciones de la Rosa de los Vientos ---
+# Estilo: 'drawn' o 'image'
+NORTH_ARROW_STYLE = 'image'
+# Ruta de la imagen si el estilo es 'image'
+NORTH_ARROW_IMAGE_PATH = 'images/image.png'
 
-# Ancho y alto de la imagen en cm. Si es None, se ajusta automáticamente
-IMAGE_WIDTH_CM = 15
-IMAGE_HEIGHT_CM = 15
+# Ancho y alto de la imagen en cm. Si es None, se usa NORTH_ARROW_SIZE
+NORTH_ARROW_IMAGE_WIDTH_CM = 2.2
+NORTH_ARROW_IMAGE_HEIGHT_CM = 2.2
 
-# Longitud de la barra de escala en km
-SCALE_LENGTH_KM = 10
+# Posición y tamaño (si no se especifican ancho y alto)
+NORTH_ARROW_Y_POS = 0.65  # Posición vertical (0-1)
+NORTH_ARROW_SIZE = 0.25   # Tamaño relativo al ancho de la caja
 
-# --- Estilo de la barra de escala ---
-# Estilo de la barra: 'simple' o 'segmented'
+# Colores (para estilo 'drawn')
+NORTH_ARROW_COLOR1 = 'black'
+NORTH_ARROW_COLOR2 = 'white'
+NORTH_ARROW_EDGE_COLOR = 'black'
+
+# Texto (N, S, E, W) (para estilo 'drawn')
+NORTH_ARROW_TEXT_COLOR = 'black'
+NORTH_ARROW_FONT_SIZE = 10
+NORTH_ARROW_FONT_WEIGHT = 'bold'
+
+
+# --- Opciones de la Barra de Escala ---
+# Estilo: 'simple' o 'segmented'
 SCALE_BAR_STYLE = 'segmented'
+# Posición vertical (0-1)
+SCALE_BAR_Y_POS = 0.2
 
 # --- Opciones para estilo 'simple' ---
-# Posición vertical de la barra de escala (0=abajo, 1=arriba del área de la escala)
-SCALE_VERTICAL_POSITION = 0.25
-# Color de la barra y texto
-SCALE_BAR_COLOR = 'black'
-SCALE_TEXT_COLOR = 'black'
-# Ancho de la línea de la barra en puntos
-SCALE_BAR_LINEWIDTH_PT = 2.0
-# Estilo de la fuente del texto
-SCALE_TEXT_FONT_SIZE = 9
-SCALE_TEXT_FONT_WEIGHT = 'bold'
+SCALE_SIMPLE_LENGTH_KM = 10
+SCALE_SIMPLE_BAR_COLOR = 'black'
+SCALE_SIMPLE_TEXT_COLOR = 'black'
+SCALE_SIMPLE_BAR_LINEWIDTH_PT = 2.0
+SCALE_SIMPLE_TEXT_FONT_SIZE = 9
+SCALE_SIMPLE_TEXT_FONT_WEIGHT = 'bold'
 
 # --- Opciones para estilo 'segmented' ---
-# Segmentos de la barra de escala en km. El último valor define la longitud total.
-SCALE_BAR_SEGMENTS_KM = [0, 20, 40, 80, 120]
-# Altura de la barra de escala en puntos
-SCALE_BAR_HEIGHT_PT = 5
-# Colores de los segmentos (alternados)
-SCALE_SEGMENT_COLORS = ['black', 'white']
-# Etiqueta de unidades
-SCALE_UNITS_LABEL = 'Kilometers'
+SCALE_SEGMENTED_SEGMENTS_KM = [0, 20, 40, 80, 120]
+SCALE_SEGMENTED_BAR_HEIGHT_PT = 8
+SCALE_SEGMENTED_COLORS = ['black', 'white']
+SCALE_SEGMENTED_EDGE_COLOR = 'black'
+SCALE_SEGMENTED_TEXT_COLOR = 'black'
+SCALE_SEGMENTED_TEXT_FONT_SIZE = 10
+SCALE_SEGMENTED_UNITS_LABEL = 'Kilometers'
 
 
 # =====================================
 # SIMBOLOGÍA
 # =====================================
 # Índice de la caja del footer donde se insertará la simbología
-# 0 = SIMBOLOGÍA, 1 = MAPA DE UBICACIÓN, 2 = vacío, 3 = OBSERVACIONES
 SYMBOLOGY_BOX_INDEX = 0  # Colocar en la primera caja 'SIMBOLOGÍA'
 
 # Relleno (padding) interior de la simbología respecto a su caja, en cm

@@ -550,6 +550,91 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
             logger.warning(f"Advertencia al dibujar doble margen: {e}")
 
     # Cajas de pie de página (footer)
+    if getattr(CFG, 'DRAW_SIDE_BOXES', False):
+        try:
+            from matplotlib.patches import Rectangle
+            right_margin_cm = float(getattr(CFG, 'SIDE_BOX_RIGHT_CM', 1.0))
+            box_width_cm = float(getattr(CFG, 'SIDE_BOX_WIDTH_CM', 6.0))
+            top_margin_cm = float(getattr(CFG, 'SIDE_BOX_TOP_CM', 1.0))
+            bottom_margin_cm = float(getattr(CFG, 'SIDE_BOX_BOTTOM_CM', 1.0))
+            gap_cm = float(getattr(CFG, 'SIDE_BOX_GAP_CM', 0.0))
+            n_boxes = int(getattr(CFG, 'SIDE_BOX_COUNT', 3))
+            titles = list(getattr(CFG, 'SIDE_BOX_TITLES', []))
+            edge_color = getattr(CFG, 'SIDE_BOX_EDGE_COLOR', 'black')
+            edge_lw_pt = float(getattr(CFG, 'SIDE_BOX_EDGE_LINEWIDTH_PT', 0.56693))
+            tit_size = float(getattr(CFG, 'SIDE_BOX_TITLE_FONT_SIZE', 10))
+            tit_weight = getattr(CFG, 'SIDE_BOX_TITLE_FONT_WEIGHT', 'bold')
+            tit_color = getattr(CFG, 'SIDE_BOX_TITLE_COLOR', 'black')
+            tit_row_h_cm = float(getattr(CFG, 'SIDE_BOX_TITLE_ROW_HEIGHT_CM', 1.0))
+
+            heights_list = getattr(CFG, 'SIDE_BOX_HEIGHTS_CM', None)
+            if heights_list is not None:
+                heights_cm = [float(h) for h in heights_list]
+                content_h_cm = fig_h_cm - top_margin_cm - bottom_margin_cm
+                sum_h = sum(heights_cm)
+                if sum_h <= 0:
+                    heights_cm = [max(0.1, content_h_cm / n_boxes)] * n_boxes
+                elif sum_h > content_h_cm:
+                    scale = content_h_cm / sum_h
+                    heights_cm = [h * scale for h in heights_cm]
+            else:
+                content_h_cm = fig_h_cm - top_margin_cm - bottom_margin_cm
+                total_gaps_cm = gap_cm * (n_boxes - 1)
+                box_h_cm = max(0.1, (content_h_cm - total_gaps_cm) / n_boxes)
+                heights_cm = [box_h_cm] * n_boxes
+
+            def cm_to_frac(x_cm, y_cm, w_cm, h_cm):
+                return (
+                    max(0.0, min(1.0, x_cm / fig_w_cm)),
+                    max(0.0, min(1.0, y_cm / fig_h_cm)),
+                    max(1e-6, min(1.0, w_cm / fig_w_cm)),
+                    max(1e-6, min(1.0, h_cm / fig_h_cm)),
+                )
+
+            y_cursor = fig_h_cm - top_margin_cm
+            for i in range(n_boxes):
+                h_cm = heights_cm[i] if i < len(heights_cm) else heights_cm[-1]
+                x_cm = fig_w_cm - right_margin_cm - box_width_cm
+                y_cm = y_cursor - h_cm
+                
+                left, bottom, width, height = cm_to_frac(x_cm, y_cm, box_width_cm, h_cm)
+                rect = Rectangle((left, bottom), width, height, fill=False, edgecolor=edge_color, linewidth=edge_lw_pt, transform=fig.transFigure, clip_on=False)
+                fig.add_artist(rect)
+
+                if getattr(CFG, 'SIDE_BOX_DOUBLE_BORDER', False):
+                    offset_cm = float(getattr(CFG, 'SIDE_BOX_DOUBLE_BORDER_OFFSET_CM', 0.1))
+                    offset_x = offset_cm / fig_w_cm
+                    offset_y = offset_cm / fig_h_cm
+                    rect2 = Rectangle((left + offset_x, bottom + offset_y), width - 2 * offset_x, height - 2 * offset_y, fill=False, edgecolor=edge_color, linewidth=edge_lw_pt, transform=fig.transFigure, clip_on=False)
+                    fig.add_artist(rect2)
+
+                if i < len(titles) and titles[i]:
+                    title_y = bottom + height - (tit_row_h_cm / fig_h_cm) / 2.0
+                    fig.text(left + width / 2.0, title_y, titles[i], ha='center', va='center', fontsize=tit_size, fontweight=tit_weight, color=tit_color)
+
+                # Insertar imagen del logo si corresponde
+                logo_idx = getattr(CFG, 'SIDE_BOX_IMAGE_INDEX', -1)
+                if i == logo_idx:
+                    try:
+                        import matplotlib.image as mpimg
+                        logo_path = getattr(CFG, 'SIDE_BOX_IMAGE_PATH', 'images/logo-ig.png')
+                        if Path(logo_path).exists():
+                            logo_img = mpimg.imread(logo_path)
+                            # Añadir un pequeño margen
+                            margin = 0.05
+                            logo_ax = fig.add_axes([left + margin, bottom + margin, width - 2 * margin, height - 2 * margin])
+                            logo_ax.imshow(logo_img, aspect='contain')
+                            logo_ax.axis('off')
+                            logger.info(f"Logo insertado desde: {logo_path}")
+                        else:
+                            logger.warning(f"No se encontró la imagen del logo: {logo_path}")
+                    except Exception as e:
+                        logger.warning(f"Advertencia al insertar el logo: {e}")
+
+                y_cursor -= (h_cm + gap_cm)
+        except Exception as e:
+            logger.warning(f"Advertencia al dibujar cajas laterales: {e}")
+
     if getattr(CFG, 'DRAW_FOOTER_BOXES', False):
         try:
             from matplotlib.patches import Rectangle
@@ -801,75 +886,34 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                     except Exception as e:
                         logger.warning(f"Advertencia al insertar simbología: {e}")
 
-                # Insertar imagen y escala si corresponde a esta caja
-                image_scale_idx = getattr(CFG, 'IMAGE_SCALE_BOX_INDEX', -1)
-                if i == image_scale_idx:
+                # Insertar rosa de los vientos y escala si corresponde a esta caja
+                north_arrow_scale_idx = getattr(CFG, 'NORTH_ARROW_SCALE_BOX_INDEX', -1)
+                if i == north_arrow_scale_idx:
                     try:
-                        import matplotlib.image as mpimg
-                        from matplotlib.patches import FancyBboxPatch
-                        
-                        pad_cm = float(getattr(CFG, 'IMAGE_SCALE_PADDING_CM', 0.3))
+                        pad_cm = float(getattr(CFG, 'NORTH_ARROW_SCALE_PADDING_CM', 0.3))
                         content_h_cm = h_cm - tit_row_h_cm
                         
-                        # Crear un nuevo eje para la imagen y escala
                         ax_left = (x_cm + pad_cm) / fig_w_cm
                         ax_bottom = (y_cm + pad_cm) / fig_h_cm
                         ax_width = (w_cm - 2 * pad_cm) / fig_w_cm
                         ax_height = (content_h_cm - 2 * pad_cm) / fig_h_cm
                         
-                        img_scale_ax = fig.add_axes([ax_left, ax_bottom, ax_width, ax_height])
-                        img_scale_ax.patch.set_visible(False)
-                        img_scale_ax.set_xlim(0, 1)
-                        img_scale_ax.set_ylim(0, 1)
-                        img_scale_ax.axis('off')
+                        ns_ax = fig.add_axes([ax_left, ax_bottom, ax_width, ax_height])
+                        ns_ax.patch.set_visible(False)
+                        ns_ax.set_xlim(0, 1)
+                        ns_ax.set_ylim(0, 1)
+                        ns_ax.axis('off')
+
+                        draw_north_arrow(ns_ax)
                         
-                        # Cargar y mostrar la imagen en la parte superior
-                        image_path = getattr(CFG, 'IMAGE_PATH', 'images/image.png')
-                        if Path(image_path).exists():
-                            img = mpimg.imread(image_path)
-                            img_w_cm = getattr(CFG, 'IMAGE_WIDTH_CM', None)
-                            img_h_cm = getattr(CFG, 'IMAGE_HEIGHT_CM', None)
-
-                            # Calcular el aspect ratio de la imagen original
-                            aspect_ratio = img.shape[0] / img.shape[1]  # alto / ancho
-
-                            # Convertir dimensiones de cm a coordenadas de eje (0-1)
-                            box_w_frac = (w_cm - 2 * pad_cm) / fig_w_cm
-                            box_h_frac = (content_h_cm - 2 * pad_cm) / fig_h_cm
-
-                            if img_w_cm and img_h_cm:
-                                img_w_frac = img_w_cm / fig_w_cm
-                                img_h_frac = img_h_cm / fig_h_cm
-                            elif img_w_cm:
-                                img_w_frac = img_w_cm / fig_w_cm
-                                img_h_frac = img_w_frac * aspect_ratio * (fig_w_cm / fig_h_cm)
-                            elif img_h_cm:
-                                img_h_frac = img_h_cm / fig_h_cm
-                                img_w_frac = img_h_frac / aspect_ratio * (fig_h_cm / fig_w_cm)
-                            else:
-                                # Ajuste automático si no se especifica tamaño
-                                img_w_frac = box_w_frac * 0.8 # 80% del ancho disponible
-                                img_h_frac = img_w_frac * aspect_ratio * (fig_w_cm / fig_h_cm)
-
-                            # Centrar la imagen
-                            x_start = 0.5 - img_w_frac / 2
-                            y_start = 0.7 - img_h_frac / 2 # Centrada en la parte superior
-
-                            img_scale_ax.imshow(img, extent=[x_start, x_start + img_w_frac, y_start, y_start + img_h_frac], aspect='auto')
-                            logger.info(f"Imagen insertada desde: {image_path}")
-                        else:
-                            logger.warning(f"No se encontró la imagen: {image_path}")
-                        
-                        # Añadir escala del mapa en la parte inferior
                         scale_bar_style = getattr(CFG, 'SCALE_BAR_STYLE', 'simple')
-
                         if scale_bar_style == 'segmented':
-                            draw_segmented_scale_bar(img_scale_ax, extent)
+                            draw_segmented_scale_bar(ns_ax, extent)
                         else:
-                            draw_simple_scale_bar(img_scale_ax, extent)
-                        
+                            draw_simple_scale_bar(ns_ax, extent)
+
                     except Exception as e:
-                        logger.warning(f"Advertencia al insertar imagen y escala: {e}")
+                        logger.warning(f"Advertencia al insertar rosa de los vientos y escala: {e}")
 
                 # --- DIBUJAR LÍNEA DIVISORIA DEL TÍTULO ---
                 # Se dibuja aquí para asegurar que siempre aparezca, independientemente de excepciones
@@ -1042,6 +1086,68 @@ def draw_segmented_scale_bar(ax, extent):
 
     logger.info(f"Escala del mapa segmentada agregada: {total_length_km} km")
 
+
+def draw_north_arrow(ax):
+    style = getattr(CFG, 'NORTH_ARROW_STYLE', 'drawn')
+
+    if style == 'image':
+        import matplotlib.image as mpimg
+        image_path = getattr(CFG, 'NORTH_ARROW_IMAGE_PATH', 'images/image.png')
+        if Path(image_path).exists():
+            img = mpimg.imread(image_path)
+            img_w_cm = getattr(CFG, 'NORTH_ARROW_IMAGE_WIDTH_CM', None)
+            img_h_cm = getattr(CFG, 'NORTH_ARROW_IMAGE_HEIGHT_CM', None)
+
+            if img_w_cm and img_h_cm:
+                # Usar tamaño personalizado
+                width = img_w_cm / ax.figure.get_figwidth() * 2.54
+                height = img_h_cm / ax.figure.get_figheight() * 2.54
+                y_pos = float(getattr(CFG, 'NORTH_ARROW_Y_POS', 0.65))
+                ax.imshow(img, extent=[0.5 - width/2, 0.5 + width/2, y_pos - height/2, y_pos + height/2], aspect='auto')
+            else:
+                # Usar tamaño relativo
+                y_pos = float(getattr(CFG, 'NORTH_ARROW_Y_POS', 0.65))
+                size = float(getattr(CFG, 'NORTH_ARROW_SIZE', 0.25))
+                ax.imshow(img, extent=[0.5 - size/2, 0.5 + size/2, y_pos - size/2, y_pos + size/2], aspect='equal')
+            
+            logger.info(f"Rosa de los vientos (imagen) agregada desde: {image_path}")
+        else:
+            logger.warning(f"No se encontró la imagen de la rosa de los vientos: {image_path}")
+    else:
+        from matplotlib.patches import Polygon
+
+        y_pos = float(getattr(CFG, 'NORTH_ARROW_Y_POS', 0.65))
+        size = float(getattr(CFG, 'NORTH_ARROW_SIZE', 0.25))
+        color1 = getattr(CFG, 'NORTH_ARROW_COLOR1', 'black')
+        color2 = getattr(CFG, 'NORTH_ARROW_COLOR2', 'white')
+        edge_color = getattr(CFG, 'NORTH_ARROW_EDGE_COLOR', 'black')
+        text_color = getattr(CFG, 'NORTH_ARROW_TEXT_COLOR', 'black')
+        font_size = float(getattr(CFG, 'NORTH_ARROW_FONT_SIZE', 10))
+        font_weight = getattr(CFG, 'NORTH_ARROW_FONT_WEIGHT', 'bold')
+
+        center_x = 0.5
+        
+        # Triángulos
+        # Norte
+        ax.add_patch(Polygon([[center_x, y_pos + size], [center_x - size/4, y_pos], [center_x, y_pos - size/4]], closed=True, facecolor=color1, edgecolor=edge_color))
+        ax.add_patch(Polygon([[center_x, y_pos + size], [center_x + size/4, y_pos], [center_x, y_pos - size/4]], closed=True, facecolor=color2, edgecolor=edge_color))
+        # Sur
+        ax.add_patch(Polygon([[center_x, y_pos - size], [center_x - size/4, y_pos], [center_x, y_pos + size/4]], closed=True, facecolor=color2, edgecolor=edge_color))
+        ax.add_patch(Polygon([[center_x, y_pos - size], [center_x + size/4, y_pos], [center_x, y_pos + size/4]], closed=True, facecolor=color1, edgecolor=edge_color))
+        # Este
+        ax.add_patch(Polygon([[center_x + size, y_pos], [center_x, y_pos + size/4], [center_x - size/4, y_pos]], closed=True, facecolor=color1, edgecolor=edge_color))
+        ax.add_patch(Polygon([[center_x + size, y_pos], [center_x, y_pos - size/4], [center_x - size/4, y_pos]], closed=True, facecolor=color2, edgecolor=edge_color))
+        # Oeste
+        ax.add_patch(Polygon([[center_x - size, y_pos], [center_x, y_pos + size/4], [center_x + size/4, y_pos]], closed=True, facecolor=color2, edgecolor=edge_color))
+        ax.add_patch(Polygon([[center_x - size, y_pos], [center_x, y_pos - size/4], [center_x + size/4, y_pos]], closed=True, facecolor=color1, edgecolor=edge_color))
+
+        # Texto
+        ax.text(center_x, y_pos + size * 1.1, 'N', ha='center', va='bottom', fontsize=font_size, fontweight=font_weight, color=text_color)
+        ax.text(center_x, y_pos - size * 1.1, 'S', ha='center', va='top', fontsize=font_size, fontweight=font_weight, color=text_color)
+        ax.text(center_x + size * 1.1, y_pos, 'E', ha='left', va='center', fontsize=font_size, fontweight=font_weight, color=text_color)
+        ax.text(center_x - size * 1.1, y_pos, 'W', ha='right', va='center', fontsize=font_size, fontweight=font_weight, color=text_color)
+
+        logger.info("Rosa de los vientos (dibujada) agregada.")
 
 if __name__ == '__main__':
     main()
