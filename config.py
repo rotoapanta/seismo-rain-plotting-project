@@ -109,7 +109,7 @@ SIDE_BOX_BOTTOM_CM = 1.0
 SIDE_BOX_GAP_CM = 0.0
 SIDE_BOX_COUNT = 5
 SIDE_BOX_TITLES = ['', 'ESTUDIO DE...', 'Mapa Climático', 'LEYENDA', '']
-SIDE_BOX_HEIGHTS_CM = [11.0, 3.0, 2.0, 1.5, 1.5]
+SIDE_BOX_HEIGHTS_CM = [3.0, 5.0, 4.0, 4.0, 3.0] # Ejemplo: Caja 1 (logo) es 3cm, pero el logo sigue siendo 5cm
 
 # --- Estilo de Bordes y Títulos del Panel Lateral ---
 SIDE_BOX_EDGE_COLOR = 'black'
@@ -168,9 +168,19 @@ LOGO_IMAGE_PATH = 'images/logo-ig.png'
 LOGO_WIDTH_CM = 5.0
 LOGO_HEIGHT_CM = 5.0
 LOGO_MARGIN_CM = 0.0
-LOGO_RESIZE_TO_FIT = True
+# --- Comportamiento del Logo dentro de su Caja ---
+# Si True, el logo se escala para caber en la caja (dependiente del tamaño de la caja).
+# Si False, el logo usa un tamaño fijo (independiente) y puede recortarse o desbordarse.
+LOGO_RESIZE_TO_FIT = False
+
+# Ancla para posicionar el logo en modo de tamaño fijo ('center', 'top-left', 'bottom-right', etc.)
 LOGO_ANCHOR = 'center'
+
+# Offset en cm (dx, dy) desde el ancla en modo de tamaño fijo.
 LOGO_OFFSET_CM = (0.0, 0.0)
+
+# Si True y el logo es más grande que la caja, se recorta a los límites de la caja.
+# Si False, el logo se dibuja completo, incluso si se desborda.
 LOGO_CLIP_TO_BOX = True
 
 # --- Minimapa ---

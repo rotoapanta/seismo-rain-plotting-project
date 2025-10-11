@@ -1707,3 +1707,79 @@
 2025-10-11 16:59:38 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
 2025-10-11 16:59:38 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
 2025-10-11 16:59:42 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251011_165938.pdf
+2025-10-11 17:15:26 - SeismoRainPlotting - INFO - Buscando archivos JSON en: DTA
+2025-10-11 17:15:26 - SeismoRainPlotting - INFO - Archivo JSON más reciente encontrado: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-11 17:15:26 - SeismoRainPlotting - INFO - Usando JSON real: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-11 17:15:26 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-11 17:15:26 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [4.49219795e-04 5.15821652e-01 1.03119409e+00 1.54656652e+00
+ 2.06193895e+00 2.57731138e+00 3.09268382e+00 3.60805625e+00
+ 4.12342868e+00 4.63880111e+00]
+2025-10-11 17:15:27 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-11 17:15:27 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-11 17:15:27 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-11 17:15:27 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-11 17:15:27 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-11 17:15:27 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-11 17:15:27 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-11 17:15:27 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-11 17:15:27 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-11 17:15:27 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-11 17:15:27 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-11 17:15:31 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251011_171527.pdf
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Buscando archivos JSON en: DTA
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Archivo JSON más reciente encontrado: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Usando JSON real: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [4.49219795e-04 5.15821652e-01 1.03119409e+00 1.54656652e+00
+ 2.06193895e+00 2.57731138e+00 3.09268382e+00 3.60805625e+00
+ 4.12342868e+00 4.63880111e+00]
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-11 17:15:57 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-11 17:16:01 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251011_171557.pdf
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Buscando archivos JSON en: DTA
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Archivo JSON más reciente encontrado: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Usando JSON real: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [4.49219795e-04 5.15821652e-01 1.03119409e+00 1.54656652e+00
+ 2.06193895e+00 2.57731138e+00 3.09268382e+00 3.60805625e+00
+ 4.12342868e+00 4.63880111e+00]
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-11 17:18:15 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-11 17:18:19 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251011_171815.pdf
+2025-10-11 17:25:23 - SeismoRainPlotting - INFO - Buscando archivos JSON en: DTA
+2025-10-11 17:25:23 - SeismoRainPlotting - INFO - Archivo JSON más reciente encontrado: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-11 17:25:23 - SeismoRainPlotting - INFO - Usando JSON real: DTA/2025/10/03/SIS/EC.REVS2.SIS_rpi-5_4513_20251003_0300.json
+2025-10-11 17:25:23 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-11 17:25:23 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [4.49219795e-04 5.15821652e-01 1.03119409e+00 1.54656652e+00
+ 2.06193895e+00 2.57731138e+00 3.09268382e+00 3.60805625e+00
+ 4.12342868e+00 4.63880111e+00]
+2025-10-11 17:25:23 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-11 17:25:23 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-11 17:25:24 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-11 17:25:24 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-11 17:25:24 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-11 17:25:24 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-11 17:25:24 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-11 17:25:24 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-11 17:25:24 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-11 17:25:24 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-11 17:25:24 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-11 17:25:28 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251011_172524.pdf
