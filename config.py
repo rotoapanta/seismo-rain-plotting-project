@@ -12,6 +12,17 @@
 # =============================================================================
 # 1. CONFIGURACIÓN GENERAL Y DE SALIDA
 # =============================================================================
+
+# --- Modo de Ejecución ---
+# Si True, el script buscará un archivo para una fecha y hora específicas.
+# Si False, el script usará el archivo JSON más reciente que encuentre en DTA_DIR.
+USE_TARGET_DATETIME = False
+
+# Fecha y hora objetivo (solo si USE_TARGET_DATETIME es True)
+TARGET_DATE = '2025-10-03'  # Formato YYYY-MM-DD
+TARGET_HOUR = 14            # Hora en formato 24h (0-23)
+
+
 # --- Tamaño y Orientación de la Hoja ---
 PAPER_SIZES_CM = {
     'A5': (14.8, 21.0), 'A4': (21.0, 29.7), 'A3': (29.7, 42.0),
@@ -40,6 +51,16 @@ POPUP_WINDOW = False
 # =============================================================================
 # --- Fuentes de Datos ---
 DTA_DIR = 'DTA'
+
+# Ruta manual para buscar datos (relativa a DTA_DIR). Si se define, el script buscará el archivo
+# más reciente solo en esta carpeta. Ej: '2025/09/26'.
+# Tiene prioridad solo si USE_TARGET_DATETIME es False.
+MANUAL_SEARCH_PATH = '2025/09/29/RGA' # por ejemplo: '2025/03/10'
+
+# Si True, acumula (suma) los valores de todos los JSON en la ruta manual. 
+# Si False, solo usa el archivo más reciente en esa ruta.
+ACCUMULATE_FILES_IN_PATH = True
+
 RANDOM_SEED = 42
 
 # --- Estaciones Sintéticas ---

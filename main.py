@@ -72,34 +72,142 @@ def find_latest_json(base_dir: Path) -> Optional[Path]:
     return latest
 
 
-def read_real_station_from_json(json_file: Path) -> Dict[str, float]:
+def read_and_accumulate_stations(search_dir: Path) -> Tuple[Dict[str, float], Path]:
+    """Lee y acumula los datos de todos los archivos JSON en un directorio."""
+    json_files = list(search_dir.rglob('*.json'))
+    if not json_files:
+        raise FileNotFoundError(f"No se encontraron archivos JSON en {search_dir}")
+
+    total_precip = 0.0
+    last_station_info = {}
+
+    logger.info(f"Acumulando datos de {len(json_files)} archivos en {search_dir}")
+
+    for json_file in sorted(json_files):
+        try:
+            with json_file.open('r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            lecturas = data.get('LECTURAS', [])
+            if lecturas:
+                precip_in_file = sum(float(reading.get('NIVEL', 0.0)) for reading in lecturas)
+                total_precip += precip_in_file
+                
+                logger.info(f"  -> Archivo: {json_file.name}, Precipitación: {precip_in_file:.2f} mm")
+
+                # Guardar la información de la última estación para lat/lon/nombre
+                last_reading = lecturas[-1]
+                last_station_info['lat'] = float(last_reading.get('LATITUD'))
+                last_station_info['lon'] = float(last_reading.get('LONGITUD'))
+                last_station_info['station_id'] = str(data.get('NOMBRE') or data.get('IDENTIFICADOR') or 'ACCUMULATED')
+            else:
+                logger.warning(f"Omitiendo archivo {json_file.name} por no contener lecturas.")
+        except Exception as e:
+            logger.warning(f"Omitiendo archivo {json_file.name} debido a un error: {e}")
+            continue
+
+    if not last_station_info:
+        raise ValueError("No se encontraron lecturas válidas en ningún archivo JSON.")
+
+    logger.info(f" -> Suma total de precipitación: {total_precip:.2f} mm")
+
+    accumulated_station = {
+        'station_id': last_station_info['station_id'],
+        'lat': last_station_info['lat'],
+        'lon': last_station_info['lon'],
+        'precip_mm': max(0.0, total_precip)
+    }
+    
+    # Usamos el directorio como "archivo" de origen para el log
+    return accumulated_station, search_dir
+
+def read_real_station_from_json(json_file: Path) -> Tuple[Dict[str, float], Path]:
     """
-    Lee una estación desde un archivo JSON con estructura tipo RGA.
-    Usa la última lectura en el arreglo 'LECTURAS'.
-    Usa LATITUD, LONGITUD y toma NIVEL como precip_mm (si no existe, 0.0).
+    Lee una estación desde un archivo JSON y devuelve los datos y la ruta del archivo.
     """
     with json_file.open('r', encoding='utf-8') as f:
         data = json.load(f)
     lecturas = data.get('LECTURAS', [])
     if not lecturas:
         raise ValueError(f"El JSON {json_file} no contiene 'LECTURAS'.")
+    
+    precip = sum(float(reading.get('NIVEL', 0.0)) for reading in lecturas)
+
     last = lecturas[-1]
     lat = float(last.get('LATITUD'))
     lon = float(last.get('LONGITUD'))
-    precip = float(last.get('NIVEL', 0.0))
     station_id = str(data.get('NOMBRE') or data.get('IDENTIFICADOR') or 'JSON_STATION')
-    logger.info(f"Usando JSON real: {json_file}")
-    return {
+    
+    station_data = {
         'station_id': station_id,
         'lat': lat,
         'lon': lon,
         'precip_mm': max(0.0, precip)
     }
+    return station_data, json_file
 
 
-def get_real_station() -> Dict[str, float]:
-    """Obtiene la estación real desde el JSON más reciente en DTA. Si no hay, lanza error."""
+def find_specific_json(base_dir: Path, target_date: str, target_hour: int) -> Optional[Path]:
+    """Busca un archivo JSON para una fecha y hora específicas."""
+    try:
+        dt = datetime.strptime(target_date, '%Y-%m-%d')
+        year = dt.strftime('%Y')
+        month = dt.strftime('%m')
+        day = dt.strftime('%d')
+        hour_str = f'{target_hour:02d}00'
+
+        # Construir el patrón de búsqueda, ej: *20250926_1400.json
+        file_pattern = f'*_{dt.year}{dt.month:02d}{dt.day:02d}_{hour_str}.json'
+        
+        # Buscar en el subdirectorio correspondiente
+        search_path = base_dir / year / month / day
+        if not search_path.exists():
+            logger.warning(f"El directorio {search_path} no existe.")
+            return None
+
+        matches = list(search_path.glob(file_pattern))
+        if matches:
+            logger.info(f"Archivo encontrado para la fecha y hora especificadas: {matches[0]}")
+            return matches[0]
+        else:
+            logger.warning(f"No se encontró ningún archivo para el patrón {file_pattern} en {search_path}")
+            return None
+    except Exception as e:
+        logger.error(f"Error al buscar el archivo específico: {e}")
+        return None
+
+def get_real_station() -> Tuple[Dict[str, float], Path]:
+    """Obtiene la estación real y la ruta del archivo de origen según la configuración."""
     base = Path(CFG.DTA_DIR)
+
+    if getattr(CFG, 'USE_TARGET_DATETIME', False):
+        logger.info("Modo de fecha/hora objetivo activado.")
+        target_date = getattr(CFG, 'TARGET_DATE', '')
+        target_hour = getattr(CFG, 'TARGET_HOUR', -1)
+        
+        if not target_date or not (0 <= target_hour <= 23):
+            raise ValueError("TARGET_DATE y TARGET_HOUR deben estar definidos y ser válidos en config.py")
+
+        specific_json = find_specific_json(base, target_date, target_hour)
+        if specific_json:
+            return read_real_station_from_json(specific_json)
+        else:
+            raise FileNotFoundError(f"No se pudo encontrar un archivo para la fecha {target_date} y hora {target_hour}.")
+    
+    manual_path = getattr(CFG, 'MANUAL_SEARCH_PATH', None)
+    if manual_path:
+        search_dir = base / manual_path
+        logger.info(f"Modo de ruta manual activado. Buscando en: {search_dir}")
+        
+        if getattr(CFG, 'ACCUMULATE_FILES_IN_PATH', False):
+            return read_and_accumulate_stations(search_dir)
+        else:
+            latest_json = find_latest_json(search_dir)
+            if latest_json is None:
+                raise FileNotFoundError(f"No se encontró ningún archivo JSON en la ruta manual: {search_dir}")
+            return read_real_station_from_json(latest_json)
+
+    logger.info("Buscando el archivo JSON más reciente en todo el directorio DTA.")
     latest_json = find_latest_json(base)
     if latest_json is None:
         raise FileNotFoundError(f"No se encontró ningún archivo JSON en {base} (búsqueda recursiva).")
@@ -1106,8 +1214,9 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
 # ----------------------------
 
 def main() -> None:
-    # Obtener estación real desde JSON más reciente en DTA
-    real = get_real_station()
+    # Obtener estación real y la ruta del archivo de origen
+    real, source_file = get_real_station()
+    logger.warning(f"--- INICIANDO PROCESO CON DATOS DE: {source_file.name} ---")
 
     # Generar sintéticas
     syn = generate_synthetic_stations(real)
