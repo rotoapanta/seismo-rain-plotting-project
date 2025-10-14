@@ -1045,6 +1045,7 @@ def build_timeseries(search_dir: Path) -> Dict[str, List[Tuple[datetime, float]]
 
 
 def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_dir: Path, image_format: str,
+                    stations: List[Dict[str, float]], extent: Tuple[float, float, float, float],
                     style: str = 'bar', cumulative: bool = False) -> List[Path]:
     """Genera gráficas de series temporales reutilizando el formato de la hoja de isoyetas."""
     ensure_dir(str(output_dir))
@@ -1077,14 +1078,9 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
                 size_cm = getattr(CFG, 'TIMESERIES_SIZE_CM', (10.0, 10.0))
                 W_cm, H_cm = [float(v) for v in size_cm]
                 L_cm, B_cm = off_x_cm, off_y_cm
-                left = max(0.0, min(0.95, L_cm / fig_w_cm))
-                bottom = max(0.0, min(0.95, B_cm / fig_h_cm))
-                right = min(1.0, (L_cm + W_cm) / fig_w_cm)
-                top = min(1.0, (B_cm + H_cm) / fig_h_cm)
-                if right <= left:
-                    right = min(0.999, left + 1e-3)
-                if top <= bottom:
-                    top = min(0.999, bottom + 1e-3)
+                left, bottom, right, top = max(0.0, min(0.95, L_cm / fig_w_cm)), max(0.0, min(0.95, B_cm / fig_h_cm)), min(1.0, (L_cm + W_cm) / fig_w_cm), min(1.0, (B_cm + H_cm) / fig_h_cm)
+                if right <= left: right = min(0.999, left + 1e-3)
+                if top <= bottom: top = min(0.999, bottom + 1e-3)
                 fig.subplots_adjust(left=left, right=right, bottom=bottom, top=top)
                 applied_anchor = True
             except Exception as e:
@@ -1101,14 +1097,9 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
                 H_cm = max(0.1, fig_h_cm - T_cm - B_cm_cfg)
                 B_cm = fig_h_cm - T_cm - H_cm
 
-                left = max(0.0, min(0.95, L_cm / fig_w_cm))
-                bottom = max(0.0, min(0.95, B_cm / fig_h_cm))
-                right = min(1.0, (L_cm + W_cm) / fig_w_cm)
-                top = min(1.0, (B_cm + H_cm) / fig_h_cm)
-                if right <= left:
-                    right = min(0.999, left + 1e-3)
-                if top <= bottom:
-                    top = min(0.999, bottom + 1e-3)
+                left, bottom, right, top = max(0.0, min(0.95, L_cm / fig_w_cm)), max(0.0, min(0.95, B_cm / fig_h_cm)), min(1.0, (L_cm + W_cm) / fig_w_cm), min(1.0, (B_cm + H_cm) / fig_h_cm)
+                if right <= left: right = min(0.999, left + 1e-3)
+                if top <= bottom: top = min(0.999, bottom + 1e-3)
                 fig.subplots_adjust(left=left, right=right, bottom=bottom, top=top)
                 applied_anchor = True
             except Exception as e:
@@ -1124,41 +1115,26 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
                 map_size = getattr(CFG, 'TIMESERIES_SIZE_CM', None)
                 if isinstance(map_size, (list, tuple)) and len(map_size) == 2:
                     W_cm, H_cm = float(map_size[0]), float(map_size[1])
-                    left = max(0.0, min(0.95, L_cm / fig_w_cm))
-                    bottom = max(0.0, min(0.95, B_cm / fig_h_cm))
-                    right = min(1.0, (L_cm + W_cm) / fig_w_cm)
-                    top = min(1.0, (B_cm + H_cm) / fig_h_cm)
-                    if right <= left:
-                        right = min(0.999, left + 1e-3)
-                    if top <= bottom:
-                        top = min(0.999, bottom + 1e-3)
+                    left, bottom, right, top = max(0.0, min(0.95, L_cm / fig_w_cm)), max(0.0, min(0.95, B_cm / fig_h_cm)), min(1.0, (L_cm + W_cm) / fig_w_cm), min(1.0, (B_cm + H_cm) / fig_h_cm)
+                    if right <= left: right = min(0.999, left + 1e-3)
+                    if top <= bottom: top = min(0.999, bottom + 1e-3)
                     fig.subplots_adjust(left=left, right=right, bottom=bottom, top=top)
                 else:
-                    left = max(0.0, min(0.9, (L_cm / 2.54) / fig_w))
-                    right = max(left + 0.05, min(1.0, 1.0 - (R_cm / 2.54) / fig_w))
-                    bottom = max(0.0, min(0.9, (B_cm / 2.54) / fig_h))
-                    top = max(bottom + 0.05, min(1.0, 1.0 - (T_cm / 2.54) / fig_h))
+                    left, right, bottom, top = max(0.0, min(0.9, (L_cm / 2.54) / fig_w)), max(left + 0.05, min(1.0, 1.0 - (R_cm / 2.54) / fig_w)), max(0.0, min(0.9, (B_cm / 2.54) / fig_h)), max(bottom + 0.05, min(1.0, 1.0 - (T_cm / 2.54) / fig_h))
                     fig.subplots_adjust(left=left, right=right, bottom=bottom, top=top)
             else:
-                left = max(0.0, min(0.9, (L_cm / 2.54) / fig_w))
-                right = max(left + 0.05, min(1.0, 1.0 - (R_cm / 2.54) / fig_w))
-                bottom = max(0.0, min(0.9, (B_cm / 2.54) / fig_h))
-                top = max(bottom + 0.05, min(1.0, 1.0 - (T_cm / 2.54) / fig_h))
+                left, right, bottom, top = max(0.0, min(0.9, (L_cm / 2.54) / fig_w)), max(left + 0.05, min(1.0, 1.0 - (R_cm / 2.54) / fig_w)), max(0.0, min(0.9, (B_cm / 2.54) / fig_h)), max(bottom + 0.05, min(1.0, 1.0 - (T_cm / 2.54) / fig_h))
                 fig.subplots_adjust(left=left, right=right, bottom=bottom, top=top)
 
         title_fontdict = {}
         fs = getattr(CFG, 'TIMESERIES_TITLE_FONT_SIZE', None)
-        if fs is not None:
-            title_fontdict['size'] = fs
+        if fs is not None: title_fontdict['size'] = fs
         fw = getattr(CFG, 'TIMESERIES_TITLE_FONT_WEIGHT', None)
-        if fw is not None:
-            title_fontdict['weight'] = fw
+        if fw is not None: title_fontdict['weight'] = fw
         ff = getattr(CFG, 'TIMESERIES_TITLE_FONT_FAMILY', None)
-        if ff is not None:
-            title_fontdict['family'] = ff
+        if ff is not None: title_fontdict['family'] = ff
         fn = getattr(CFG, 'TIMESERIES_TITLE_FONT_NAME', None)
-        if fn is not None:
-            title_fontdict['fontname'] = fn
+        if fn is not None: title_fontdict['fontname'] = fn
         title_color = getattr(CFG, 'TIMESERIES_TITLE_COLOR', 'black')
         title_loc = getattr(CFG, 'TIMESERIES_TITLE_LOC', 'center')
         title_pad = getattr(CFG, 'TIMESERIES_TITLE_PAD_PT', None)
@@ -1179,13 +1155,8 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
                 alpha = float(getattr(CFG, 'DOUBLE_MARGINS_ALPHA', 1.0))
 
                 def add_frame(l_cm, r_cm, t_cm, b_cm):
-                    left = max(0.0, min(1.0, l_cm / fig_w_cm))
-                    bottom = max(0.0, min(1.0, b_cm / fig_h_cm))
-                    width = max(1e-6, 1.0 - (l_cm + r_cm) / fig_w_cm)
-                    height = max(1e-6, 1.0 - (t_cm + b_cm) / fig_h_cm)
-                    rect = Rectangle((left, bottom), width, height,
-                                     fill=False, edgecolor=color, linewidth=lw, alpha=alpha,
-                                     transform=fig.transFigure, clip_on=False)
+                    left, bottom, width, height = max(0.0, min(1.0, l_cm / fig_w_cm)), max(0.0, min(1.0, b_cm / fig_h_cm)), max(1e-6, 1.0 - (l_cm + r_cm) / fig_w_cm), max(1e-6, 1.0 - (t_cm + b_cm) / fig_h_cm)
+                    rect = Rectangle((left, bottom), width, height, fill=False, edgecolor=color, linewidth=lw, alpha=alpha, transform=fig.transFigure, clip_on=False)
                     fig.add_artist(rect)
 
                 add_frame(L_cm, R_cm, T_cm, B_cm)
@@ -1227,12 +1198,7 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
                     heights_cm = [box_h_cm] * n_boxes
 
                 def cm_to_frac(x_cm, y_cm, w_cm, h_cm):
-                    return (
-                        max(0.0, min(1.0, x_cm / fig_w_cm)),
-                        max(0.0, min(1.0, y_cm / fig_h_cm)),
-                        max(1e-6, min(1.0, w_cm / fig_w_cm)),
-                        max(1e-6, min(1.0, h_cm / fig_h_cm)),
-                    )
+                    return (max(0.0, min(1.0, x_cm / fig_w_cm)), max(0.0, min(1.0, y_cm / fig_h_cm)), max(1e-6, min(1.0, w_cm / fig_w_cm)), max(1e-6, min(1.0, h_cm / fig_h_cm)))
 
                 y_cursor = fig_h_cm - top_margin_cm
                 for i in range(n_boxes):
@@ -1246,8 +1212,7 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
 
                     if getattr(CFG, 'SIDE_BOX_DOUBLE_BORDER', False):
                         offset_cm = float(getattr(CFG, 'SIDE_BOX_DOUBLE_BORDER_OFFSET_CM', 0.1))
-                        offset_x = offset_cm / fig_w_cm
-                        offset_y = offset_cm / fig_h_cm
+                        offset_x, offset_y = offset_cm / fig_w_cm, offset_cm / fig_h_cm
                         rect2 = Rectangle((left + offset_x, bottom + offset_y), width - 2 * offset_x, height - 2 * offset_y, fill=False, edgecolor=edge_color, linewidth=edge_lw_pt, transform=fig.transFigure, clip_on=False)
                         fig.add_artist(rect2)
 
@@ -1263,23 +1228,14 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
                             if Path(logo_path).exists():
                                 logo_img = mpimg.imread(logo_path)
                                 img_w_cm = getattr(CFG, 'LOGO_WIDTH_CM', None)
-                                if img_w_cm is None:
-                                    img_w_cm = getattr(CFG, 'SIDE_BOX_IMAGE_WIDTH_CM', None)
+                                if img_w_cm is None: img_w_cm = getattr(CFG, 'SIDE_BOX_IMAGE_WIDTH_CM', None)
                                 img_h_cm = getattr(CFG, 'LOGO_HEIGHT_CM', None)
-                                if img_h_cm is None:
-                                    img_h_cm = getattr(CFG, 'SIDE_BOX_IMAGE_HEIGHT_CM', None)
+                                if img_h_cm is None: img_h_cm = getattr(CFG, 'SIDE_BOX_IMAGE_HEIGHT_CM', None)
 
-                                resize_to_fit = bool(getattr(CFG, 'LOGO_RESIZE_TO_FIT', True))
-
-                                if resize_to_fit:
+                                if bool(getattr(CFG, 'LOGO_RESIZE_TO_FIT', True)):
                                     margin_cm = getattr(CFG, 'LOGO_MARGIN_CM', None)
-                                    if margin_cm is None:
-                                        margin_cm = getattr(CFG, 'SIDE_BOX_IMAGE_MARGIN_CM', None)
-                                    if margin_cm is not None:
-                                        margin_x = float(margin_cm) / fig_w_cm
-                                        margin_y = float(margin_cm) / fig_h_cm
-                                    else:
-                                        margin_x = margin_y = 0.05
+                                    if margin_cm is None: margin_cm = getattr(CFG, 'SIDE_BOX_IMAGE_MARGIN_CM', None)
+                                    margin_x, margin_y = (float(margin_cm) / fig_w_cm, float(margin_cm) / fig_h_cm) if margin_cm is not None else (0.05, 0.05)
 
                                     avail_left, avail_bottom, avail_width, avail_height = left + margin_x, bottom + margin_y, max(1e-6, width - 2 * margin_x), max(1e-6, height - 2 * margin_y)
 
@@ -1287,18 +1243,14 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
                                         logo_rect = [avail_left, avail_bottom, avail_width, avail_height]
                                     else:
                                         try:
-                                            img_h_px, img_w_px = logo_img.shape[0], logo_img.shape[1]
-                                            aspect = img_h_px / max(1, img_w_px)
+                                            aspect = logo_img.shape[0] / max(1, logo_img.shape[1])
                                         except Exception:
                                             aspect = 1.0
 
-                                        if img_w_cm is not None and img_h_cm is None:
-                                            img_h_cm = float(img_w_cm) * aspect
-                                        if img_h_cm is not None and img_w_cm is None:
-                                            img_w_cm = float(img_h_cm) / max(1e-9, aspect)
+                                        if img_w_cm is not None and img_h_cm is None: img_h_cm = float(img_w_cm) * aspect
+                                        if img_h_cm is not None and img_w_cm is None: img_w_cm = float(img_h_cm) / max(1e-9, aspect)
 
                                         logo_w, logo_h = float(img_w_cm) / fig_w_cm, float(img_h_cm) / fig_h_cm
-
                                         scale = min(avail_width / logo_w, avail_height / logo_h, 1.0)
                                         logo_w *= scale
                                         logo_h *= scale
@@ -1310,35 +1262,26 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
                                     logo_ax.axis('off')
                                 else:
                                     try:
-                                        img_h_px, img_w_px = logo_img.shape[0], logo_img.shape[1]
-                                        aspect = img_h_px / max(1, img_w_px)
+                                        aspect = logo_img.shape[0] / max(1, logo_img.shape[1])
                                     except Exception:
                                         aspect = 1.0
 
-                                    if img_w_cm is not None and img_h_cm is None:
-                                        img_h_cm = float(img_w_cm) * aspect
-                                    if img_h_cm is not None and img_w_cm is None:
-                                        img_w_cm = float(img_h_cm) / max(1e-9, aspect)
+                                    if img_w_cm is not None and img_h_cm is None: img_h_cm = float(img_w_cm) * aspect
+                                    if img_h_cm is not None and img_w_cm is None: img_w_cm = float(img_h_cm) / max(1e-9, aspect)
 
                                     if img_w_cm is None and img_h_cm is None:
                                         logo_rect = [left, bottom, width, height]
                                     else:
                                         logo_w, logo_h = float(img_w_cm) / fig_w_cm, float(img_h_cm) / fig_h_cm
-
                                         anchor = str(getattr(CFG, 'LOGO_ANCHOR', 'center')).lower()
                                         off_x_cm, off_y_cm = [float(v) for v in getattr(CFG, 'LOGO_OFFSET_CM', (0.0, 0.0))]
                                         off_x, off_y = off_x_cm / fig_w_cm, off_y_cm / fig_h_cm
 
-                                        if anchor in ('top-left', 'left-top', 'tl'):
-                                            logo_left, logo_bottom = left + off_x, bottom + height - logo_h - off_y
-                                        elif anchor in ('top-right', 'right-top', 'tr'):
-                                            logo_left, logo_bottom = left + width - logo_w - off_x, bottom + height - logo_h - off_y
-                                        elif anchor in ('bottom-left', 'left-bottom', 'bl'):
-                                            logo_left, logo_bottom = left + off_x, bottom + off_y
-                                        elif anchor in ('bottom-right', 'right-bottom', 'br'):
-                                            logo_left, logo_bottom = left + width - logo_w - off_x, bottom + off_y
-                                        else:  # center
-                                            logo_left, logo_bottom = left + (width - logo_w) / 2.0, bottom + (height - logo_h) / 2.0
+                                        if anchor in ('top-left', 'left-top', 'tl'): logo_left, logo_bottom = left + off_x, bottom + height - logo_h - off_y
+                                        elif anchor in ('top-right', 'right-top', 'tr'): logo_left, logo_bottom = left + width - logo_w - off_x, bottom + height - logo_h - off_y
+                                        elif anchor in ('bottom-left', 'left-bottom', 'bl'): logo_left, logo_bottom = left + off_x, bottom + off_y
+                                        elif anchor in ('bottom-right', 'right-bottom', 'br'): logo_left, logo_bottom = left + width - logo_w - off_x, bottom + off_y
+                                        else: logo_left, logo_bottom = left + (width - logo_w) / 2.0, bottom + (height - logo_h) / 2.0
 
                                         logo_rect = [logo_left, logo_bottom, logo_w, logo_h]
 
@@ -1350,7 +1293,6 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
                                         from matplotlib.patches import Rectangle as RectClip
                                         clip_rect = RectClip((left, bottom), width, height, transform=fig.transFigure)
                                         im.set_clip_path(clip_rect)
-
                             else:
                                 logger.warning(f"No se encontró la imagen del logo: {logo_path}")
                         except Exception as e:
@@ -1405,12 +1347,7 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
                     widths_cm = [box_w_cm] * n_boxes
 
                 def cm_to_frac(x_cm, y_cm, w_cm, h_cm):
-                    return (
-                        max(0.0, min(1.0, x_cm / fig_w_cm)),
-                        max(0.0, min(1.0, y_cm / fig_h_cm)),
-                        max(1e-6, min(1.0, w_cm / fig_w_cm)),
-                        max(1e-6, min(1.0, h_cm / fig_h_cm)),
-                    )
+                    return (max(0.0, min(1.0, x_cm / fig_w_cm)), max(0.0, min(1.0, y_cm / fig_h_cm)), max(1e-6, min(1.0, w_cm / fig_w_cm)), max(1e-6, min(1.0, h_cm / fig_h_cm)))
 
                 x_cursor = left_margin
                 for i in range(n_boxes):
@@ -1455,6 +1392,43 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
                     except Exception as e:
                         logger.warning(f"Advertencia al dibujar la línea divisoria del footer: {e}")
 
+                    minimap_idx = getattr(CFG, 'MINIMAP_BOX_INDEX', -1)
+                    if i == minimap_idx:
+                        try:
+                            import cartopy.crs as ccrs
+                            import cartopy.feature as cfeature
+                            from matplotlib.patches import Polygon
+
+                            pad_cm = float(getattr(CFG, 'MINIMAP_PADDING_CM', 0.1))
+                            content_h_cm = h_cm - tit_row_h_cm
+                            ax_left, ax_bottom, ax_width, ax_height = (x_cm + pad_cm) / fig_w_cm, (y_cm + pad_cm) / fig_h_cm, (w_cm - 2 * pad_cm) / fig_w_cm, (content_h_cm - 2 * pad_cm) / fig_h_cm
+
+                            minimap_ax = fig.add_axes([ax_left, ax_bottom, ax_width, ax_height], projection=ccrs.PlateCarree())
+
+                            resolution = getattr(CFG, 'MINIMAP_CARTOPY_RESOLUTION', '110m')
+                            land_color, ocean_color, coastline_color, border_color = getattr(CFG, 'MINIMAP_LAND_COLOR', '#E0E0E0'), getattr(CFG, 'MINIMAP_OCEAN_COLOR', '#FFFFFF'), getattr(CFG, 'MINIMAP_COASTLINE_COLOR', 'black'), getattr(CFG, 'MINIMAP_BORDER_COLOR', 'gray')
+
+                            minimap_ax.add_feature(cfeature.LAND, facecolor=land_color, edgecolor='none')
+                            minimap_ax.add_feature(cfeature.OCEAN, facecolor=ocean_color, edgecolor='none')
+                            minimap_ax.add_feature(cfeature.COASTLINE.with_scale(resolution), edgecolor=coastline_color)
+                            minimap_ax.add_feature(cfeature.BORDERS.with_scale(resolution), edgecolor=border_color, linestyle=':')
+
+                            minimap_ax.scatter([st['lon'] for st in stations], [st['lat'] for st in stations], c='gray', s=15, zorder=10, transform=ccrs.PlateCarree())
+                            current_station = next((st for st in stations if st['station_id'] == sid), None)
+                            if current_station:
+                                minimap_ax.scatter([current_station['lon']], [current_station['lat']], c='red', edgecolors='white', s=50, zorder=11, transform=ccrs.PlateCarree())
+
+                            extent_poly = Polygon([(extent[0], extent[2]), (extent[1], extent[2]), (extent[1], extent[3]), (extent[0], extent[3])], closed=True, color=getattr(CFG, 'MINIMAP_EXTENT_COLOR', 'red'), alpha=getattr(CFG, 'MINIMAP_EXTENT_ALPHA', 0.5), transform=ccrs.PlateCarree())
+                            minimap_ax.add_patch(extent_poly)
+
+                            zoom_level = float(getattr(CFG, 'MINIMAP_ZOOM_LEVEL', 2.0))
+                            minimap_ax.set_extent([extent[0]-zoom_level, extent[1]+zoom_level, extent[2]-zoom_level, extent[3]+zoom_level], crs=ccrs.PlateCarree())
+
+                        except ImportError:
+                            logger.warning("cartopy no está instalado. No se puede dibujar el minimapa.")
+                        except Exception as e:
+                            logger.warning(f"Advertencia al insertar minimapa con Cartopy: {e}")
+
                     symbology_idx = getattr(CFG, 'SYMBOLOGY_BOX_INDEX', 0)
                     if i == symbology_idx:
                         try:
@@ -1482,6 +1456,31 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
                             legend = sym_ax.legend(legend_items, legend_labels, loc='center', fontsize=9, frameon=False, facecolor='none')
                         except Exception as e:
                             logger.warning(f"Advertencia al insertar simbología: {e}")
+
+                    north_arrow_scale_idx = getattr(CFG, 'NORTH_ARROW_SCALE_BOX_INDEX', -1)
+                    if i == north_arrow_scale_idx:
+                        try:
+                            pad_cm = float(getattr(CFG, 'NORTH_ARROW_SCALE_PADDING_CM', 0.3))
+                            content_h_cm = h_cm - tit_row_h_cm
+                            
+                            ax_left, ax_bottom, ax_width, ax_height = (x_cm + pad_cm) / fig_w_cm, (y_cm + pad_cm) / fig_h_cm, (w_cm - 2 * pad_cm) / fig_w_cm, (content_h_cm - 2 * pad_cm) / fig_h_cm
+                            
+                            ns_ax = fig.add_axes([ax_left, ax_bottom, ax_width, ax_height])
+                            ns_ax.patch.set_visible(False)
+                            ns_ax.set_xlim(0, 1)
+                            ns_ax.set_ylim(0, 1)
+                            ns_ax.axis('off')
+
+                            draw_north_arrow(ns_ax)
+                            
+                            scale_bar_style = getattr(CFG, 'SCALE_BAR_STYLE', 'simple')
+                            if scale_bar_style == 'segmented':
+                                draw_segmented_scale_bar(ns_ax, extent)
+                            else:
+                                draw_simple_scale_bar(ns_ax, extent)
+
+                        except Exception as e:
+                            logger.warning(f"Advertencia al insertar rosa de los vientos y escala: {e}")
 
                     x_cursor += w_cm + gap_cm
             except Exception as e:
@@ -1551,7 +1550,7 @@ def main() -> None:
             ts_search_dir = source_file.parent
         ts_output_dir = Path(CFG.OUTPUT_DIR).parent / 'timeseries'
         series_map = build_timeseries(ts_search_dir)
-        plot_timeseries(series_map, ts_output_dir, CFG.IMAGE_FORMAT, style='bar', cumulative=False)
+        plot_timeseries(series_map, ts_output_dir, CFG.IMAGE_FORMAT, stations, extent, style='bar', cumulative=False)
     except Exception as e:
         logger.warning(f"No se pudo generar la serie temporal: {e}")
 
