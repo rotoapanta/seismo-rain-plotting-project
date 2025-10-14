@@ -533,22 +533,22 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
     if hasattr(ax, 'gridlines'):
         try:
             import cartopy.crs as ccrs
-            gl = ax.gridlines(draw_labels=True, linewidth=0.5, color='gray', alpha=0.5, linestyle='--')
+            gl = ax.gridlines(draw_labels=True, linewidth=0.5, color=getattr(CFG, 'ISOYETAS_TICK_LABEL_COLOR', 'darkgray'), alpha=0.5, linestyle='--')
             gl.top_labels = False
             gl.right_labels = False
-            gl.xlabel_style = {'size': 9}
-            gl.ylabel_style = {'size': 9}
+            gl.xlabel_style = {'size': getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_SIZE', 9), 'color': getattr(CFG, 'ISOYETAS_AXIS_LABEL_COLOR', '#000000'), 'weight': getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_WEIGHT', 'normal')}
+            gl.ylabel_style = {'size': getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_SIZE', 9), 'color': getattr(CFG, 'ISOYETAS_AXIS_LABEL_COLOR', '#000000'), 'weight': getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_WEIGHT', 'normal')}
             logger.info("Etiquetas de coordenadas añadidas al mapa.")
         except Exception as e:
             logger.warning(f"No se pudieron añadir etiquetas de coordenadas: {e}")
-            ax.set_xlabel(getattr(CFG, 'ISOYETAS_X_LABEL', 'Longitud (°)'), fontsize=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_SIZE', 9), color=getattr(CFG, 'ISOYETAS_AXIS_LABEL_COLOR', 'black'), fontweight=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_WEIGHT', 'normal'))
-            ax.set_ylabel(getattr(CFG, 'ISOYETAS_Y_LABEL', 'Latitud (°)'), fontsize=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_SIZE', 9), color=getattr(CFG, 'ISOYETAS_AXIS_LABEL_COLOR', 'black'), fontweight=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_WEIGHT', 'normal'))
+            ax.set_xlabel(getattr(CFG, 'ISOYETAS_X_LABEL', 'Longitud (°)'), fontsize=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_SIZE', 9), color=getattr(CFG, 'ISOYETAS_AXIS_LABEL_COLOR', '#000000'), fontweight=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_WEIGHT', 'normal'))
+            ax.set_ylabel(getattr(CFG, 'ISOYETAS_Y_LABEL', 'Latitud (°)'), fontsize=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_SIZE', 9), color=getattr(CFG, 'ISOYETAS_AXIS_LABEL_COLOR', '#000000'), fontweight=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_WEIGHT', 'normal'))
     else:
-        ax.set_xlabel(getattr(CFG, 'ISOYETAS_X_LABEL', 'Longitud (°)'), fontsize=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_SIZE', 9), color=getattr(CFG, 'ISOYETAS_AXIS_LABEL_COLOR', 'black'), fontweight=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_WEIGHT', 'normal'))
-        ax.set_ylabel(getattr(CFG, 'ISOYETAS_Y_LABEL', 'Latitud (°)'), fontsize=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_SIZE', 9), color=getattr(CFG, 'ISOYETAS_AXIS_LABEL_COLOR', 'black'), fontweight=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_WEIGHT', 'normal'))
+        ax.set_xlabel(getattr(CFG, 'ISOYETAS_X_LABEL', 'Longitud (°)'), fontsize=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_SIZE', 9), color=getattr(CFG, 'ISOYETAS_AXIS_LABEL_COLOR', '#000000'), fontweight=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_WEIGHT', 'normal'))
+        ax.set_ylabel(getattr(CFG, 'ISOYETAS_Y_LABEL', 'Latitud (°)'), fontsize=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_SIZE', 9), color=getattr(CFG, 'ISOYETAS_AXIS_LABEL_COLOR', '#000000'), fontweight=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_WEIGHT', 'normal'))
 
-    ax.tick_params(axis='x', colors=getattr(CFG, 'ISOYETAS_TICK_LABEL_COLOR', 'darkgray'), labelsize=getattr(CFG, 'ISOYETAS_TICK_LABEL_FONT_SIZE', 8))
-    ax.tick_params(axis='y', colors=getattr(CFG, 'ISOYETAS_TICK_LABEL_COLOR', 'darkgray'), labelsize=getattr(CFG, 'ISOYETAS_TICK_LABEL_FONT_SIZE', 8))
+    ax.tick_params(axis='x', colors=getattr(CFG, 'ISOYETAS_TICK_LABEL_COLOR', '#A9A9A9'), labelsize=getattr(CFG, 'ISOYETAS_TICK_LABEL_FONT_SIZE', 8))
+    ax.tick_params(axis='y', colors=getattr(CFG, 'ISOYETAS_TICK_LABEL_COLOR', '#A9A9A9'), labelsize=getattr(CFG, 'ISOYETAS_TICK_LABEL_FONT_SIZE', 8))
     
     title_fontdict = {}
     fs = getattr(CFG, 'ISOYETAS_TITLE_FONT_SIZE', None)
@@ -1515,6 +1515,9 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
         # Marcas menores para horas impares (sin etiqueta)
         ax.xaxis.set_minor_locator(mdates.HourLocator(byhour=range(1, 24, 2)))
         ax.xaxis.set_minor_formatter(plt.NullFormatter())
+
+        ax.tick_params(axis='x', colors=getattr(CFG, 'TIMESERIES_TICK_LABEL_COLOR', '#A9A9A9'), labelsize=getattr(CFG, 'TIMESERIES_TICK_LABEL_FONT_SIZE', 9))
+        ax.tick_params(axis='y', colors=getattr(CFG, 'TIMESERIES_TICK_LABEL_COLOR', '#A9A9A9'), labelsize=getattr(CFG, 'TIMESERIES_TICK_LABEL_FONT_SIZE', 9))
 
         fig.autofmt_xdate()
         ax.grid(True, which='major', ls='--', alpha=0.7)
