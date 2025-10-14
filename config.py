@@ -79,22 +79,44 @@ ISOHYET_ALPHA = 0.6
 # =============================================================================
 # 3. COMPONENTE: MAPA PRINCIPAL
 # =============================================================================
-# --- Posición y Tamaño ---
-MAP_SIZE_CM = (18.0, 18.0)
-MAP_ANCHOR = 'bottom-left'
-MAP_OFFSET_CM = (3.0, 6.0)
-MAP_BOX_CM = None
+# --- Posición y Tamaño para el Mapa de Isoyetas ---
+# Ancho y alto en cm del área donde se dibuja el mapa de isoyetas.
+ISOYETAS_SIZE_CM = (18.0, 14.0)
+# Ancla de la esquina desde donde se calcula la posición ('bottom-left', 'top-left', etc.).
+ISOYETAS_ANCHOR = 'bottom-left'
+# Desplazamiento (offset) en cm (x, y) desde el ancla.
+ISOYETAS_OFFSET_CM = (3.0, 6.0)
+# (Opcional) Define una caja fija [izquierda, abajo, ancho, alto] en cm, ignorando lo anterior.
+ISOYETAS_BOX_CM = None
+
+# --- Posición y Tamaño para Gráficas de Series de Tiempo ---
+# Ancho y alto en cm del área donde se dibuja la gráfica de series de tiempo.
+TIMESERIES_SIZE_CM = (18.0, 10.0)
+# Ancla de la esquina para la posición.
+TIMESERIES_ANCHOR = 'bottom-left'
+# Desplazamiento (offset) en cm (x, y) desde el ancla.
+TIMESERIES_OFFSET_CM = (3.0, 8.0)
 EXTENT = None
 
-# --- Título ---
-TITLE = 'VOLCAN COTOPAXI - MAPA DE ISOYETAS (mm)'
-TITLE_FONT_SIZE = 12
-TITLE_FONT_WEIGHT = 'bold'
-TITLE_FONT_FAMILY = None
-TITLE_FONT_NAME = None
-TITLE_COLOR = 'black'
-TITLE_LOC = 'center'
-TITLE_PAD_PT = 6
+# --- Título para el Mapa de Isoyetas ---
+ISOYETAS_TITLE = 'VOLCAN COTOPAXI - MAPA DE ISOYETAS (mm)'
+ISOYETAS_TITLE_FONT_SIZE = 12
+ISOYETAS_TITLE_FONT_WEIGHT = 'bold'
+ISOYETAS_TITLE_FONT_FAMILY = None
+ISOYETAS_TITLE_FONT_NAME = None
+ISOYETAS_TITLE_COLOR = 'black'
+ISOYETAS_TITLE_LOC = 'center'
+ISOYETAS_TITLE_PAD_PT = 6
+
+# --- Título para Gráficas de Series de Tiempo ---
+TIMESERIES_TITLE = 'VOLCAN COTOPAXI - SERIE DE TIEMPO'
+TIMESERIES_TITLE_FONT_SIZE = 12
+TIMESERIES_TITLE_FONT_WEIGHT = 'bold'
+TIMESERIES_TITLE_FONT_FAMILY = None
+TIMESERIES_TITLE_FONT_NAME = None
+TIMESERIES_TITLE_COLOR = 'black'
+TIMESERIES_TITLE_LOC = 'center'
+TIMESERIES_TITLE_PAD_PT = 6
 
 # --- Mapa de Fondo (Cartopy) ---
 MAP_BACKGROUND = True

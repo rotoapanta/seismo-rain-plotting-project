@@ -3053,3 +3053,686 @@
 2025-10-14 10:03:19 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
 2025-10-14 10:03:24 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_100319.pdf
 2025-10-14 10:03:24 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_100324.pdf
+2025-10-14 11:03:39 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 11:03:39 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 11:03:39 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 11:03:39 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 11:03:39 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 11:03:39 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 11:03:39 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 11:03:39 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 11:03:39 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 11:03:39 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 11:03:39 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 11:03:39 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 11:03:39 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 11:03:39 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 11:03:39 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 11:03:39 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 11:03:40 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 11:03:40 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 11:03:43 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 11:03:43 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 11:03:43 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 11:03:43 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-14 11:03:43 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 11:03:44 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 11:03:44 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 11:03:44 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 11:03:44 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 11:03:44 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 11:03:44 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 11:09:41 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 11:09:41 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 11:09:42 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 11:09:42 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 11:09:42 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 11:09:42 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-14 11:09:42 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 11:09:42 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 11:09:42 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 11:09:42 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 11:09:42 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 11:09:42 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 11:09:42 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 11:09:47 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_110942.pdf
+2025-10-14 11:09:47 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_110947.pdf
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 11:14:10 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 11:14:10 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 11:14:11 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 11:14:11 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-14 11:14:11 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 11:14:11 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 11:14:11 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 11:14:11 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 11:14:11 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 11:14:11 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 11:14:11 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 11:14:15 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_111411.pdf
+2025-10-14 11:14:16 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_111416.pdf
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 11:14:44 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 11:14:44 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 11:14:45 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 11:14:45 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-14 11:14:45 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 11:14:45 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 11:14:45 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 11:14:45 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 11:14:45 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 11:14:45 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 11:14:45 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 11:14:49 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_111445.pdf
+2025-10-14 11:14:49 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_111449.pdf
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 11:23:08 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 11:23:08 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 11:23:09 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 11:23:09 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-14 11:23:09 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 11:23:09 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 11:23:09 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 11:23:09 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 11:23:09 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 11:23:09 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 11:23:09 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 11:23:15 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_112309.pdf
+2025-10-14 11:23:15 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_112315.pdf
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 11:24:34 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 11:24:34 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 11:24:40 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_112434.pdf
+2025-10-14 11:24:41 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_112440.pdf
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 11:25:56 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 11:25:56 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 11:25:57 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 11:25:57 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 11:25:57 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 11:25:57 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-14 11:25:57 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 11:25:57 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 11:25:57 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 11:25:57 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 11:25:57 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 11:25:57 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 11:25:57 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 11:26:03 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_112557.pdf
+2025-10-14 11:26:03 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_112603.pdf
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 11:32:48 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 11:32:48 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 11:32:54 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_113248.pdf
+2025-10-14 11:32:54 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_113254.pdf
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 11:41:03 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 11:41:03 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 11:41:04 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 11:41:04 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 11:41:11 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_114104.pdf
+2025-10-14 11:41:11 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_114111.pdf
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 11:53:30 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 11:53:30 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 11:53:36 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_115330.pdf
+2025-10-14 11:53:36 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_115336.pdf
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 11:53:59 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 11:53:59 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 11:54:00 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 11:54:00 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-14 11:54:00 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 11:54:00 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 11:54:00 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 11:54:00 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 11:54:00 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 11:54:00 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 11:54:00 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 11:54:06 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_115400.pdf
+2025-10-14 11:54:06 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_115406.pdf
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 11:55:07 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 11:55:07 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 11:55:08 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 11:55:08 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 11:55:08 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 11:55:08 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-14 11:55:08 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 11:55:08 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 11:55:08 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 11:55:08 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 11:55:08 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 11:55:08 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 11:55:08 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 11:55:14 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_115508.pdf
+2025-10-14 11:55:14 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_115514.pdf
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 11:56:04 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 11:56:04 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 11:56:05 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 11:56:05 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 11:56:05 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 11:56:05 - SeismoRainPlotting - INFO - Logo insertado desde: images/logo-ig.png
+2025-10-14 11:56:05 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 11:56:05 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 11:56:05 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 11:56:05 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 11:56:05 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 11:56:05 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 11:56:05 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 11:56:11 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_115605.pdf
+2025-10-14 11:56:11 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_115611.pdf
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 12:14:30 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 12:14:30 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 12:14:31 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 12:14:31 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 12:14:31 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 12:14:31 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 12:14:31 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 12:14:31 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 12:14:31 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 12:14:31 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 12:14:36 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_121431.pdf
+2025-10-14 12:14:37 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_121436.pdf
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 12:17:29 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 12:17:29 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 12:17:30 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 12:17:30 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 12:17:30 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 12:17:30 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 12:17:30 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 12:17:30 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 12:17:30 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 12:17:30 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 12:17:30 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 12:17:30 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 12:17:35 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_121730.pdf
+2025-10-14 12:17:35 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_121735.pdf
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 12:22:02 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 12:22:02 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 12:22:03 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 12:22:03 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 12:22:03 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 12:22:03 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 12:22:03 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 12:22:03 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 12:22:03 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 12:22:10 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_122203.pdf
+2025-10-14 12:22:10 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_122210.pdf
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 12:22:56 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 12:22:56 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 12:22:57 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 12:22:57 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 12:22:57 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 12:22:57 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 12:22:57 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 12:22:57 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 12:22:57 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 12:22:57 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 12:22:57 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 12:22:57 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 12:23:03 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_122257.pdf
+2025-10-14 12:23:03 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_122303.pdf
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 12:23:26 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 12:23:26 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 12:23:27 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 12:23:27 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 12:23:27 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 12:23:27 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 12:23:27 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 12:23:27 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 12:23:27 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 12:23:27 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 12:23:27 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 12:23:27 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 12:23:33 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_122327.pdf
+2025-10-14 12:23:33 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_122333.pdf
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 12:24:11 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 12:24:11 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 12:24:12 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 12:24:12 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 12:24:12 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 12:24:12 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 12:24:12 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 12:24:12 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 12:24:12 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 12:24:16 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_122412.pdf
+2025-10-14 12:24:17 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_122416.pdf
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 12:32:37 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 12:32:37 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 12:32:38 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 12:32:38 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 12:32:38 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 12:32:38 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 12:32:38 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 12:32:38 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 12:32:38 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 12:32:44 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_123238.pdf
+2025-10-14 12:32:44 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_123244.pdf
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/09/29/RGA
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO - Acumulando datos de 12 archivos en DTA/2025/09/29/RGA
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0000.json, Precipitación: 0.00 mm
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0100.json, Precipitación: 0.00 mm
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0700.json, Precipitación: 0.00 mm
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0800.json, Precipitación: 0.00 mm
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_0900.json, Precipitación: 0.00 mm
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1000.json, Precipitación: 1.50 mm
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1100.json, Precipitación: 0.00 mm
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1200.json, Precipitación: 0.00 mm
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1300.json, Precipitación: 0.00 mm
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1400.json, Precipitación: 0.00 mm
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1500.json, Precipitación: 2.00 mm
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20250929_1600.json, Precipitación: 0.25 mm
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 3.75 mm
+2025-10-14 12:35:41 - SeismoRainPlotting - WARNING - --- INICIANDO PROCESO CON DATOS DE: RGA ---
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [2.32268238e-03 9.34140886e-01 1.86595909e+00 2.79777729e+00
+ 3.72959550e+00 4.66141370e+00 5.59323190e+00 6.52505011e+00
+ 7.45686831e+00 8.38868651e+00]
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO - Eje creado con proyección para tiles (OSM).
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO - Agregando mapa de fondo con tiles (zoom=11, alpha=1.0)
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO - Etiquetas de coordenadas añadidas al mapa.
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO - Simbología agregada correctamente.
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO - Añadiendo características al minimapa con resolución: 50m
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO - Características del minimapa añadidas.
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO - Extensión del mapa principal para el minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO - Límites del minimapa ajustados a: [-80.66093737056171, -76.27948345069734, -2.4105725501138737, 1.8489033886599682]
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO - Rosa de los vientos (imagen) agregada desde: images/image.png
+2025-10-14 12:35:41 - SeismoRainPlotting - INFO - Escala del mapa segmentada agregada: 30 km
+2025-10-14 12:35:47 - SeismoRainPlotting - INFO - Imagen guardada en: output/isoyetas/isoyetas_20251014_123541.pdf
+2025-10-14 12:35:47 - SeismoRainPlotting - INFO - Serie temporal guardada: output/timeseries/timeseries_REVS2_20251014_123547.pdf
