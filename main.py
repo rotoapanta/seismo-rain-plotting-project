@@ -9,6 +9,8 @@ from typing import List, Tuple, Dict, Optional
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
+import matplotlib.dates as mdates
+import re
 
 import config as CFG
 from utils.logger_config import logger
@@ -28,7 +30,7 @@ def ensure_example_real_station() -> Path:
     Solo crea un ejemplo si no existe. Formato: station_id,lat,lon,precip_mm
     """
     ensure_dir(CFG.DTA_DIR)
-    csv_path = Path(CFG.DTA_DIR) / CFG.REAL_STATION_FILE
+    csv_path = Path(CFG.DTA_DIR) / getattr(CFG, 'REAL_STATION_FILE', 'real_station.csv')
     if not csv_path.exists():
         # Crear un ejemplo de estación real (Quito aprox.)
         with csv_path.open('w', newline='', encoding='utf-8') as f:
@@ -1159,35 +1161,6 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
         except Exception as e:
             logger.warning(f"Advertencia al dibujar footer boxes: {e}")
 
-            # Convertir a fracciones
-            def cm_to_frac(x_cm, y_cm, w_cm, h_cm):
-                return (
-                    max(0.0, min(1.0, x_cm / fig_w_cm)),
-                    max(0.0, min(1.0, y_cm / fig_h_cm)),
-                    max(1e-6, min(1.0, w_cm / fig_w_cm)),
-                    max(1e-6, min(1.0, h_cm / fig_h_cm)),
-                )
-
-            # Dibujar cajas y títulos
-            for i in range(n_boxes):
-                x_cm = left_margin + i * (box_w_cm + gap_cm)
-                y_cm = row_bottom
-                w_cm = box_w_cm
-                h_cm = row_height
-                left, bottom, width, height = cm_to_frac(x_cm, y_cm, w_cm, h_cm)
-                rect = Rectangle((left, bottom), width, height,
-                                 fill=False, edgecolor=edge_color, linewidth=edge_lw_pt,
-                                 transform=fig.transFigure, clip_on=False)
-                fig.add_artist(rect)
-                sep_y = bottom + height - (tit_row_h_cm / fig_h_cm)
-                # Título centrado dentro de la fila superior
-                if i < len(titles) and titles[i]:
-                    title_y = sep_y + (tit_row_h_cm / fig_h_cm) / 2.0
-                    fig.text(left + width/2.0, title_y, titles[i], ha='center', va='center',
-                             fontsize=tit_size, fontweight=tit_weight, color=tit_color)
-        except Exception as e:
-            logger.warning(f"Advertencia al dibujar footer boxes: {e}")
-
     # Forzar que no se recorten márgenes aunque rcParams tenga savefig.bbox='tight'
     plt.rcParams['savefig.bbox'] = 'standard'
     # Asegurar fondo blanco para que los márgenes sean visibles en PDF
@@ -1207,6 +1180,103 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
 
     logger.info(f"Imagen guardada en: {out_path}")
     return out_path
+
+
+# ----------------------------
+# Serie temporal (lluvia vs tiempo)
+# ----------------------------
+
+def _parse_dt_from_filename(p: Path) -> Optional[datetime]:
+    """Extrae datetime del patrón *_YYYYMMDD_HHMM.json del nombre de archivo."""
+    m = re.search(r'_(\d{8})_(\d{4})\.json$', p.name)
+    if not m:
+        return None
+    ymd, hm = m.group(1), m.group(2)
+    try:
+        return datetime.strptime(ymd + hm, '%Y%m%d%H%M')
+    except Exception:
+        return None
+
+
+def build_timeseries(search_dir: Path) -> Dict[str, List[Tuple[datetime, float]]]:
+    """Construye series por estación: {station_id: [(dt, precip_mm), ...]}"""
+    if not search_dir.exists():
+        raise FileNotFoundError(f"No existe el directorio: {search_dir}")
+    json_files = sorted(search_dir.rglob('*.json'))
+    if not json_files:
+        raise FileNotFoundError(f"No se encontraron JSONs en {search_dir}")
+
+    series: Dict[str, List[Tuple[datetime, float]]] = {}
+
+    for jf in json_files:
+        try:
+            with jf.open('r', encoding='utf-8') as f:
+                data = json.load(f)
+            lecturas = data.get('LECTURAS', [])
+            if not lecturas:
+                continue
+            precip = sum(float(r.get('NIVEL', 0.0)) for r in lecturas)
+            dt = _parse_dt_from_filename(jf) or datetime.fromtimestamp(jf.stat().st_mtime)
+            station_id = str(data.get('NOMBRE') or data.get('IDENTIFICADOR') or 'STATION')
+            series.setdefault(station_id, []).append((dt, precip))
+        except Exception as e:
+            logger.warning(f"Omitiendo {jf.name}: {e}")
+            continue
+
+    # Ordenar por tiempo
+    for sid in list(series.keys()):
+        series[sid].sort(key=lambda t: t[0])
+    return series
+
+
+def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_dir: Path, image_format: str,
+                    style: str = 'bar', cumulative: bool = False) -> List[Path]:
+    ensure_dir(str(output_dir))
+    saved: List[Path] = []
+
+    for sid, seq in series_map.items():
+        if not seq:
+            continue
+        times = [t for t, _ in seq]
+        vals = [v for _, v in seq]
+        if cumulative:
+            cum = []
+            s = 0.0
+            for v in vals:
+                s += v
+                cum.append(s)
+            vals = cum
+
+        fig, ax = plt.subplots(figsize=(10, 4))
+
+        if style == 'line':
+            ax.plot(times, vals, '-o', lw=1.5, ms=4, color='tab:blue')
+        else:
+            # Ancho de barra aproximado basado en el delta mínimo
+            if len(times) >= 2:
+                deltas = [ (times[i+1]-times[i]).total_seconds()/86400.0 for i in range(len(times)-1) ]
+                width = 0.8 * min(deltas)
+            else:
+                width = 1/24  # ~1 hora
+            ax.bar(times, vals, width=width, align='center', color='tab:blue', edgecolor='black', linewidth=0.5)
+
+        ax.set_title(f"Lluvia vs Tiempo - {sid}" + (" (Acumulada)" if cumulative else ""))
+        ax.set_ylabel('Precipitación (mm)')
+        ax.set_xlabel('Tiempo')
+
+        ax.xaxis.set_major_locator(mdates.AutoDateLocator())
+        ax.xaxis.set_major_formatter(mdates.ConciseDateFormatter(ax.xaxis.get_major_locator()))
+        fig.autofmt_xdate()
+        ax.grid(True, ls='--', alpha=0.3)
+
+        ts = datetime.now().strftime('%Y%m%d_%H%M%S')
+        out_path = output_dir / f"timeseries_{sid}_{ts}.{image_format.lower()}"
+        fig.savefig(out_path, dpi=getattr(CFG, 'IMAGE_DPI', 150), bbox_inches='tight')
+        plt.close(fig)
+        logger.info(f"Serie temporal guardada: {out_path}")
+        saved.append(out_path)
+
+    return saved
 
 
 # ----------------------------
@@ -1231,8 +1301,21 @@ def main() -> None:
     # Interpolación
     Z = idw_interpolate(X, Y, stations)
 
-    # Graficar y guardar
+    # Graficar y guardar (Isoyetas)
     plot_isohyets(X, Y, Z, stations, extent)
+
+    # Serie temporal (Lluvia vs Tiempo) usando el mismo origen de datos
+    try:
+        # Determinar carpeta de búsqueda coherente con el origen
+        if source_file.is_dir():
+            ts_search_dir = source_file
+        else:
+            ts_search_dir = source_file.parent
+        ts_output_dir = Path(CFG.OUTPUT_DIR).parent / 'timeseries'
+        series_map = build_timeseries(ts_search_dir)
+        plot_timeseries(series_map, ts_output_dir, CFG.IMAGE_FORMAT, style='bar', cumulative=False)
+    except Exception as e:
+        logger.warning(f"No se pudo generar la serie temporal: {e}")
 
 
 def draw_simple_scale_bar(ax, extent):
