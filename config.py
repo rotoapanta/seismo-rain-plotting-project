@@ -55,7 +55,7 @@ DTA_DIR = 'DTA'
 # Ruta manual para buscar datos (relativa a DTA_DIR). Si se define, el script buscará el archivo
 # más reciente solo en esta carpeta. Ej: '2025/09/26'.
 # Tiene prioridad solo si USE_TARGET_DATETIME es False.
-MANUAL_SEARCH_PATH = '2025/09/29/RGA' # por ejemplo: '2025/03/10'
+MANUAL_SEARCH_PATH = '2025/10/14/RGA' # por ejemplo: '2025/03/10'
 
 # Si True, acumula (suma) los valores de todos los JSON en la ruta manual. 
 # Si False, solo usa el archivo más reciente en esa ruta.
@@ -108,6 +108,15 @@ ISOYETAS_TITLE_COLOR = 'black'
 ISOYETAS_TITLE_LOC = 'center'
 ISOYETAS_TITLE_PAD_PT = 6
 
+# --- Ejes para el Mapa de Isoyetas ---
+ISOYETAS_X_LABEL = 'Longitud (°)'
+ISOYETAS_Y_LABEL = 'Latitud (°)'
+ISOYETAS_AXIS_LABEL_FONT_SIZE = 9
+ISOYETAS_AXIS_LABEL_COLOR = 'black'
+ISOYETAS_AXIS_LABEL_FONT_WEIGHT = 'normal'
+ISOYETAS_TICK_LABEL_FONT_SIZE = 8
+ISOYETAS_TICK_LABEL_COLOR = 'darkgray'
+
 # --- Título para Gráficas de Series de Tiempo ---
 TIMESERIES_TITLE = 'VOLCAN COTOPAXI - SERIE DE TIEMPO'
 TIMESERIES_TITLE_FONT_SIZE = 12
@@ -117,6 +126,18 @@ TIMESERIES_TITLE_FONT_NAME = None
 TIMESERIES_TITLE_COLOR = 'black'
 TIMESERIES_TITLE_LOC = 'center'
 TIMESERIES_TITLE_PAD_PT = 6
+
+# --- Configuración de Ejes para Series de Tiempo ---
+TIMESERIES_X_LABEL = 'Tiempo'
+TIMESERIES_Y_LABEL = 'Precipitación (mm)'
+
+TIMESERIES_AXIS_LABEL_FONT_SIZE = 10
+TIMESERIES_AXIS_LABEL_COLOR = 'black'
+TIMESERIES_AXIS_LABEL_FONT_WEIGHT = 'normal'
+
+TIMESERIES_TICK_LABEL_FONT_SIZE = 9
+TIMESERIES_TICK_LABEL_COLOR = 'darkgray'
+
 
 # --- Mapa de Fondo (Cartopy) ---
 MAP_BACKGROUND = True

@@ -541,11 +541,14 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
             logger.info("Etiquetas de coordenadas añadidas al mapa.")
         except Exception as e:
             logger.warning(f"No se pudieron añadir etiquetas de coordenadas: {e}")
-            ax.set_xlabel('Longitud (°)')
-            ax.set_ylabel('Latitud (°)')
+            ax.set_xlabel(getattr(CFG, 'ISOYETAS_X_LABEL', 'Longitud (°)'), fontsize=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_SIZE', 9), color=getattr(CFG, 'ISOYETAS_AXIS_LABEL_COLOR', 'black'), fontweight=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_WEIGHT', 'normal'))
+            ax.set_ylabel(getattr(CFG, 'ISOYETAS_Y_LABEL', 'Latitud (°)'), fontsize=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_SIZE', 9), color=getattr(CFG, 'ISOYETAS_AXIS_LABEL_COLOR', 'black'), fontweight=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_WEIGHT', 'normal'))
     else:
-        ax.set_xlabel('Longitud (°)')
-        ax.set_ylabel('Latitud (°)')
+        ax.set_xlabel(getattr(CFG, 'ISOYETAS_X_LABEL', 'Longitud (°)'), fontsize=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_SIZE', 9), color=getattr(CFG, 'ISOYETAS_AXIS_LABEL_COLOR', 'black'), fontweight=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_WEIGHT', 'normal'))
+        ax.set_ylabel(getattr(CFG, 'ISOYETAS_Y_LABEL', 'Latitud (°)'), fontsize=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_SIZE', 9), color=getattr(CFG, 'ISOYETAS_AXIS_LABEL_COLOR', 'black'), fontweight=getattr(CFG, 'ISOYETAS_AXIS_LABEL_FONT_WEIGHT', 'normal'))
+
+    ax.tick_params(axis='x', colors=getattr(CFG, 'ISOYETAS_TICK_LABEL_COLOR', 'darkgray'), labelsize=getattr(CFG, 'ISOYETAS_TICK_LABEL_FONT_SIZE', 8))
+    ax.tick_params(axis='y', colors=getattr(CFG, 'ISOYETAS_TICK_LABEL_COLOR', 'darkgray'), labelsize=getattr(CFG, 'ISOYETAS_TICK_LABEL_FONT_SIZE', 8))
     
     title_fontdict = {}
     fs = getattr(CFG, 'ISOYETAS_TITLE_FONT_SIZE', None)
@@ -1496,12 +1499,26 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
                 width = 1/24
             ax.bar(times, vals, width=width, align='center', color='tab:blue', edgecolor='black', linewidth=0.5, zorder=3)
 
-        ax.set_ylabel('Precipitación (mm)')
-        ax.set_xlabel('Tiempo')
-        ax.xaxis.set_major_locator(mdates.AutoDateLocator())
+        ax.set_xlabel(getattr(CFG, 'TIMESERIES_X_LABEL', 'Tiempo'), 
+                      fontsize=getattr(CFG, 'TIMESERIES_AXIS_LABEL_FONT_SIZE', 10),
+                      color=getattr(CFG, 'TIMESERIES_AXIS_LABEL_COLOR', 'black'),
+                      fontweight=getattr(CFG, 'TIMESERIES_AXIS_LABEL_FONT_WEIGHT', 'normal'))
+        ax.set_ylabel(getattr(CFG, 'TIMESERIES_Y_LABEL', 'Precipitación (mm)'),
+                      fontsize=getattr(CFG, 'TIMESERIES_AXIS_LABEL_FONT_SIZE', 10),
+                      color=getattr(CFG, 'TIMESERIES_AXIS_LABEL_COLOR', 'black'),
+                      fontweight=getattr(CFG, 'TIMESERIES_AXIS_LABEL_FONT_WEIGHT', 'normal'))
+
+        # Marcas mayores para horas pares
+        ax.xaxis.set_major_locator(mdates.HourLocator(byhour=range(0, 24, 2)))
         ax.xaxis.set_major_formatter(mdates.ConciseDateFormatter(ax.xaxis.get_major_locator()))
+
+        # Marcas menores para horas impares (sin etiqueta)
+        ax.xaxis.set_minor_locator(mdates.HourLocator(byhour=range(1, 24, 2)))
+        ax.xaxis.set_minor_formatter(plt.NullFormatter())
+
         fig.autofmt_xdate()
-        ax.grid(True, ls='--', alpha=0.3, zorder=0)
+        ax.grid(True, which='major', ls='--', alpha=0.7)
+        ax.grid(True, which='minor', ls='--', alpha=0.2)
 
         plt.rcParams['savefig.bbox'] = 'standard'
         fig.patch.set_facecolor('white')
