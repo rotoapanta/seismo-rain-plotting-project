@@ -346,7 +346,7 @@ def figure_size() -> Tuple[float, float]:
     return float(w_cm / 2.54), float(h_cm / 2.54)
 
 
-def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Dict[str, float]], extent: Tuple[float, float, float, float]) -> Path:
+def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Dict[str, float]], extent: Tuple[float, float, float, float], **kwargs) -> Path:
     ensure_dir(CFG.OUTPUT_DIR)
 
     levels = compute_levels(Z)
@@ -684,6 +684,67 @@ def plot_isohyets(X: np.ndarray, Y: np.ndarray, Z: np.ndarray, stations: List[Di
                 if i < len(titles) and titles[i]:
                     title_y = bottom + height - (tit_row_h_cm / fig_h_cm) / 2.0
                     fig.text(left + width / 2.0, title_y, titles[i], ha='center', va='center', fontsize=tit_size, fontweight=tit_weight, color=tit_color)
+
+                data_box_idx = getattr(CFG, 'DATA_BOX_INDEX', -1)
+                try:
+                    title_i = titles[i] if i < len(titles) else ''
+                    norm_title = title_i.strip().lower().replace('ó', 'o')
+                except Exception:
+                    norm_title = ''
+                should_draw_info = (i == data_box_idx) or (norm_title == 'informacion')
+                if should_draw_info:
+                    try:
+                        font_size = getattr(CFG, 'DATA_BOX_FONT_SIZE', 7)
+                        font_color = getattr(CFG, 'DATA_BOX_FONT_COLOR', '#333333')
+                        line_spacing = getattr(CFG, 'DATA_BOX_LINE_SPACING', 1.5)
+
+                        source_file_obj = kwargs.get('source_file', 'N/A')
+                        try:
+                            source_name = source_file_obj.name if hasattr(source_file_obj, 'name') else str(source_file_obj)
+                        except Exception:
+                            source_name = str(source_file_obj)
+
+                        precip_min = np.nanmin(Z)
+                        precip_max = np.nanmax(Z)
+
+                        info_text = (
+                            f"Fuente: {source_name}\n"
+                            f"Fecha: {datetime.now().strftime('%Y-%m-%d')}\n"
+                            f"Estaciones: {len(stations)}\n"
+                            f"Precip. Máx: {precip_max:.2f} mm\n"
+                            f"Precip. Mín: {precip_min:.2f} mm"
+                        )
+
+                        fig.text(left + width / 2.0, bottom + height / 2.0, info_text,
+                                 ha='center', va='center', fontsize=font_size, color=font_color,
+                                 linespacing=line_spacing, zorder=1000)
+
+                    except Exception as e:
+                        logger.warning(f"Advertencia al dibujar la caja de información: {e}")
+
+                # Caja personalizada debajo de 'INFORMACIÓN' o índice configurado
+                try:
+                    custom_idx = getattr(CFG, 'CUSTOM_BOX_INDEX', -1)
+                    try:
+                        info_idx = next((k for k, t in enumerate(titles) if str(t).strip().lower().replace('ó', 'o') == 'informacion'), None)
+                    except Exception:
+                        info_idx = None
+                    below_info_idx = info_idx + 1 if isinstance(info_idx, int) else None
+                    should_draw_custom = (i == custom_idx) or (below_info_idx is not None and i == below_info_idx)
+                    if should_draw_custom:
+                        font_size2 = getattr(CFG, 'CUSTOM_BOX_FONT_SIZE', getattr(CFG, 'DATA_BOX_FONT_SIZE', 8))
+                        font_color2 = getattr(CFG, 'CUSTOM_BOX_FONT_COLOR', getattr(CFG, 'DATA_BOX_FONT_COLOR', '#333333'))
+                        line_spacing2 = getattr(CFG, 'CUSTOM_BOX_LINE_SPACING', getattr(CFG, 'DATA_BOX_LINE_SPACING', 1.3))
+                        align_h = getattr(CFG, 'CUSTOM_BOX_HA', 'center')
+                        align_v = getattr(CFG, 'CUSTOM_BOX_VA', 'center')
+                        content = getattr(CFG, 'CUSTOM_BOX_TEXT', 'mis datos -oinformacion')
+                        if isinstance(content, (list, tuple)):
+                            content = "\n".join(str(x) for x in content)
+                        fig.text(left + width / 2.0, bottom + height / 2.0, content,
+                                 ha=align_h, va=align_v, fontsize=font_size2, color=font_color2,
+                                 linespacing=line_spacing2, zorder=1000)
+                except Exception as e:
+                    logger.warning(f"Advertencia al dibujar la caja personalizada: {e}")
 
                 logo_idx = getattr(CFG, 'LOGO_BOX_INDEX', getattr(CFG, 'SIDE_BOX_IMAGE_INDEX', -1))
                 if i == logo_idx:
@@ -1049,7 +1110,7 @@ def build_timeseries(search_dir: Path) -> Dict[str, List[Tuple[datetime, float]]
 
 def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_dir: Path, image_format: str,
                     stations: List[Dict[str, float]], extent: Tuple[float, float, float, float],
-                    style: str = 'bar', cumulative: bool = False) -> List[Path]:
+                    style: str = 'bar', cumulative: bool = False, **kwargs) -> List[Path]:
     """Genera gráficas de series temporales reutilizando el formato de la hoja de isoyetas."""
     ensure_dir(str(output_dir))
     saved: List[Path] = []
@@ -1222,6 +1283,72 @@ def plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_
                     if i < len(titles) and titles[i]:
                         title_y = bottom + height - (tit_row_h_cm / fig_h_cm) / 2.0
                         fig.text(left + width / 2.0, title_y, titles[i], ha='center', va='center', fontsize=tit_size, fontweight=tit_weight, color=tit_color)
+
+                    # Caja de información también en la plantilla de series de tiempo
+                    data_box_idx = getattr(CFG, 'DATA_BOX_INDEX', -1)
+                    try:
+                        title_i = titles[i] if i < len(titles) else ''
+                        norm_title = title_i.strip().lower().replace('ó', 'o')
+                    except Exception:
+                        norm_title = ''
+                    should_draw_info = (i == data_box_idx) or (norm_title == 'informacion')
+                    if should_draw_info:
+                        try:
+                            font_size = getattr(CFG, 'DATA_BOX_FONT_SIZE', 7)
+                            font_color = getattr(CFG, 'DATA_BOX_FONT_COLOR', '#333333')
+                            line_spacing = getattr(CFG, 'DATA_BOX_LINE_SPACING', 1.5)
+
+                            source_file_obj = kwargs.get('source_file', 'N/A')
+                            try:
+                                source_name = source_file_obj.name if hasattr(source_file_obj, 'name') else str(source_file_obj)
+                            except Exception:
+                                source_name = str(source_file_obj)
+
+                            # Estadísticas básicas de la serie actual (sid)
+                            n = len(seq)
+                            vmin = float(min(vals)) if n else float('nan')
+                            vmax = float(max(vals)) if n else float('nan')
+                            vtot = float(sum(vals)) if n else float('nan')
+                            t_start = times[0].strftime('%Y-%m-%d %H:%M') if n else 'N/A'
+                            t_end = times[-1].strftime('%Y-%m-%d %H:%M') if n else 'N/A'
+
+                            info_text = (
+                                f"Fuente: {source_name}\n"
+                                f"Estación: {sid}\n"
+                                f"Rango: {t_start} — {t_end}\n"
+                                f"Muestras: {n}\n"
+                                f"Total: {vtot:.2f} mm  Máx: {vmax:.2f}  Mín: {vmin:.2f}"
+                            )
+
+                            fig.text(left + width / 2.0, bottom + height / 2.0, info_text,
+                                     ha='center', va='center', fontsize=font_size, color=font_color,
+                                     linespacing=line_spacing, zorder=1000)
+                        except Exception as e:
+                            logger.warning(f"Advertencia al dibujar la caja de información (serie): {e}")
+
+                    # Caja personalizada debajo de 'INFORMACIÓN' o índice configurado (series)
+                    try:
+                        custom_idx = getattr(CFG, 'CUSTOM_BOX_INDEX', -1)
+                        try:
+                            info_idx = next((k for k, t in enumerate(titles) if str(t).strip().lower().replace('ó', 'o') == 'informacion'), None)
+                        except Exception:
+                            info_idx = None
+                        below_info_idx = info_idx + 1 if isinstance(info_idx, int) else None
+                        should_draw_custom = (i == custom_idx) or (below_info_idx is not None and i == below_info_idx)
+                        if should_draw_custom:
+                            font_size2 = getattr(CFG, 'CUSTOM_BOX_FONT_SIZE', getattr(CFG, 'DATA_BOX_FONT_SIZE', 8))
+                            font_color2 = getattr(CFG, 'CUSTOM_BOX_FONT_COLOR', getattr(CFG, 'DATA_BOX_FONT_COLOR', '#333333'))
+                            line_spacing2 = getattr(CFG, 'CUSTOM_BOX_LINE_SPACING', getattr(CFG, 'DATA_BOX_LINE_SPACING', 1.3))
+                            align_h = getattr(CFG, 'CUSTOM_BOX_HA', 'center')
+                            align_v = getattr(CFG, 'CUSTOM_BOX_VA', 'center')
+                            content = getattr(CFG, 'CUSTOM_BOX_TEXT', 'mis datos -oinformacion')
+                            if isinstance(content, (list, tuple)):
+                                content = "\n".join(str(x) for x in content)
+                            fig.text(left + width / 2.0, bottom + height / 2.0, content,
+                                     ha=align_h, va=align_v, fontsize=font_size2, color=font_color2,
+                                     linespacing=line_spacing2, zorder=1000)
+                    except Exception as e:
+                        logger.warning(f"Advertencia al dibujar la caja personalizada (serie): {e}")
 
                     logo_idx = getattr(CFG, 'LOGO_BOX_INDEX', getattr(CFG, 'SIDE_BOX_IMAGE_INDEX', -1))
                     if i == logo_idx:
@@ -1559,7 +1686,7 @@ def main() -> None:
     Z = idw_interpolate(X, Y, stations)
 
     # Graficar y guardar (Isoyetas)
-    plot_isohyets(X, Y, Z, stations, extent)
+    plot_isohyets(X, Y, Z, stations, extent, source_file=source_file)
 
     # Serie temporal (Lluvia vs Tiempo) usando el mismo origen de datos
     try:
@@ -1570,7 +1697,7 @@ def main() -> None:
             ts_search_dir = source_file.parent
         ts_output_dir = Path(CFG.OUTPUT_DIR).parent / 'timeseries'
         series_map = build_timeseries(ts_search_dir)
-        plot_timeseries(series_map, ts_output_dir, CFG.IMAGE_FORMAT, stations, extent, style='bar', cumulative=False)
+        plot_timeseries(series_map, ts_output_dir, CFG.IMAGE_FORMAT, stations, extent, style='bar', cumulative=False, source_file=source_file)
     except Exception as e:
         logger.warning(f"No se pudo generar la serie temporal: {e}")
 

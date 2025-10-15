@@ -186,7 +186,7 @@ SIDE_BOX_TOP_CM = 1.0
 SIDE_BOX_BOTTOM_CM = 1.0
 SIDE_BOX_GAP_CM = 0.0
 SIDE_BOX_COUNT = 5
-SIDE_BOX_TITLES = ['', 'ESTUDIO DE...', 'Mapa Climático', 'LEYENDA', '']
+SIDE_BOX_TITLES = ['', 'ESTUDIO DE...', 'Mapa Climático', 'INFORMACIÓN', '']
 SIDE_BOX_HEIGHTS_CM = [3.0, 5.0, 4.0, 4.0, 3.0] # Ejemplo: Caja 1 (logo) es 3cm, pero el logo sigue siendo 5cm
 
 # --- Estilo de Bordes y Títulos del Panel Lateral ---
@@ -199,6 +199,12 @@ SIDE_BOX_TITLE_FONT_WEIGHT = 'bold'
 SIDE_BOX_TITLE_COLOR = '#000000'
 SIDE_BOX_TITLE_ROW_HEIGHT_CM = 1.0
 
+#
+
+#
+
+#
+
 
 # =============================================================================
 # 6. COMPONENTE: PIE DE PÁGINA (CAJAS HORIZONTALES INFERIORES)
@@ -210,7 +216,7 @@ FOOTER_LEFT_MARGIN_CM = 2.0
 FOOTER_RIGHT_MARGIN_CM = 2.0
 FOOTER_GAP_CM = 0.0
 FOOTER_BOX_COUNT = 4
-FOOTER_TITLES = ['SIMBOLOGÍA', 'MAPA DE UBICACIÓN', '', 'OBSERVACIONES']
+FOOTER_TITLES = ['SIMBOLOGÍA', 'MAPA DE UBICACIÓN', 'ORIENTACIÓN-ESCALA', 'OBSERVACIONES']
 FOOTER_BOX_AREA_CM = None
 FOOTER_ALIGN_WITH_MAP_OFFSETS = False
 FOOTER_BOX_WIDTHS_CM = [5.0, 5.0, 5.0, 5.0]
@@ -280,6 +286,8 @@ SYMBOLOGY_PADDING_CM = 0.3
 # --- Rosa de los Vientos y Escala ---
 NORTH_ARROW_SCALE_BOX_INDEX = 2
 NORTH_ARROW_SCALE_PADDING_CM = 0.3
+
+#
 # Rosa de los vientos
 NORTH_ARROW_STYLE = 'image'
 NORTH_ARROW_IMAGE_PATH = 'images/image.png'
