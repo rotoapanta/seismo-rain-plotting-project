@@ -259,6 +259,8 @@ TIMESERIES_AXIS_LABEL_COLOR = '#333333'
 TIMESERIES_AXIS_LABEL_FONT_WEIGHT = 'normal'
 TIMESERIES_TICK_LABEL_FONT_SIZE = 8
 TIMESERIES_TICK_LABEL_COLOR = '#4D4D4D'
+# Rotación de etiquetas del eje X (grados)
+TIMESERIES_XTICK_ROTATION = 90
 
 # Escala y límites (opcional)
 TIMESERIES_YSCALE = 'linear'  # 'linear' | 'log'
@@ -312,6 +314,8 @@ BARS_AXIS_LABEL_COLOR = '#333333'
 BARS_AXIS_LABEL_FONT_WEIGHT = 'normal'
 BARS_TICK_LABEL_FONT_SIZE = 8
 BARS_TICK_LABEL_COLOR = '#4D4D4D'
+# Rotación de etiquetas del eje X (grados)
+BARS_XTICK_ROTATION = 90
 
 # Estilo de barras
 BARS_FACE_COLOR = '#1f77b4'

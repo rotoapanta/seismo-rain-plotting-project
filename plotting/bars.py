@@ -151,6 +151,30 @@ def render_bars_graph(
             import matplotlib.dates as mdates
             ax.xaxis.set_major_locator(mdates.HourLocator(interval=1))
             ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
+            # Rotación de etiquetas X
+            try:
+                rot = float(getattr(CFG, 'BARS_XTICK_ROTATION', 90))
+            except Exception:
+                rot = 90
+            for lbl in ax.get_xticklabels():
+                lbl.set_rotation(rot)
+                lbl.set_ha('center')
+            # Rango de día completo (00:00 a 24:00) si no hay XLIM definido
+            try:
+                xlim_cfg = getattr(CFG, 'BARS_XLIM', None)
+                if not (isinstance(xlim_cfg, (list, tuple)) and len(xlim_cfg) == 2 and None not in xlim_cfg):
+                    xnums = mdates.date2num(x)
+                    dmin = mdates.num2date(np.nanmin(xnums))
+                    dmax = mdates.num2date(np.nanmax(xnums))
+                    from datetime import datetime as _dt, timedelta as _td
+                    start = _dt(dmin.year, dmin.month, dmin.day, 0, 0)
+                    if dmin.date() != dmax.date():
+                        end = _dt(dmax.year, dmax.month, dmax.day, 23, 59, 59)
+                    else:
+                        end = start + _td(days=1)
+                    ax.set_xlim(mdates.date2num(start), mdates.date2num(end))
+            except Exception:
+                pass
         except Exception:
             pass
     ax.set_xlabel(getattr(CFG, 'BARS_X_LABEL', 'Hora'))

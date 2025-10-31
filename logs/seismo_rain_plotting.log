@@ -12772,3 +12772,303 @@ GEOFISICO 2
 2025-10-31 15:10:01 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
 2025-10-31 15:10:01 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
 2025-10-31 15:10:03 - SeismoRainPlotting - INFO - Barras guardado en: output/bars/bars_20251031_151002.pdf
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO - Override aplicado: MAP_BACKGROUND = True
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/10/30/RGA
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO - Acumulando datos de 24 archivos en DTA/2025/10/30/RGA
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0000.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0100.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0200.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0300.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0400.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0500.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0600.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0700.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0800.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0900.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1000.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1100.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1200.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1300.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1400.json, Precipitación: 17.50 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1500.json, Precipitación: 8.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1600.json, Precipitación: 1.75 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1700.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1800.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1900.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_2000.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_2100.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_2200.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_2300.json, Precipitación: 0.00 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 27.25 mm
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-31 15:33:40 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [20.37377686 21.65320064 22.93262442 24.21204819 25.49147197 26.77089575
+ 28.05031953 29.3297433  30.60916708 31.88859086]
+2025-10-31 15:33:41 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 15:33:41 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'description'.
+2025-10-31 15:33:41 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'isoyetas_info'.
+2025-10-31 15:33:41 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 15:33:41 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 15:33:41 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 15:33:41 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 15:33:41 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 15:33:41 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 15:33:41 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 15:33:45 - SeismoRainPlotting - INFO - Mapa de isoyetas guardado en: output/isoyetas/isoyetas_20251031_153341.pdf
+2025-10-31 15:33:45 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 15:33:45 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'description'.
+2025-10-31 15:33:45 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'timeseries_info'.
+2025-10-31 15:33:45 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 15:33:45 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 15:33:45 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 15:33:45 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 15:33:45 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 15:33:45 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 15:33:46 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 15:33:47 - SeismoRainPlotting - INFO - Serie temporal guardada en: output/timeseries/timeseries_20251031_153346.pdf
+2025-10-31 15:33:47 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 15:33:47 - SeismoRainPlotting - ERROR - El renderer 'bars_description' no fue encontrado.
+2025-10-31 15:33:47 - SeismoRainPlotting - ERROR - El renderer 'bars_info' no fue encontrado.
+2025-10-31 15:33:47 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 15:33:47 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 15:33:47 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 15:33:47 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 15:33:47 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 15:33:47 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 15:33:47 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 15:33:49 - SeismoRainPlotting - INFO - Barras guardado en: output/bars/bars_20251031_153347.pdf
+2025-10-31 16:08:45 - SeismoRainPlotting - INFO - Override aplicado: MAP_BACKGROUND = True
+2025-10-31 16:08:45 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/10/31/RGA
+2025-10-31 16:08:45 - SeismoRainPlotting - INFO - Acumulando datos de 3 archivos en DTA/2025/10/31/RGA
+2025-10-31 16:08:45 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251031_1400.json, Precipitación: 2.50 mm
+2025-10-31 16:08:45 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251031_1500.json, Precipitación: 11.50 mm
+2025-10-31 16:08:45 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251031_1600.json, Precipitación: 0.25 mm
+2025-10-31 16:08:45 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 14.25 mm
+2025-10-31 16:08:45 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-31 16:08:46 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [ 7.37377686  8.65320064  9.93262442 11.21204819 12.49147197 13.77089575
+ 15.05031953 16.3297433  17.60916708 18.88859086]
+2025-10-31 16:08:46 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 16:08:46 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'description'.
+2025-10-31 16:08:46 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'isoyetas_info'.
+2025-10-31 16:08:46 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 16:08:46 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 16:08:46 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 16:08:46 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 16:08:46 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 16:08:46 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 16:08:46 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 16:08:52 - SeismoRainPlotting - INFO - Mapa de isoyetas guardado en: output/isoyetas/isoyetas_20251031_160846.pdf
+2025-10-31 16:08:52 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 16:08:52 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'description'.
+2025-10-31 16:08:52 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'timeseries_info'.
+2025-10-31 16:08:52 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 16:08:52 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 16:08:52 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 16:08:52 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 16:08:52 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 16:08:52 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 16:08:52 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 16:08:54 - SeismoRainPlotting - INFO - Serie temporal guardada en: output/timeseries/timeseries_20251031_160852.pdf
+2025-10-31 16:08:54 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 16:08:54 - SeismoRainPlotting - ERROR - El renderer 'bars_description' no fue encontrado.
+2025-10-31 16:08:54 - SeismoRainPlotting - ERROR - El renderer 'bars_info' no fue encontrado.
+2025-10-31 16:08:54 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 16:08:54 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 16:08:54 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 16:08:54 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 16:08:54 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 16:08:54 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 16:08:54 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 16:08:55 - SeismoRainPlotting - INFO - Barras guardado en: output/bars/bars_20251031_160854.pdf
+2025-10-31 16:20:41 - SeismoRainPlotting - INFO - Override aplicado: MAP_BACKGROUND = True
+2025-10-31 16:20:41 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/10/31/RGA
+2025-10-31 16:20:41 - SeismoRainPlotting - INFO - Acumulando datos de 3 archivos en DTA/2025/10/31/RGA
+2025-10-31 16:20:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251031_1400.json, Precipitación: 2.50 mm
+2025-10-31 16:20:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251031_1500.json, Precipitación: 11.50 mm
+2025-10-31 16:20:41 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251031_1600.json, Precipitación: 0.25 mm
+2025-10-31 16:20:41 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 14.25 mm
+2025-10-31 16:20:41 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-31 16:20:41 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [ 7.37377686  8.65320064  9.93262442 11.21204819 12.49147197 13.77089575
+ 15.05031953 16.3297433  17.60916708 18.88859086]
+2025-10-31 16:20:41 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 16:20:41 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'description'.
+2025-10-31 16:20:41 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'isoyetas_info'.
+2025-10-31 16:20:41 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 16:20:41 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 16:20:42 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 16:20:42 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 16:20:42 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 16:20:42 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 16:20:42 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 16:20:48 - SeismoRainPlotting - INFO - Mapa de isoyetas guardado en: output/isoyetas/isoyetas_20251031_162042.pdf
+2025-10-31 16:20:48 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 16:20:48 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'description'.
+2025-10-31 16:20:48 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'timeseries_info'.
+2025-10-31 16:20:48 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 16:20:48 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 16:20:48 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 16:20:48 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 16:20:48 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 16:20:48 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 16:20:48 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 16:20:50 - SeismoRainPlotting - INFO - Serie temporal guardada en: output/timeseries/timeseries_20251031_162048.pdf
+2025-10-31 16:20:50 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 16:20:50 - SeismoRainPlotting - ERROR - El renderer 'bars_description' no fue encontrado.
+2025-10-31 16:20:50 - SeismoRainPlotting - ERROR - El renderer 'bars_info' no fue encontrado.
+2025-10-31 16:20:50 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 16:20:50 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 16:20:50 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 16:20:50 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 16:20:50 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 16:20:50 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 16:20:50 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 16:20:52 - SeismoRainPlotting - INFO - Barras guardado en: output/bars/bars_20251031_162050.pdf
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO - Override aplicado: MAP_BACKGROUND = True
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/10/31/RGA
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO - Acumulando datos de 3 archivos en DTA/2025/10/31/RGA
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251031_1400.json, Precipitación: 2.50 mm
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251031_1500.json, Precipitación: 11.50 mm
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251031_1600.json, Precipitación: 0.25 mm
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 14.25 mm
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [ 7.37377686  8.65320064  9.93262442 11.21204819 12.49147197 13.77089575
+ 15.05031953 16.3297433  17.60916708 18.88859086]
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'description'.
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'isoyetas_info'.
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 16:22:25 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 16:22:31 - SeismoRainPlotting - INFO - Mapa de isoyetas guardado en: output/isoyetas/isoyetas_20251031_162225.pdf
+2025-10-31 16:22:31 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 16:22:31 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'description'.
+2025-10-31 16:22:31 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'timeseries_info'.
+2025-10-31 16:22:31 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 16:22:31 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 16:22:31 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 16:22:31 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 16:22:31 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 16:22:31 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 16:22:31 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 16:22:33 - SeismoRainPlotting - INFO - Serie temporal guardada en: output/timeseries/timeseries_20251031_162231.pdf
+2025-10-31 16:22:33 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 16:22:33 - SeismoRainPlotting - ERROR - El renderer 'bars_description' no fue encontrado.
+2025-10-31 16:22:33 - SeismoRainPlotting - ERROR - El renderer 'bars_info' no fue encontrado.
+2025-10-31 16:22:33 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 16:22:33 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 16:22:33 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 16:22:33 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 16:22:33 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 16:22:33 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 16:22:33 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 16:22:35 - SeismoRainPlotting - INFO - Barras guardado en: output/bars/bars_20251031_162233.pdf
+2025-10-31 16:23:36 - SeismoRainPlotting - INFO - Override aplicado: MAP_BACKGROUND = True
+2025-10-31 16:23:36 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/10/31/RGA
+2025-10-31 16:23:36 - SeismoRainPlotting - INFO - Acumulando datos de 3 archivos en DTA/2025/10/31/RGA
+2025-10-31 16:23:36 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251031_1400.json, Precipitación: 2.50 mm
+2025-10-31 16:23:36 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251031_1500.json, Precipitación: 11.50 mm
+2025-10-31 16:23:36 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251031_1600.json, Precipitación: 0.75 mm
+2025-10-31 16:23:36 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 14.75 mm
+2025-10-31 16:23:36 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-31 16:23:37 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [ 7.87377686  9.15320064 10.43262442 11.71204819 12.99147197 14.27089575
+ 15.55031953 16.8297433  18.10916708 19.38859086]
+2025-10-31 16:23:37 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 16:23:37 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'description'.
+2025-10-31 16:23:37 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'isoyetas_info'.
+2025-10-31 16:23:37 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 16:23:37 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 16:23:37 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 16:23:37 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 16:23:37 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 16:23:37 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 16:23:37 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 16:23:43 - SeismoRainPlotting - INFO - Mapa de isoyetas guardado en: output/isoyetas/isoyetas_20251031_162337.pdf
+2025-10-31 16:23:43 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 16:23:43 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'description'.
+2025-10-31 16:23:43 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'timeseries_info'.
+2025-10-31 16:23:43 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 16:23:43 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 16:23:43 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 16:23:43 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 16:23:43 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 16:23:43 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 16:23:43 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 16:23:45 - SeismoRainPlotting - INFO - Serie temporal guardada en: output/timeseries/timeseries_20251031_162343.pdf
+2025-10-31 16:23:45 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 16:23:45 - SeismoRainPlotting - ERROR - El renderer 'bars_description' no fue encontrado.
+2025-10-31 16:23:45 - SeismoRainPlotting - ERROR - El renderer 'bars_info' no fue encontrado.
+2025-10-31 16:23:45 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 16:23:45 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 16:23:45 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 16:23:45 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 16:23:45 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 16:23:45 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 16:23:45 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 16:23:47 - SeismoRainPlotting - INFO - Barras guardado en: output/bars/bars_20251031_162345.pdf
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO - Override aplicado: MAP_BACKGROUND = True
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO - Modo de ruta manual activado. Buscando en: DTA/2025/10/30/RGA
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO - Acumulando datos de 24 archivos en DTA/2025/10/30/RGA
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0000.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0100.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0200.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0300.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0400.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0500.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0600.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0700.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0800.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_0900.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1000.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1100.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1200.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1300.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1400.json, Precipitación: 17.50 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1500.json, Precipitación: 8.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1600.json, Precipitación: 1.75 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1700.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1800.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_1900.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_2000.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_2100.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_2200.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -   -> Archivo: EC.REVS2.RGA_rpi-5_4512_20251030_2300.json, Precipitación: 0.00 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO -  -> Suma total de precipitación: 27.25 mm
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO - Calculando extensión a partir de las estaciones: (np.float64(-78.66093737056171), np.float64(-78.27948345069734), np.float64(-0.4105725501138737), np.float64(-0.15109661134003188))
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO - Calculando niveles de isoyetas automáticamente: [20.37377686 21.65320064 22.93262442 24.21204819 25.49147197 26.77089575
+ 28.05031953 29.3297433  30.60916708 31.88859086]
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'description'.
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'isoyetas_info'.
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 16:25:03 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 16:25:04 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 16:25:04 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 16:25:04 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 16:25:09 - SeismoRainPlotting - INFO - Mapa de isoyetas guardado en: output/isoyetas/isoyetas_20251031_162504.pdf
+2025-10-31 16:25:09 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 16:25:09 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'description'.
+2025-10-31 16:25:09 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'timeseries_info'.
+2025-10-31 16:25:09 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 16:25:09 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 16:25:09 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 16:25:09 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 16:25:09 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 16:25:09 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 16:25:09 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 16:25:10 - SeismoRainPlotting - INFO - Serie temporal guardada en: output/timeseries/timeseries_20251031_162509.pdf
+2025-10-31 16:25:10 - SeismoRainPlotting - INFO - Añadiendo logo desde: images/logo-ig.png
+2025-10-31 16:25:11 - SeismoRainPlotting - ERROR - El renderer 'bars_description' no fue encontrado.
+2025-10-31 16:25:11 - SeismoRainPlotting - ERROR - El renderer 'bars_info' no fue encontrado.
+2025-10-31 16:25:11 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'credits'.
+2025-10-31 16:25:11 - SeismoRainPlotting - INFO - Añadiendo simbología.
+2025-10-31 16:25:11 - SeismoRainPlotting - INFO - Añadiendo minimapa.
+2025-10-31 16:25:11 - SeismoRainPlotting - INFO - Añadiendo características al minimapa: LAND, OCEAN, COASTLINE, BORDERS
+2025-10-31 16:25:11 - SeismoRainPlotting - INFO - Añadiendo extensión al minimapa: (-78.66093737056171, -78.27948345069734, -0.4105725501138737, -0.15109661134003188)
+2025-10-31 16:25:11 - SeismoRainPlotting - INFO - Añadiendo rosa de los vientos y escala.
+2025-10-31 16:25:11 - SeismoRainPlotting - INFO - Renderizando texto dinámico con 'observations'.
+2025-10-31 16:25:12 - SeismoRainPlotting - INFO - Barras guardado en: output/bars/bars_20251031_162511.pdf
