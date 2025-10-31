@@ -41,8 +41,8 @@ coverage.xml
 .DS_Store
 
 # Project data/output (large or generated)
-output/
-isoyetas/
+# output/
+# isoyetas/
 
 # Secrets
 .env
