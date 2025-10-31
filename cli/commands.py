@@ -1,13 +1,8 @@
 import sys
-import re
-import json
 from pathlib import Path
-from typing import Optional, Tuple, List, Dict
-from datetime import datetime
+from typing import Optional, Tuple, List
 
 import click
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
 
 import config as CFG
 from utils.logger_config import logger
@@ -15,7 +10,8 @@ from utils.logger_config import logger
 # Importar el flujo actual para reutilizar la lógica existente
 # Nota: Este flujo usa la configuración de config.py, la cual
 # será sobreescrita dinámicamente con las opciones CLI.
-from main import main as run_pipeline
+# from main import main as run_pipeline
+from main import main
 
 
 # ----------------------------
@@ -168,7 +164,7 @@ def run_command(use_target_datetime: bool,
 
     # Ejecutar pipeline existente
     try:
-        run_pipeline()
+        main()
     except Exception as e:
         logger.error(f'Error durante la ejecución del pipeline: {e}', exc_info=verbose)
         sys.exit(1)
@@ -189,146 +185,5 @@ def show_config_command():
         logger.info(f'{k}: {v}')
 
 
-# ----------------------------
-# Timeseries de lluvia (lluvia vs tiempo)
-# ----------------------------
-
-def _parse_dt_from_filename(p: Path) -> Optional[datetime]:
-    """Extrae datetime del patrón *_YYYYMMDD_HHMM.json del nombre de archivo."""
-    m = re.search(r'_(\d{8})_(\d{4})\.json$', p.name)
-    if not m:
-        return None
-    ymd, hm = m.group(1), m.group(2)
-    try:
-        return datetime.strptime(ymd + hm, '%Y%m%d%H%M')
-    except Exception:
-        return None
-
-
-def _build_timeseries(search_dir: Path) -> Dict[str, List[Tuple[datetime, float]]]:
-    """Construye series por estación: {station_id: [(dt, precip_mm), ...]}"""
-    if not search_dir.exists():
-        raise FileNotFoundError(f"No existe el directorio: {search_dir}")
-    json_files = sorted(search_dir.rglob('*.json'))
-    if not json_files:
-        raise FileNotFoundError(f"No se encontraron JSONs en {search_dir}")
-
-    series: Dict[str, List[Tuple[datetime, float]]] = {}
-
-    for jf in json_files:
-        try:
-            with jf.open('r', encoding='utf-8') as f:
-                data = json.load(f)
-            lecturas = data.get('LECTURAS', [])
-            if not lecturas:
-                continue
-            precip = sum(float(r.get('NIVEL', 0.0)) for r in lecturas)
-            dt = _parse_dt_from_filename(jf) or datetime.fromtimestamp(jf.stat().st_mtime)
-            station_id = str(data.get('NOMBRE') or data.get('IDENTIFICADOR') or 'STATION')
-            series.setdefault(station_id, []).append((dt, precip))
-        except Exception as e:
-            logger.warning(f"Omitiendo {jf.name}: {e}")
-            continue
-
-    # Ordenar por tiempo
-    for sid in list(series.keys()):
-        series[sid].sort(key=lambda t: t[0])
-    return series
-
-
-def _plot_timeseries(series_map: Dict[str, List[Tuple[datetime, float]]], output_dir: Path, image_format: str,
-                     style: str = 'bar', cumulative: bool = False) -> List[Path]:
-    output_dir.mkdir(parents=True, exist_ok=True)
-    saved: List[Path] = []
-
-    for sid, seq in series_map.items():
-        if not seq:
-            continue
-        times = [t for t, _ in seq]
-        vals = [v for _, v in seq]
-        if cumulative:
-            cum = []
-            s = 0.0
-            for v in vals:
-                s += v
-                cum.append(s)
-            vals = cum
-
-        fig, ax = plt.subplots(figsize=(10, 4))
-
-        if style == 'line':
-            ax.plot(times, vals, '-o', lw=1.5, ms=4, color='tab:blue')
-        else:
-            # Ancho de barra aproximado basado en el delta mínimo
-            if len(times) >= 2:
-                deltas = [ (times[i+1]-times[i]).total_seconds()/86400.0 for i in range(len(times)-1) ]
-                width = 0.8 * min(deltas)
-            else:
-                width = 1/24  # ~1 hora
-            ax.bar(times, vals, width=width, align='center', color='tab:blue', edgecolor='black', linewidth=0.5)
-
-        ax.set_title(f"Lluvia vs Tiempo - {sid}" + (" (Acumulada)" if cumulative else ""))
-        ax.set_ylabel('Precipitación (mm)')
-        ax.set_xlabel('Tiempo')
-
-        ax.xaxis.set_major_locator(mdates.AutoDateLocator())
-        ax.xaxis.set_major_formatter(mdates.ConciseDateFormatter(ax.xaxis.get_major_locator()))
-        fig.autofmt_xdate()
-        ax.grid(True, ls='--', alpha=0.3)
-
-        ts = datetime.now().strftime('%Y%m%d_%H%M%S')
-        out_path = output_dir / f"timeseries_{sid}_{ts}.{image_format.lower()}"
-        fig.savefig(out_path, dpi=getattr(CFG, 'IMAGE_DPI', 150), bbox_inches='tight')
-        plt.close(fig)
-        logger.info(f"Serie temporal guardada: {out_path}")
-        saved.append(out_path)
-
-    return saved
-
-
-@cli.command('timeseries', help='Genera una gráfica de lluvia vs tiempo a partir de JSONs en una ruta')
-@click.option('--manual-search-path', default=CFG.MANUAL_SEARCH_PATH, show_default=True,
-              help='Ruta manual (relativa a DTA_DIR) donde buscar JSONs. Ej: 2025/09/26 o 2025/09/29/RGA')
-@click.option('--output-dir', type=click.Path(file_okay=False, dir_okay=True, path_type=Path),
-              default=Path('output/timeseries'), show_default=True, help='Directorio de salida de las gráficas')
-@click.option('--image-format', type=click.Choice(['png', 'pdf', 'jpg', 'jpeg', 'svg'], case_sensitive=False),
-              default=CFG.IMAGE_FORMAT, show_default=True, help='Formato de imagen')
-@click.option('--style', type=click.Choice(['bar', 'line'], case_sensitive=False), default='bar', show_default=True,
-              help='Estilo de la gráfica: barras (hyetograph) o línea')
-@click.option('--cumulative/--no-cumulative', default=False, show_default=True, help='Graficar acumulado en el tiempo')
-@click.option('--verbose', is_flag=True, help='Aumentar verbosidad (INFO -> DEBUG)')
-def timeseries_command(manual_search_path: Optional[str],
-                       output_dir: Path,
-                       image_format: str,
-                       style: str,
-                       cumulative: bool,
-                       verbose: bool):
-    # Verbosidad
-    if verbose:
-        try:
-            import logging
-            logger.setLevel(logging.DEBUG)
-            for h in logger.handlers:
-                h.setLevel(logging.DEBUG)
-            logger.debug('Logger ajustado a DEBUG')
-        except Exception:
-            pass
-
-    base = Path(CFG.DTA_DIR)
-    if not manual_search_path:
-        raise click.ClickException('Debe especificar --manual-search-path o definirlo en config.py')
-    search_dir = base / manual_search_path
-    logger.info(f"Construyendo series desde: {search_dir}")
-
-    try:
-        series_map = _build_timeseries(search_dir)
-        saved = _plot_timeseries(series_map, output_dir, image_format, style=style, cumulative=cumulative)
-        if not saved:
-            raise click.ClickException('No se generó ninguna gráfica (verifique que existan JSONs válidos)')
-    except Exception as e:
-        logger.error(f"Error generando series temporales: {e}")
-        raise click.ClickException(str(e))
-
-
 if __name__ == '__main__':
-    cli()  # Permite ejecutar: python cli/commands.py run ...
+    cli()  # Permite ejecutar: python -m cli.commands run ...
