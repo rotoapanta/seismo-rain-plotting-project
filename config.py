@@ -109,10 +109,10 @@ CREDITS_TEXT = None
 # --- Modo de Ejecución ---
 # Si True, el script buscará un archivo para una fecha y hora específicas.
 # Si False, el script usará el archivo JSON más reciente que encuentre en DTA_DIR.
-USE_TARGET_DATETIME = False
+USE_TARGET_DATETIME = True
 
 # Fecha y hora objetivo (solo si USE_TARGET_DATETIME es True)
-TARGET_DATE = '2025-10-03'  # Formato YYYY-MM-DD
+TARGET_DATE = '2025-11-23'  # Formato YYYY-MM-DD
 TARGET_HOUR = 14            # Hora en formato 24h (0-23)
 
 
@@ -148,11 +148,43 @@ DTA_DIR = 'DTA'
 # Ruta manual para buscar datos (relativa a DTA_DIR). Si se define, el script buscará el archivo
 # más reciente solo en esta carpeta. Ej: '2025/09/26'.
 # Tiene prioridad solo si USE_TARGET_DATETIME es False.
-MANUAL_SEARCH_PATH = '2025/10/30/RGA' # por ejemplo: '2025/03/10'
+MANUAL_SEARCH_PATH = None # por ejemplo: '2025/03/10'
 
 # Si True, acumula (suma) los valores de todos los JSON en la ruta manual. 
 # Si False, solo usa el archivo más reciente en esa ruta.
-ACCUMULATE_FILES_IN_PATH = True
+ACCUMULATE_FILES_IN_PATH = False
+
+# --- Sincronización opcional con rsync (antes de leer datos) ---
+# Activa una sincronización previa desde un origen remoto (por ejemplo, Raspberry) hacia DTA_DIR.
+RSYNC_ENABLED = True
+# Origen remoto base (sin subruta), por ejemplo: 'pi@192.168.190.29:/home/pi/Documents/Projects/volc-pi-project/DTA'
+RSYNC_SOURCE = 'pi@192.168.190.29:/home/pi/Documents/Projects/volc-pi-project/DTA'
+# Destino local base; si None, se usa DTA_DIR. Puedes fijarlo a una ruta absoluta distinta si lo deseas.
+RSYNC_DEST = '/home/rotoapanta/Documentos/Projects/seismo-rain-plotting-project/DTA/'
+# Subruta a sincronizar (opcional). Si se define (e.g. '2025/10'), se anexa a SOURCE y DEST.
+RSYNC_SUBPATH = None
+# Incluir solamente JSON (incluye directorios y *.json, excluye lo demás)
+RSYNC_INCLUDE_JSON_ONLY = True
+# Comando remoto de shell para rsync (-e). Normalmente 'ssh'.
+RSYNC_RSH = 'ssh'
+# Si True, realiza un ensayo sin copiar (--dry-run)
+RSYNC_DRY_RUN = False
+# Límite de ancho de banda en KB/s (None para sin límite)
+RSYNC_BWLIMIT = None
+# Si True, elimina en destino archivos que no existen en origen (--delete) [peligroso]
+RSYNC_DELETE = False
+# Timeout para la operación rsync en segundos
+RSYNC_TIMEOUT_SEC = 180
+# Excluir archivos temporales comunes
+RSYNC_EXCLUDE_TMP = True  # excluye '.*', '*.tmp', '*.partial', '*.swp'
+# Opciones extra de rsync (lista de strings), se añaden tal cual
+RSYNC_EXTRA_OPTS = []
+
+# --- Contraseña para sshpass ---
+# Si se requiere contraseña para la conexión SSH, defínala aquí.
+# Dejar como None o un string vacío si se usa autenticación por clave.
+# IMPORTANTE: Por seguridad, considere usar llaves SSH en lugar de contraseñas.
+RSYNC_PASSWORD = None
 
 RANDOM_SEED = 42
 

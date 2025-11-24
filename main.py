@@ -4,6 +4,7 @@ from datetime import datetime
 from typing import List, Tuple, Dict, Optional
 
 import numpy as np
+import subprocess
 
 import config as CFG
 from utils.logger_config import logger
@@ -11,6 +12,112 @@ from plotting.isoyetas import render_isoyetas_graph
 from plotting.timeseries import render_timeseries_graph
 from plotting.bars import render_bars_graph
 
+
+# ----------------------------
+# Utilidades de sincronización (rsync opcional)
+# ----------------------------
+
+def rsync_sync() -> None:
+    """Ejecuta una sincronización rsync opcional según config (no detiene el flujo si falla)."""
+    try:
+        if not getattr(CFG, 'RSYNC_ENABLED', False):
+            return
+        src_base = getattr(CFG, 'RSYNC_SOURCE', None)
+        if not src_base:
+            logger.warning("RSYNC_ENABLED=True pero RSYNC_SOURCE no está definido en config.py")
+            return
+        dest_base = getattr(CFG, 'RSYNC_DEST', None) or getattr(CFG, 'DTA_DIR', 'DTA')
+        subpath = getattr(CFG, 'RSYNC_SUBPATH', None) or getattr(CFG, 'MANUAL_SEARCH_PATH', None)
+        # Construir rutas completas (agregar subruta si corresponde)
+        src = src_base.rstrip('/') + '/'
+        dest = dest_base.rstrip('/') + '/'
+        if subpath:
+            sp = str(subpath).strip('/') + '/'
+            src += sp
+            dest += sp
+        # Asegurar destino
+        Path(dest).mkdir(parents=True, exist_ok=True)
+
+        # --- Construcción del comando rsync ---
+        rsync_cmd = ['rsync', '-avz', '--progress', '--stats']
+        
+        # --- Manejo de sshpass si se provee una contraseña ---
+        rsh_cmd = str(getattr(CFG, 'RSYNC_RSH', 'ssh'))
+        password = getattr(CFG, 'RSYNC_PASSWORD', None)
+
+        if password:
+            # Verificar si sshpass está instalado antes de usarlo
+            if subprocess.run(['which', 'sshpass'], capture_output=True).returncode != 0:
+                logger.warning("RSYNC_PASSWORD está definida, pero 'sshpass' no se encuentra en el sistema. Intente instalarlo (ej: sudo apt-get install sshpass) o use autenticación por clave SSH.")
+                return
+
+            # Usar sshpass para pasar la contraseña de forma no interactiva
+            rsh_cmd = f"sshpass -p \'{password}\' {rsh_cmd}"
+        
+        rsync_cmd.extend(['-e', rsh_cmd])
+
+        # Modos opcionales
+        if getattr(CFG, 'RSYNC_DRY_RUN', False):
+            rsync_cmd.append('--dry-run')
+        bwlimit = getattr(CFG, 'RSYNC_BWLIMIT', None)
+        if bwlimit is not None:
+            rsync_cmd.append(f'--bwlimit={int(bwlimit)}')
+        if getattr(CFG, 'RSYNC_DELETE', False):
+            rsync_cmd.append('--delete')
+        if getattr(CFG, 'RSYNC_EXCLUDE_TMP', True):
+            rsync_cmd.extend(['--exclude=.*', '--exclude=*.tmp', '--exclude=*.partial', '--exclude=*.swp'])
+        if getattr(CFG, 'RSYNC_INCLUDE_JSON_ONLY', True):
+            rsync_cmd.extend(["--include=*/", "--include=*.json", "--exclude=*"])
+        
+        extra = getattr(CFG, 'RSYNC_EXTRA_OPTS', []) or []
+        for opt in extra:
+            rsync_cmd.append(str(opt))
+        
+        rsync_cmd.extend([src, dest])
+        
+        logger.info(f"Iniciando sincronización con rsync...")
+        logger.info(f"  - Origen: {src}")
+        logger.info(f"  - Destino: {dest}")
+        logger.debug(f"  - Comando: {' '.join(rsync_cmd)}")
+
+        try:
+            proc = subprocess.run(
+                ' '.join(rsync_cmd),
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+                timeout=float(getattr(CFG, 'RSYNC_TIMEOUT_SEC', 180))
+            )
+        except subprocess.TimeoutExpired as te:
+            logger.error(f"Error: rsync excedió el tiempo límite de {CFG.RSYNC_TIMEOUT_SEC}s y fue abortado.")
+            return
+        out = proc.stdout or ''
+        err = proc.stderr or ''
+        if proc.returncode == 0:
+            # Extraer líneas clave del resumen de rsync
+            summary_keys = [
+                'Number of files transferred',
+                'Total file size',
+                'Total transferred file size',
+                'sent ',
+                'received ',
+                'speedup is'
+            ]
+            lines = [ln for ln in out.splitlines() if any(k in ln for k in summary_keys)]
+            if lines:
+                logger.info("Resumen de rsync:\n  " + "\n  ".join(lines))
+            logger.info("Sincronización rsync completada con éxito.")
+        else:
+            logger.error(f"Error: rsync finalizó con código {proc.returncode}.")
+            if out:
+                logger.info(f"Salida de rsync (stdout):\n{out}")
+            if err:
+                logger.error(f"Errores de rsync (stderr):\n{err}")
+    except FileNotFoundError:
+        logger.warning("rsync no está disponible en el sistema. Omite sincronización.")
+    except Exception as e:
+        logger.warning(f"Fallo en sincronización rsync (continuando sin detener): {e}")
 
 # ----------------------------
 # Utilidades de IO de datos
@@ -130,7 +237,7 @@ def find_specific_json(base_dir: Path, target_date: str, target_hour: int) -> Op
             logger.warning(f"El directorio {search_path} no existe.")
             return None
 
-        matches = list(search_path.glob(file_pattern))
+        matches = list(search_path.rglob(file_pattern))
         if matches:
             logger.info(f"Archivo encontrado para la fecha y hora especificadas: {matches[0]}")
             return matches[0]
@@ -322,11 +429,20 @@ def build_timeseries_from_dir(search_dir: Path):
             station_name = str(data.get('NOMBRE') or data.get('IDENTIFICADOR') or station_name or 'STATION')
         except Exception:
             continue
-    # Ordenar por tiempo si no vinieron ordenados
-    if times and values:
-        pairs = sorted(zip(times, values), key=lambda t: t[0])
-        times, values = [p[0] for p in pairs], [p[1] for p in pairs]
-    return times, values, station_name or 'STATION'
+    # Agrupar y sumar valores por timestamp
+    from collections import defaultdict
+    grouped_values = defaultdict(float)
+    for dt, v in zip(times, values):
+        grouped_values[dt] += v
+
+    # Ordenar por tiempo
+    if grouped_values:
+        sorted_items = sorted(grouped_values.items(), key=lambda item: item[0])
+        times, values = zip(*sorted_items)
+    else:
+        times, values = [], []
+
+    return list(times), list(values), station_name or 'STATION'
 
 
 # ----------------------------
@@ -341,6 +457,9 @@ def main(**overrides) -> None:
             if hasattr(CFG, k.upper()):
                 setattr(CFG, k.upper(), v)
                 logger.info(f"Override aplicado: {k.upper()} = {v}")
+
+    # Sincronización opcional con rsync antes de leer datos
+    rsync_sync()
 
     # Selección/lectura de datos
     real_station, source_file = get_real_station()

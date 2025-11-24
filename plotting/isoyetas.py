@@ -201,9 +201,17 @@ def render_isoyetas_graph(
     template.finalize(ax=ax, extent=extent, stations=stations, source_file=source_file)
 
     # Guardar
+    import re
     plt.rcParams['savefig.bbox'] = 'standard'
     fig.patch.set_facecolor('white')
+
+    # Generar timestamp a partir del nombre del archivo de origen o usar fecha actual
     ts = datetime.now().strftime('%Y%m%d_%H%M%S')
+    if source_file:
+        match = re.search(r'_(\d{8})_(\d{4})', source_file.name)
+        if match:
+            ts = f"{match.group(1)}_{match.group(2)}"
+
     out_path = out_dir / f'isoyetas_{ts}.{CFG.IMAGE_FORMAT}'
     fig.savefig(out_path, dpi=CFG.IMAGE_DPI)
     logger.info(f"Mapa de isoyetas guardado en: {out_path}")

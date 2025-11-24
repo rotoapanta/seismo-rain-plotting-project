@@ -295,8 +295,16 @@ def render_bars_graph(
     # Guardar
     plt.rcParams['savefig.bbox'] = 'standard'
     fig.patch.set_facecolor('white')
-    ts_now = datetime.now().strftime('%Y%m%d_%H%M%S')
-    out_path = out_dir / f'bars_{ts_now}.{img_fmt}'
+
+    # Generar timestamp a partir del primer tiempo de la serie o usar fecha actual
+    ts = datetime.now().strftime('%Y%m%d_%H%M%S')
+    if use_time_axis and x:
+        try:
+            ts = x[0].strftime('%Y%m%d_%H%M%S')
+        except Exception:
+            pass
+
+    out_path = out_dir / f'bars_{ts}.{img_fmt}'
     fig.savefig(out_path, dpi=getattr(CFG, 'IMAGE_DPI', 150))
     logger.info(f"Barras guardado en: {out_path}")
 

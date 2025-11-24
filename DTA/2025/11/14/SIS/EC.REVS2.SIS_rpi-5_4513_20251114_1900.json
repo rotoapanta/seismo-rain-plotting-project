@@ -1,0 +1,151 @@
+{
+    "TIPO": "SIS",
+    "NOMBRE": "REVS2",
+    "IDENTIFICADOR": 1,
+    "LECTURAS": [
+        {
+            "FECHA": "2025-11-14",
+            "TIEMPO": "19:04:23",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "ALERTA": false,
+            "PASA_BANDA": "0018",
+            "PASA_BAJO": "0014",
+            "PASA_ALTO": "0056",
+            "BATERIA": 12.47
+        },
+        {
+            "FECHA": "2025-11-14",
+            "TIEMPO": "19:09:22",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "ALERTA": false,
+            "PASA_BANDA": "0014",
+            "PASA_BAJO": "0008",
+            "PASA_ALTO": "0056",
+            "BATERIA": 12.47
+        },
+        {
+            "FECHA": "2025-11-14",
+            "TIEMPO": "19:14:22",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "ALERTA": false,
+            "PASA_BANDA": "0016",
+            "PASA_BAJO": "0010",
+            "PASA_ALTO": "0051",
+            "BATERIA": 12.47
+        },
+        {
+            "FECHA": "2025-11-14",
+            "TIEMPO": "19:19:22",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "ALERTA": false,
+            "PASA_BANDA": "0015",
+            "PASA_BAJO": "0008",
+            "PASA_ALTO": "0051",
+            "BATERIA": 12.47
+        },
+        {
+            "FECHA": "2025-11-14",
+            "TIEMPO": "19:24:21",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "ALERTA": false,
+            "PASA_BANDA": "0017",
+            "PASA_BAJO": "0008",
+            "PASA_ALTO": "0055",
+            "BATERIA": 12.47
+        },
+        {
+            "FECHA": "2025-11-14",
+            "TIEMPO": "19:29:21",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "ALERTA": false,
+            "PASA_BANDA": "0015",
+            "PASA_BAJO": "0008",
+            "PASA_ALTO": "0051",
+            "BATERIA": 12.47
+        },
+        {
+            "FECHA": "2025-11-14",
+            "TIEMPO": "19:34:20",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "ALERTA": false,
+            "PASA_BANDA": "0016",
+            "PASA_BAJO": "0013",
+            "PASA_ALTO": "0055",
+            "BATERIA": 12.47
+        },
+        {
+            "FECHA": "2025-11-14",
+            "TIEMPO": "19:39:20",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "ALERTA": false,
+            "PASA_BANDA": "0015",
+            "PASA_BAJO": "0012",
+            "PASA_ALTO": "0051",
+            "BATERIA": 12.47
+        },
+        {
+            "FECHA": "2025-11-14",
+            "TIEMPO": "19:44:20",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "ALERTA": false,
+            "PASA_BANDA": "0016",
+            "PASA_BAJO": "0008",
+            "PASA_ALTO": "0051",
+            "BATERIA": 12.47
+        },
+        {
+            "FECHA": "2025-11-14",
+            "TIEMPO": "19:49:19",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "ALERTA": false,
+            "PASA_BANDA": "0015",
+            "PASA_BAJO": "0013",
+            "PASA_ALTO": "0055",
+            "BATERIA": 12.47
+        },
+        {
+            "FECHA": "2025-11-14",
+            "TIEMPO": "19:54:19",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "ALERTA": false,
+            "PASA_BANDA": "0016",
+            "PASA_BAJO": "0013",
+            "PASA_ALTO": "0051",
+            "BATERIA": 12.47
+        },
+        {
+            "FECHA": "2025-11-14",
+            "TIEMPO": "19:59:18",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "ALERTA": false,
+            "PASA_BANDA": "0017",
+            "PASA_BAJO": "0014",
+            "PASA_ALTO": "0052",
+            "BATERIA": 12.47
+        }
+    ]
+}

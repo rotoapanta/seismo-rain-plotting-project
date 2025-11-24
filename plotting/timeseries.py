@@ -274,8 +274,16 @@ def render_timeseries_graph(
     # Guardar
     plt.rcParams['savefig.bbox'] = 'standard'
     fig.patch.set_facecolor('white')
-    ts_now = datetime.now().strftime('%Y%m%d_%H%M%S')
-    out_path = out_dir / f'timeseries_{ts_now}.{img_fmt}'
+
+    # Generar timestamp a partir del primer tiempo de la serie o usar fecha actual
+    ts = datetime.now().strftime('%Y%m%d_%H%M%S')
+    if t and _is_datetime_like(t):
+        try:
+            ts = t[0].strftime('%Y%m%d_%H%M%S')
+        except Exception:
+            pass
+
+    out_path = out_dir / f'timeseries_{ts}.{img_fmt}'
     fig.savefig(out_path, dpi=getattr(CFG, 'IMAGE_DPI', 150))
     logger.info(f"Serie temporal guardada en: {out_path}")
 

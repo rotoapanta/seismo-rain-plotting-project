@@ -1,0 +1,43 @@
+{
+    "TIPO": "RGA",
+    "NOMBRE": "REVS2",
+    "IDENTIFICADOR": 1,
+    "LECTURAS": [
+        {
+            "FECHA": "2025-11-19",
+            "TIEMPO": "07:56:00",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "NIVEL": 0.0,
+            "BATERIA": 12.47
+        },
+        {
+            "FECHA": "2025-11-19",
+            "TIEMPO": "07:57:00",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "NIVEL": 0.0,
+            "BATERIA": 12.47
+        },
+        {
+            "FECHA": "2025-11-19",
+            "TIEMPO": "07:58:00",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "NIVEL": 0.0,
+            "BATERIA": 12.47
+        },
+        {
+            "FECHA": "2025-11-19",
+            "TIEMPO": "07:59:00",
+            "LATITUD": -0.212183,
+            "LONGITUD": -78.491557,
+            "ALTURA": 2814.1,
+            "NIVEL": 0.0,
+            "BATERIA": 12.47
+        }
+    ]
+}
